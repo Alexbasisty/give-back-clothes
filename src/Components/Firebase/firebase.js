@@ -8,6 +8,8 @@ const config = {
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: "1:343602223408:web:6045f185c7467bdf5b90f5",
+  measurementId: "G-MR89M63HVB",
 };
 
 class Firebase {
