@@ -10,11 +10,24 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 
 import * as ROUTES from '../../constants/routes';
+import { withFirebase } from "../Firebase";
 
 class App extends  Component {
   state = {
     authUser: null
   };
+
+  componentDidMount() {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
+      authUser
+          ? this.setState({ authUser })
+          : this.setState({ authUser: null });
+    });
+  }
+
+  componentWillUnmount() {
+    this.listener();
+  }
 
   render () {
 
@@ -34,4 +47,4 @@ class App extends  Component {
   }
 }
 
-export default App;
+export default withFirebase(App);
