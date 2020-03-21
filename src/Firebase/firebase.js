@@ -1,10 +1,18 @@
+import app from 'firebase/app';
+
 const config = {
-  apiKey: "AIzaSyC2UnabYI9ttWGcT2WC2kUpBi1JGQOnvh0",
-  authDomain: "give-back-clothes.firebaseapp.com",
-  databaseURL: "https://give-back-clothes.firebaseio.com",
-  projectId: "give-back-clothes",
-  storageBucket: "give-back-clothes.appspot.com",
-  messagingSenderId: "343602223408",
-  appId: "1:343602223408:web:6045f185c7467bdf5b90f5",
-  measurementId: "G-MR89M63HVB"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
+
+class Firebase {
+  constructor() {
+    app.initializeApp(config)
+  }
+}
+
+export default Firebase;
