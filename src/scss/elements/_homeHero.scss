@@ -1,0 +1,27 @@
+.home-header {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.home-hero {
+  position: relative;
+  display: flex;
+  width: 45vw;
+  flex-grow: 1;
+  .home-image {
+    position: absolute;
+    display: flex;
+    width: 75vw;
+    top: -120px;
+    left: -483px;
+    z-index: 0;
+  }
+}
+
+.home-title {
+  width: 55%;
+  flex-grow: 2;
+  height: 100%;
+  z-index: 2;
+}

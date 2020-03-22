@@ -21,9 +21,10 @@ ul.navbar {
   display: flex;
   justify-content: flex-end;
   padding-top: 1.7rem;
-
   li {
-    padding-left: 5.5rem;
+    display: flex;
+    align-items: center;
+    padding-left: 2.9vw;
   }
 
   .start {
