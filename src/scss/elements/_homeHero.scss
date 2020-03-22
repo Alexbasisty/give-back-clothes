@@ -1,0 +1,46 @@
+.home-header {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.home-hero {
+  position: relative;
+  display: flex;
+  width: 45vw;
+  flex-grow: 1;
+  .home-image {
+    position: absolute;
+    display: flex;
+    width: 72vw;
+    top: -140px;
+    left: -483px;
+    z-index: 0;
+  }
+}
+
+.home-title {
+  display: flex;
+  height: calc(100vh - 142px);
+  margin-left: 66px;
+  margin-right: 275px;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  font-size: 3.7rem;
+  line-height: 5.5rem;
+  z-index: 2;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .decoration {
+    background: transparent url('../../assets/Decoration.svg') no-repeat center;
+    height: 33px;
+    width: 100%;
+    margin-top: 25px;
+  }
+}

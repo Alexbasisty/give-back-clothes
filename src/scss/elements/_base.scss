@@ -1,4 +1,12 @@
+html {
+  font-size: 10px;
+}
+
 body {
   font-family: $font-base;
   color: $color-font-base;
+}
+
+ul {
+  list-style: none;
 }

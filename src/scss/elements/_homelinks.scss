@@ -1,0 +1,36 @@
+a.home-links {
+  cursor: pointer;
+  font-size: 3.6rem;
+  line-height: 4.5rem;
+  font-weight: 300;
+  border: 0.75px solid $color-font-base;
+  text-align: center;
+  padding: 1.3rem 9.3rem;
+  width: 45%;
+
+  &:link {
+    text-decoration: none;
+    color: $color-font-base;
+  }
+
+  &:visited {
+    color: $color-font-base;
+  }
+
+  width: -moz-min-content;
+  width: min-content;
+  display: table-caption;
+  display: -ms-grid;
+  -ms-grid-columns: min-content;
+}
+
+.links-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 65px;
+
+  .second-link {
+    padding: 1.3rem 5.1rem;
+    margin-left: 4rem;
+  }
+}
