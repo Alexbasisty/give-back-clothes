@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeLinks from "./homelinks";
 
 const HomeHeader = () => (
     <div className="home-header">
@@ -12,7 +13,7 @@ const HomeHeader = () => (
         </div>
         <div className="decoration" />
         <div className="home-links">
-
+          <HomeLinks />
         </div>
       </div>
     </div>
