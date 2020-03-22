@@ -1,7 +1,7 @@
 .home-header {
   display: flex;
   justify-content: space-between;
-
+  height: 87.2vh;
 }
 
 .home-hero {
@@ -12,8 +12,8 @@
   .home-image {
     position: absolute;
     display: flex;
-    width: 72vw;
-    top: -140px;
+    width: 73vw;
+    top: -100px;
     left: -483px;
     z-index: 0;
   }
