@@ -19,7 +19,7 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-    <ul>
+    <ul className="navbar">
       <li>
         <Link to={ROUTES.LANDING}>Landing</Link>
       </li>
@@ -41,14 +41,34 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-    <ul>
-      <li>
-        <Link to={ROUTES.HOME}>Start</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-      </li>
-    </ul>
+    <div className="container">
+      <ul className="login-buttons">
+        <li>
+          <Link className="nav-link" to={ROUTES.SIGN_IN}>Zaloguj</Link>
+        </li>
+        <li>
+          <Link className="nav-link sign-up" to={ROUTES.SIGN_UP}>Załóż konto</Link>
+        </li>
+      </ul>
+      <ul className="navbar">
+        <li>
+          <Link className="nav-link start" to={ROUTES.HOME}>Start</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME}>O co chodzi?</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME}>O nas</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME}>Fundacja i organizacje</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME}>Kontakt</Link>
+        </li>
+      </ul>
+    </div>
+
 );
 
 export default Navigation;

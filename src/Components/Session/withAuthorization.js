@@ -16,7 +16,7 @@ const withAuthorization = condition => Component => {
               this.props.history.push(ROUTES.SIGN_IN);
             }
           },
-          () => this.props.history.push(ROUTES.SIGN_IN),
+          () => this.props.history.push(ROUTES.HOME),
       );
     }
 
