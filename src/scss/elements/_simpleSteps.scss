@@ -1,0 +1,49 @@
+.steps-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+  margin-top: 55px;
+
+  h2 {
+    font-size: 3.8rem;
+    line-height: 5.2rem;
+    letter-spacing: -0.76px;
+    padding-bottom: 25px;
+  }
+}
+
+.steps-description {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 35px 0 35px;
+  padding-bottom: 76px;
+  padding-top: 71px;
+  background-color: $color-borders;
+}
+
+.single-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  text-align: center;
+
+  p {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    padding: 8px 0;
+  }
+  span {
+    height: 1px;
+    width: 70px;
+    background-color: #707070;
+  }
+  small {
+    font-size: 1.6rem;
+    line-height: 1.2rem;
+    padding: 8px 0;
+  }
+}
