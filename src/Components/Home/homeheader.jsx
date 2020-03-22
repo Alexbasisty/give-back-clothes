@@ -12,9 +12,7 @@ const HomeHeader = () => (
           <p style={{margin: 0}}>Oddaj niechciane rzeczy w zaufane ręce</p>
         </div>
         <div className="decoration" />
-        <div className="home-links">
-          <HomeLinks />
-        </div>
+        <HomeLinks />
       </div>
     </div>
 );
