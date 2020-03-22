@@ -55,7 +55,7 @@ const NavigationNonAuth = () => (
           <Link className="nav-link start" to={ROUTES.HOME}>Start</Link>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME}>O co chodzi?</Link>
+          <Link className="nav-link" to={ROUTES.HOME} style={{paddingLeft: '-2rem'}}>O co chodzi?</Link>
         </li>
         <li>
           <Link className="nav-link" to={ROUTES.HOME}>O nas</Link>
