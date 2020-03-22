@@ -26,11 +26,11 @@ a.home-links {
 
 .links-container {
   display: flex;
-  width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 65px;
 
   .second-link {
     padding: 1.3rem 5.1rem;
+    margin-left: 4rem;
   }
 }
