@@ -12,16 +12,36 @@
   .home-image {
     position: absolute;
     display: flex;
-    width: 75vw;
-    top: -120px;
+    width: 72vw;
+    top: -140px;
     left: -483px;
     z-index: 0;
   }
 }
 
 .home-title {
-  width: 55%;
-  flex-grow: 2;
-  height: 100%;
+  display: flex;
+  height: calc(100vh - 142px);
+  margin-left: 66px;
+  margin-right: 275px;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  font-size: 3.7rem;
+  line-height: 5.5rem;
   z-index: 2;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .decoration {
+    background: transparent url('../../assets/Decoration.svg') 0 0 no-repeat padding-box;
+    background-position: center;
+    height: 33px;
+    width: 100%;
+    margin-top: 25px;
+  }
 }

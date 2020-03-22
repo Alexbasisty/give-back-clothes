@@ -6,8 +6,14 @@ const HomeHeader = () => (
         <img className="home-image" src={require('../../assets/Home-Hero-Image.jpg')} alt="home-staff" />
       </div>
       <div className="home-title">
-        <p>Zacznij pomagać!</p>
-        <p>Oddaj niechciane rzeczy w zaufane ręce</p>
+        <div className="text">
+          <p style={{margin: 0}}>Zacznij pomagać!</p>
+          <p style={{margin: 0}}>Oddaj niechciane rzeczy w zaufane ręce</p>
+        </div>
+        <div className="decoration" />
+        <div className="home-links">
+
+        </div>
       </div>
     </div>
 );
