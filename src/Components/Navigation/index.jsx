@@ -19,25 +19,38 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-    <ul className="navbar">
-      <li>
-        <Link to={ROUTES.LANDING}>Landing</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.HOME}>Start</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.ACCOUNT}>Account</Link>
-      </li>
-      {!!authUser.roles[ROLES.ADMIN] && (
-          <li>
-            <Link to={ROUTES.ADMIN}>Admin</Link>
-          </li>
-      )}
-      <li>
-        <SignOutButton />
-      </li>
-    </ul>
+    <div className="container">
+      <ul className="login-buttons">
+        <li className="sign-out">
+          <SignOutButton />
+        </li>
+      </ul>
+      <ul className="navbar">
+        <li>
+          <Link className="nav-link start" to={ROUTES.HOME}>Start</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME} style={{paddingLeft: '-2rem'}}>O co chodzi?</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME}>O nas</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME}>Fundacja i organizacje</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={ROUTES.HOME}>Kontakt</Link>
+        </li>
+        {/*<li>*/}
+        {/*  <Link to={ROUTES.ACCOUNT}>Profil</Link>*/}
+        {/*</li>*/}
+        {/*{!!authUser.roles[ROLES.ADMIN] && (*/}
+        {/*    <li>*/}
+        {/*      <Link to={ROUTES.ADMIN}>Admin</Link>*/}
+        {/*    </li>*/}
+        {/*)}*/}
+      </ul>
+    </div>
 );
 
 const NavigationNonAuth = () => (
