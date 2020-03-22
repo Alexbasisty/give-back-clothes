@@ -1,0 +1,17 @@
+.column-wrapper {
+  display: flex;
+  justify-content: space-around;
+  background-color: $alt-background-color;
+
+  article {
+    padding-top: 47px;
+    padding-bottom: 86px;
+    text-align: center;
+
+    h2 {
+      font-size: 9rem;
+      line-height: 12.2rem;
+      font-weight: lighter;
+    }
+  }
+}
