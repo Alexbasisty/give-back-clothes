@@ -1,9 +1,10 @@
 .about-us {
   display: flex;
 
+
   .about-desc {
     background-color: $color-borders;
-    width: 50.5%;
+    width: 55.5%;
     padding: 186px 150px;
     text-align: center;
     display: flex;
@@ -23,21 +24,22 @@
     }
 
     p {
-      width: 100%;
+      width: 90%;
       font-size: 3rem;
       line-height: 5.4rem;
       letter-spacing: -0.6px;
     }
 
     .signature {
-      justify-content: flex-end;
+      padding-top: 40px;
+      align-self: flex-end;
     }
   }
 
   .about-image {
     background: transparent url("../../assets/People.jpg") no-repeat center;
     background-size: cover;
-    width: 100%;
+    width: 80%;
     max-width: 942px;
   }
 }
