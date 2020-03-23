@@ -1,7 +1,7 @@
 import React from 'react';
-import HomeLinks from "./homelinks";
+import Homelinks from "./Homelinks";
 
-const HomeHeader = () => (
+const Homeheader = () => (
     <div className="home-header">
       <div className="home-hero">
         <img className="home-image" src={require('../../assets/Home-Hero-Image.jpg')} alt="home-staff" />
@@ -12,9 +12,9 @@ const HomeHeader = () => (
           <p style={{margin: 0, whiteSpace: "nowrap"}}>Oddaj niechciane rzeczy w zaufane ręce</p>
         </div>
         <div className="decoration" />
-        <HomeLinks />
+        <Homelinks />
       </div>
     </div>
 );
 
-export default HomeHeader;
+export default Homeheader;

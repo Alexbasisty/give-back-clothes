@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AuthUserContext } from '../Session';
+import { Link as ScrollLink} from 'react-scroll';
 
 import SignOutButton from "../SignOut";
 import * as ROUTES from '../../constants/routes';
@@ -77,7 +78,7 @@ const NavigationNonAuth = () => (
           <Link className="nav-link" to={ROUTES.HOME}>Fundacja i organizacje</Link>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME}>Kontakt</Link>
+          <ScrollLink className="nav-link" to='kontakt'>Kontakt</ScrollLink>
         </li>
       </ul>
     </div>

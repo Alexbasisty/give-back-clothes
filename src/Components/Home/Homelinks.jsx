@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import GiveStuffButton from "./giveStuffButton";
+import GiveStuffButton from "./GiveStuffButton";
 
-class HomeLinks extends Component{
+class Homelinks extends Component{
 
   render() {
     return (
@@ -15,4 +15,4 @@ class HomeLinks extends Component{
   }
 }
 
-export default HomeLinks;
+export default Homelinks;

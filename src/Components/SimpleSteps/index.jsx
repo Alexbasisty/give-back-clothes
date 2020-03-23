@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import GiveStuffButton from "../Home/giveStuffButton";
-import ChooseClothes from "./chooseClothes";
-import OrderKurier from "./orderKurier";
-import PackThem from "./packThem";
-import WhomYouHelp from "./whomYouHelp";
+import GiveStuffButton from "../Home/GiveStuffButton";
+import ChooseClothes from "./ChooseClothes";
+import OrderKurier from "./OrderKurier";
+import PackThem from "./PackThem";
+import WhomYouHelp from "./WhomYouHelp";
 
 class SimpleSteps extends Component {
 

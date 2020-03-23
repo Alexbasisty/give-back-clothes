@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class ThreeColumns extends Component {
+class Threecolumns extends Component {
 
   render () {
     return (
-        <div className="column-wrapper">
+        <div id='kontakt' className="column-wrapper">
           <article>
             <h2>10</h2>
             <h4>Oddanych worków</h4>
@@ -37,4 +37,4 @@ class ThreeColumns extends Component {
   }
 }
 
-export default ThreeColumns;
+export default Threecolumns;
