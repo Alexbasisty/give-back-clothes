@@ -69,13 +69,13 @@ const NavigationNonAuth = () => (
           <Link className="nav-link start" to={ROUTES.HOME}>Start</Link>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME} style={{paddingLeft: '-2rem'}}>O co chodzi?</Link>
+          <ScrollLink className="nav-link" to='what-matter' style={{paddingLeft: '-2rem'}}>O co chodzi?</ScrollLink>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME}>O nas</Link>
+          <ScrollLink className="nav-link" to='aboutUs'>O nas</ScrollLink>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME}>Fundacja i organizacje</Link>
+          <ScrollLink className="nav-link" to='fundations'>Fundacja i organizacje</ScrollLink>
         </li>
         <li>
           <ScrollLink className="nav-link" to='kontakt'>Kontakt</ScrollLink>

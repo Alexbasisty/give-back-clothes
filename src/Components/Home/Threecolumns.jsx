@@ -4,7 +4,7 @@ class Threecolumns extends Component {
 
   render () {
     return (
-        <div id='kontakt' className="column-wrapper">
+        <div id='what-matter' className="column-wrapper">
           <article>
             <h2>10</h2>
             <h4>Oddanych worków</h4>
