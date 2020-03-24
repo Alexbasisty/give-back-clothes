@@ -54,6 +54,7 @@
       font-weight: lighter;
       text-align: left;
       border-bottom: 1px solid #707070;
+      margin-bottom: 34px;
 
       h4 {
         font-size: 2.6rem;
@@ -72,6 +73,22 @@
         padding-right: 37px;
       }
 
+    }
+
+    .pagination {
+      list-style: none;
+      display: flex;
+      cursor: pointer;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+
+      li {
+        padding: 13px 15px;
+
+        &:first-of-type {
+          border: 1px solid #707070;
+        }
+      }
     }
   }
 }

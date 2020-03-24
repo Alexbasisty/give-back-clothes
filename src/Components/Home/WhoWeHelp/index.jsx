@@ -4,31 +4,45 @@ import app from 'firebase/app';
 class WhoWeHelp extends Component {
   state = {
     description: '',
-    items: []
+    items: [],
+    currentPage: 1,
+    itemsPerPage: 3
   };
+
   componentDidMount() {
-    // const { description, title, mission, staff } = this.state;
     const foundations = app.database().ref('foundations/0');
     foundations.on('value', data => {
       const item = data.val();
       this.setState({
         description: item.desc,
-        title: item.items[0].header,
+        items: item.items
       });
-      console.log(item.desc);
+      console.log(item.items);
     });
-
   }
 
-  getData = () => {
-   const foundations = app.database().ref('foundations');
-   foundations.on('value', data => {
-     console.log(data.val());
-   });
+  handlePagination = event => {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
   };
 
   render() {
-    const { description, title, mission, staff } = this.state;
+    const { description, items,currentPage, itemsPerPage } = this.state;
+
+    const indexOfLastTodo = currentPage * itemsPerPage;
+    const indexOfFirstTodo = indexOfLastTodo - itemsPerPage;
+    const currentItems = items.slice(indexOfFirstTodo, indexOfLastTodo);
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(items.length / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => (
+        <li key={number} id={number} onClick={this.handlePagination}>{number}</li>
+    ));
+
     return (
       <div id="foundations" onClick={this.getData} className="foundations">
           <h2>Komu pomagamy?</h2>
@@ -40,13 +54,19 @@ class WhoWeHelp extends Component {
           </section>
         <section className="items">
           <p>{description}</p>
-          <div className="fund-description">
-            <div className="found-title">
-              <h4 className="header">Fundacja “Dbam o Zdrowie”</h4>
-              <h6 className="subheader">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</h6>
-            </div>
-            <p className="desc">ubrania, jedzenie, sprzęt AGD, meble, zabawki</p>
-          </div>
+
+          {currentItems.map((item, index) => (
+              <div key={index} className="fund-description">
+                <div className="found-title">
+                  <h4 className="header">{item.header}</h4>
+                  <h6 className="subheader">{item.subheader}</h6>
+                </div>
+                <p className="desc">{item.desc}</p>
+              </div>
+          ))}
+          <ul className="pagination">
+            {renderPageNumbers}
+          </ul>
         </section>
       </div>
     )                                                                               
