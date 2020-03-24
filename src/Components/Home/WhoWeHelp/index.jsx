@@ -38,12 +38,14 @@ class WhoWeHelp extends Component {
             <p className="middle-button">Organizacjom pozarządowym</p>
             <p>Lokalnym zbiórkom</p>
           </section>
-        <section>
+        <section className="items">
           <p>{description}</p>
-          <div>
-            <h4>{title}</h4>
-            <h6>{mission}</h6>
-            <p>{staff}</p>
+          <div className="fund-description">
+            <div className="found-title">
+              <h4 className="header">Fundacja “Dbam o Zdrowie”</h4>
+              <h6 className="subheader">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</h6>
+            </div>
+            <p className="desc">ubrania, jedzenie, sprzęt AGD, meble, zabawki</p>
           </div>
         </section>
       </div>
