@@ -12,5 +12,24 @@
 
   .links {
     display: flex;
+
+    p {
+      font-size: 2.4rem;
+      word-break: normal;
+      padding: 23px 42px;
+      text-align: center;
+      vertical-align: sub;
+      cursor: pointer;
+      margin: auto;
+
+      &.middle-button {
+        margin-left: 100px;
+        margin-right: 100px;
+      }
+    }
   }
+}
+
+.choose {
+  border: 0.75px solid $color-font-base;
 }

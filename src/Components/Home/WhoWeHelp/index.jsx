@@ -32,10 +32,10 @@ class WhoWeHelp extends Component {
     return (
       <div id="foundations" onClick={this.getData} className="foundations">
           <h2>Komu pomagamy?</h2>
-          <img src={require('../../../assets/Decoration.svg')} alt='decoration' />
+          <img src={require('../../../assets/Decoration.svg')} className="decor" alt='decoration' />
           <section className='links'>
-            <p>Fundacjom</p>
-            <p>Organizacjom pozarządowym</p>
+            <p className='choose'>Fundacjom</p>
+            <p className="middle-button">Organizacjom pozarządowym</p>
             <p>Lokalnym zbiórkom</p>
           </section>
         <section>
