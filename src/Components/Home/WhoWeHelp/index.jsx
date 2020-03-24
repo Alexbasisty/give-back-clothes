@@ -17,9 +17,21 @@ class WhoWeHelp extends Component {
         description: item.desc,
         items: item.items
       });
-      console.log(item.items);
     });
   }
+
+  handleGetData = event => {
+    const pathId = event.target.id;
+    const path = `foundations/${pathId}`;
+    const foundations = app.database().ref(path);
+    foundations.on('value', data => {
+      const item = data.val();
+      this.setState({
+        description: item.desc,
+        items: item.items
+      });
+    });
+  };
 
   handlePagination = event => {
     this.setState({
@@ -48,9 +60,9 @@ class WhoWeHelp extends Component {
           <h2>Komu pomagamy?</h2>
           <img src={require('../../../assets/Decoration.svg')} className="decor" alt='decoration' />
           <section className='links'>
-            <p className='choose'>Fundacjom</p>
-            <p className="middle-button">Organizacjom pozarządowym</p>
-            <p>Lokalnym zbiórkom</p>
+            <p id='0' className='choose' onClick={this.handleGetData}>Fundacjom</p>
+            <p id='1' className="middle-button" onClick={this.handleGetData}>Organizacjom pozarządowym</p>
+            <p id='2' onClick={this.handleGetData}>Lokalnym zbiórkom</p>
           </section>
         <section className="items">
           <p>{description}</p>
