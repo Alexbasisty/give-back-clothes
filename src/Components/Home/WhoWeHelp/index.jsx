@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import app from 'firebase/app';
+import classnames from 'classnames';
 
 class WhoWeHelp extends Component {
   state = {
@@ -15,7 +16,8 @@ class WhoWeHelp extends Component {
       const item = data.val();
       this.setState({
         description: item.desc,
-        items: item.items
+        items: item.items,
+        fundation: 0
       });
     });
   }
@@ -28,7 +30,8 @@ class WhoWeHelp extends Component {
       const item = data.val();
       this.setState({
         description: item.desc,
-        items: item.items
+        items: item.items,
+        fundation: pathId
       });
     });
   };
@@ -40,7 +43,7 @@ class WhoWeHelp extends Component {
   };
 
   render() {
-    const { description, items,currentPage, itemsPerPage } = this.state;
+    const { description, items,currentPage, fundation, itemsPerPage } = this.state;
 
     const indexOfLastTodo = currentPage * itemsPerPage;
     const indexOfFirstTodo = indexOfLastTodo - itemsPerPage;
@@ -52,7 +55,7 @@ class WhoWeHelp extends Component {
     }
 
     const renderPageNumbers = pageNumbers.map(number => (
-        <li key={number} id={number} onClick={this.handlePagination}>{number}</li>
+        <li className={classnames({choose: currentPage == number})} key={number} id={number} onClick={this.handlePagination}>{number}</li>
     ));
 
     return (
@@ -60,9 +63,9 @@ class WhoWeHelp extends Component {
           <h2>Komu pomagamy?</h2>
           <img src={require('../../../assets/Decoration.svg')} className="decor" alt='decoration' />
           <section className='links'>
-            <p id='0' className='choose' onClick={this.handleGetData}>Fundacjom</p>
-            <p id='1' className="middle-button" onClick={this.handleGetData}>Organizacjom pozarządowym</p>
-            <p id='2' onClick={this.handleGetData}>Lokalnym zbiórkom</p>
+            <p id='0' className={classnames({choose: fundation == 0})} onClick={this.handleGetData}>Fundacjom</p>
+            <p id='1' className={classnames('middle-button', {choose: fundation == 1})} onClick={this.handleGetData}>Organizacjom pozarządowym</p>
+            <p id='2' className={classnames({choose: fundation == 2})} onClick={this.handleGetData}>Lokalnym zbiórkom</p>
           </section>
         <section className="items">
           <p>{description}</p>
