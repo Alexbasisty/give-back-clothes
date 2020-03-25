@@ -1,0 +1,95 @@
+.foundations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 70px auto 80px;
+  width: 1344px;
+
+  h2 {
+    font-size: 3.8rem;
+    line-height: 5.2rem;
+    letter-spacing: -0.76px;
+  }
+
+  .links {
+    display: flex;
+    margin-bottom: 80px;
+
+    p {
+      font-size: 2.4rem;
+      width: -moz-min-content;
+      width: min-content;
+      padding: 23px 42px;
+      text-align: center;
+      vertical-align: sub;
+      cursor: pointer;
+      margin: auto;
+
+      &.middle-button {
+      }
+    }
+  }
+
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    p {
+      font-size: 2.2rem;
+      line-height: 3rem;
+      width: 640px;
+      text-align: center;
+      margin-bottom: 66px;
+    }
+
+    .fund-description {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      font-family: $font-alt;
+      font-weight: lighter;
+      text-align: left;
+      border-bottom: 1px solid #707070;
+      margin-bottom: 34px;
+
+      h4 {
+        font-size: 2.6rem;
+        line-height: 3.1rem;
+      }
+
+      h6 {
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        font-style: italic;
+      }
+      .desc {
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        text-align: right;
+        padding-right: 37px;
+      }
+
+    }
+
+    .pagination {
+      list-style: none;
+      display: flex;
+      cursor: pointer;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+
+      li {
+        padding: 13px 15px;
+      }
+    }
+  }
+}
+
+.choose {
+  border: 0.75px solid $color-font-base;
+}
