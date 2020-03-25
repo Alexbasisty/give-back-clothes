@@ -7,8 +7,12 @@ class Contact extends Component {
     return (
         <div id='contact' className="contact">
           <div className='contact-form'>
-            <h1>Skontaktuj się z nami</h1>
-            <img src={require('../../assets/Decoration.svg')} />
+            <div />
+            <div>
+              <div className='title'>
+                <h1>Skontaktuj się z nami</h1>
+                <img src={require('../../assets/Decoration.svg')} />
+              </div>
             <form>
               <div>
                 <label>Wpisz swoje imię</label>
@@ -22,6 +26,7 @@ class Contact extends Component {
               />
               <button>Wyślij</button>
             </form>
+            </div>
           </div>
           <div><Footer /></div>
         </div>
