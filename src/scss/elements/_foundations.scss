@@ -18,7 +18,8 @@
 
     p {
       font-size: 2.4rem;
-      word-break: normal;
+      width: -moz-min-content;
+      width: min-content;
       padding: 23px 42px;
       text-align: center;
       vertical-align: sub;
@@ -84,10 +85,6 @@
 
       li {
         padding: 13px 15px;
-
-        &:first-of-type {
-          border: 1px solid #707070;
-        }
       }
     }
   }
