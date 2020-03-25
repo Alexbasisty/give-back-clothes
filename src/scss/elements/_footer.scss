@@ -1,5 +1,7 @@
 footer.footer {
   display: flex;
+  bottom: 20px;
+  z-index: 1;
 
   .a {
     width: 54%;

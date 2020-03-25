@@ -1,3 +1,38 @@
 .contact {
-  margin-right: 142px;
+  padding-right: 142px;
+  height: 100vh;
+  background: transparent url("../../assets/Background-Contact-Form.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    h1 {
+      font-size: 3.8rem;
+      line-height: 5.5rem;
+      letter-spacing: -0.76px;
+      padding-bottom: 25px;
+    }
+
+    img {
+      padding-bottom: 70px;
+    }
+  }
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #FFFFFFC9;
+    z-index: 0;
+  }
 }
