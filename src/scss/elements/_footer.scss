@@ -1,7 +1,10 @@
 footer.footer {
   display: flex;
-  bottom: 20px;
   z-index: 1;
+  bottom: 20px;
+  right: 142px;
+  position: absolute;
+  width: 100%;
 
   .a {
     width: 54%;

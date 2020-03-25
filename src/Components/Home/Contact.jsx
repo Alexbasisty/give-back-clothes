@@ -12,12 +12,14 @@ class Contact extends Component {
             <form>
               <div>
                 <label>Wpisz swoje imię</label>
-                <input />
+                <input placeholder='Krzysztof' />
                 <label>Wpisz swój email</label>
-                <input />
+                <input placeholder='abc@xyz.pl' />
               </div>
               <label>Wpisz swoją wiadomość</label>
-              <textarea />
+              <textarea
+                  placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+              />
               <button>Wyślij</button>
             </form>
           </div>
