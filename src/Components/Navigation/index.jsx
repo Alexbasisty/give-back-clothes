@@ -78,7 +78,7 @@ const NavigationNonAuth = () => (
           <ScrollLink className="nav-link" to='foundations'>Fundacja i organizacje</ScrollLink>
         </li>
         <li>
-          <ScrollLink className="nav-link" to='kontakt'>Kontakt</ScrollLink>
+          <ScrollLink className="nav-link" to='contact'>Kontakt</ScrollLink>
         </li>
       </ul>
     </div>

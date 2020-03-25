@@ -1,12 +1,14 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer>
+  <footer className='footer'>
+    <div className='a'></div>
+    <div className='b'>
     <small>Copyright by Coders Lab</small>
     <div className='social-media'>
-      <a href="https://www.facebook.com/" target="_blank"><img src={require('../../assets/Facebook.svg')} /></a>
-      <a href="https://www.instagram.com/?hl=pl" target="_blank"><img src={require('../../assets/Instagram.svg')} /></a>
-    </div>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src={require('../../assets/Facebook.svg')} alt='facebook'/></a>
+      <a href="https://www.instagram.com/?hl=pl" target="_blank" rel="noopener noreferrer"><img src={require('../../assets/Instagram.svg')} alt='instagram'/></a>
+    </div></div>
   </footer>
 );
 

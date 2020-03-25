@@ -1,0 +1,22 @@
+footer.footer {
+  display: flex;
+
+  .a {
+    width: 50%;
+  }
+
+  .b {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  small {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+
+  .social-media {
+    align-self: end;
+  }
+}
