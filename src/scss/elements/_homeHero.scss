@@ -9,11 +9,12 @@
   display: flex;
   width: 45vw;
   flex-grow: 1;
+  overflow: hidden;
   .home-image {
     position: absolute;
     display: flex;
     width: 73vw;
-    top: -100px;
+    top: -140px;
     left: -483px;
     z-index: 0;
   }

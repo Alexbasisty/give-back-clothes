@@ -4,6 +4,7 @@ import Threecolumns from "./Threecolumns";
 import SimpleSteps from "../SimpleSteps";
 import AboutUs from "./AboutUs";
 import WhoWeHelp from "./WhoWeHelp";
+import Contact from "./Contact";
 
 const HomePage = () => (
     <>
@@ -12,6 +13,7 @@ const HomePage = () => (
       <SimpleSteps />
       <AboutUs />
       <WhoWeHelp />
+      <Contact />
     </>
 );
 
