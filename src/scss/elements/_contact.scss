@@ -63,6 +63,9 @@
     border-bottom: 1px solid;
     margin-right: 20px;
     background-color: transparent;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    color: $color-small-text;
   }
 
   textarea {
@@ -73,6 +76,9 @@
     resize: none;
     overflow: hidden;
     height: 97px;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    color: $color-small-text;
   }
 
   button {
@@ -83,6 +89,10 @@
     border: 1px solid black;
     cursor: pointer;
   }
+}
+
+span {
+  color: $color-small-text;
 }
 
 ::placeholder {
