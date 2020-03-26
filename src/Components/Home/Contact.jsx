@@ -39,8 +39,14 @@ const Contact = () => {
                   }}
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                      alert(JSON.stringify(values, null, 2));
-
+                      // alert(JSON.stringify(values, null, 2));
+                      fetch(`https://fer-api.coderslab.pl/v1/portfolio/contact`, {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(values, null, 2)
+                      });
                       setSubmitting(false);
                     }, 400);
                   }}
