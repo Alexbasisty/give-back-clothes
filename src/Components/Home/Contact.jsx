@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Footer from "./Footer";
 
@@ -6,7 +6,12 @@ const Contact = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log(name, email, message);
   };
+
+  const [ name, setName ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ message, setMessage ] = useState('');
 
     return (
         <div id='contact' className="contact">
@@ -35,24 +40,30 @@ const Contact = () => {
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                       alert(JSON.stringify(values, null, 2));
+
                       setSubmitting(false);
                     }, 400);
                   }}
               >
-                {({ isSubmitting }) => (
+                {({ isSubmitting,
+                    values,
+                    handleBlur,
+                    handleSubmit,
+                }) => (
             <Form onSubmit={handleSubmit}>
               <div className="contact-data">
                 <label>Wpisz swoje imię
-                  <Field name='name' placeholder='Krzysztof'/>
+                  <Field name='name' placeholder='Krzysztof' onBlur={handleBlur} value={values.name} />
                   <ErrorMessage name='name' component='span'/>
                 </label>
                 <label>Wpisz swój email
-                  <Field name='email' placeholder='abc@xyz.pl'/>
+                  <Field name='email' placeholder='abc@xyz.pl' onBlur={handleBlur} value={values.email} />
                   <ErrorMessage name='email' component='span'/>
                 </label>
               </div>
               <label className='message'>Wpisz swoją wiadomość
-                <Field
+                <Field onBlur={handleBlur}
+                  value={values.message}
                   name='message'
                   component='textarea'
                   placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit,
