@@ -44,22 +44,22 @@ const Contact = () => {
               <div className="contact-data">
                 <label>Wpisz swoje imię
                   <Field name='name' placeholder='Krzysztof'/>
-                  <ErrorMessage name='name' component='div'/>
+                  <ErrorMessage name='name' component='span'/>
                 </label>
                 <label>Wpisz swój email
                   <Field name='email' placeholder='abc@xyz.pl'/>
-                  <ErrorMessage name='email' component='div'/>
+                  <ErrorMessage name='email' component='span'/>
                 </label>
               </div>
               <label className='message'>Wpisz swoją wiadomość
                 <Field
                   name='message'
-                  type='textarea'
-                  rows=
+                  component='textarea'
+                  rows='4'
                   // onBlur={this.handleBlur}
                   placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                 />
-                <ErrorMessage name='message' component='div' />
+                <ErrorMessage name='message' component='span' />
               </label>
               <button type='submit'>Wyślij</button>
             </Form>
