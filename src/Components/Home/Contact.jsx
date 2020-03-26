@@ -1,17 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Footer from "./Footer";
 
 const Contact = () => {
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(name, email, message);
-  };
-
-  const [ name, setName ] = useState('');
-  const [ email, setEmail ] = useState('');
-  const [ message, setMessage ] = useState('');
 
     return (
         <div id='contact' className="contact">
@@ -39,7 +30,6 @@ const Contact = () => {
                   }}
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                      // alert(JSON.stringify(values, null, 2));
                       fetch(`https://fer-api.coderslab.pl/v1/portfolio/contact`, {
                         method: 'POST',
                         headers: {
@@ -47,6 +37,7 @@ const Contact = () => {
                         },
                         body: JSON.stringify(values, null, 2)
                       });
+                      alert('Wiadomość została wysłana');
                       setSubmitting(false);
                     }, 400);
                   }}
