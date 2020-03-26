@@ -1,24 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Footer from "./Footer";
 
-class Contact extends Component {
-  state = {
-    name: '',
-    mail: '',
-    message: ''
-  };
+const Contact = () => {
 
-  handleBlur = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  };
-
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
   };
 
-  render() {
     return (
         <div id='contact' className="contact">
           <div className='contact-form'>
@@ -28,30 +17,59 @@ class Contact extends Component {
                 <h1>Skontaktuj się z nami</h1>
                 <img src={require('../../assets/Decoration.svg')} alt='decoration'/>
               </div>
-            <form onSubmit={this.handleSubmit}>
+              <Formik
+                  initialValues={{ name: '', email: '', message: '' }}
+                  validate={values => {
+                    const errors = {};
+                    if (!values.name) {
+                      errors.name = 'Powinno być jednym wyrazem';
+                    } else if (
+                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                    ) {
+                      errors.mail = 'Niepoprawny e-mail';
+                    } else if (values.message.length < 120) {
+                      errors.message = 'Wiadomość za krótka'
+                    }
+                    return errors;
+                  }}
+                  onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                      alert(JSON.stringify(values, null, 2));
+                      setSubmitting(false);
+                    }, 400);
+                  }}
+              >
+                {({ isSubmitting }) => (
+            <Form onSubmit={handleSubmit}>
               <div className="contact-data">
                 <label>Wpisz swoje imię
-                  <input name='name' placeholder='Krzysztof' onBlur={this.handleBlur} />
+                  <Field name='name' placeholder='Krzysztof'/>
+                  <ErrorMessage name='name' component='div'/>
                 </label>
                 <label>Wpisz swój email
-                  <input name='mail' placeholder='abc@xyz.pl' onBlur={this.handleBlur} />
+                  <Field name='email' placeholder='abc@xyz.pl'/>
+                  <ErrorMessage name='email' component='div'/>
                 </label>
               </div>
               <label className='message'>Wpisz swoją wiadomość
-                <textarea
+                <Field
                   name='message'
-                  onBlur={this.handleBlur}
+                  type='textarea'
+                  rows=
+                  // onBlur={this.handleBlur}
                   placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                 />
+                <ErrorMessage name='message' component='div' />
               </label>
               <button type='submit'>Wyślij</button>
-            </form>
+            </Form>
+                )}
+              </Formik>
             </div>
           </div>
           <div><Footer /></div>
         </div>
     );
-  }
-}
+};
 
 export default Contact;
