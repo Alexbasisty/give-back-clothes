@@ -21,12 +21,12 @@ const Contact = () => {
                   initialValues={{ name: '', email: '', message: '' }}
                   validate={values => {
                     const errors = {};
-                    if (!values.name) {
+                    if (!/^[a-z]+$/i.test(values.name)) {
                       errors.name = 'Powinno być jednym wyrazem';
                     } else if (
                         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                     ) {
-                      errors.mail = 'Niepoprawny e-mail';
+                      errors.email = 'Niepoprawny e-mail';
                     } else if (values.message.length < 120) {
                       errors.message = 'Wiadomość za krótka'
                     }
@@ -55,13 +55,14 @@ const Contact = () => {
                 <Field
                   name='message'
                   component='textarea'
-                  rows='4'
-                  // onBlur={this.handleBlur}
-                  placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                  placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                   laboris nisi ut aliquip ex ea commodo consequat.'
                 />
                 <ErrorMessage name='message' component='span' />
               </label>
-              <button type='submit'>Wyślij</button>
+              <button type='submit' disabled={isSubmitting}>Wyślij</button>
             </Form>
                 )}
               </Formik>
