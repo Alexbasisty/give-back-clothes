@@ -68,6 +68,7 @@ class SignInFromBase extends Component {
               />
             </label>
             </div>
+            {error && <p>{error.message}</p>}
             <div className="sing-in-buttons">
               <div className="up-link">
                 <SignUpLink />
@@ -76,7 +77,7 @@ class SignInFromBase extends Component {
                 Zaloguj się
               </button>
             </div>
-            {error && <p>{error.message}</p>}
+
           </form>
         </div>
 
