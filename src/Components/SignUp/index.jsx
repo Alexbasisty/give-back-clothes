@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+import { SignInLink } from "../SignIn";
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
-    <div>
+    <div className="sign-in-form">
       <h1>SignUp</h1>
       <SignUpForm />
     </div>
@@ -82,28 +82,24 @@ class SignUpFormBase extends Component {
               value={username}
               onChange={this.onChange}
               type="text"
-              placeholder="Full Name"
           />
           <input
               name="email"
               value={email}
               onChange={this.onChange}
               type="text"
-              placeholder="Email Address"
           />
           <input
               name="passwordOne"
               value={passwordOne}
               onChange={this.onChange}
               type="password"
-              placeholder="Password"
           />
           <input
               name="passwordTwo"
               value={passwordTwo}
               onChange={this.onChange}
               type="password"
-              placeholder="Confirm Password"
           />
           <label>
             Admin:
