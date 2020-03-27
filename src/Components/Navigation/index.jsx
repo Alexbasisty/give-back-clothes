@@ -4,6 +4,7 @@ import { AuthUserContext } from '../Session';
 import { Link as ScrollLink} from 'react-scroll';
 
 import SignOutButton from "../SignOut";
+import GiveStuffLink from "../GiveStuff";
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
@@ -26,7 +27,7 @@ const NavigationAuth = ({ authUser }) => (
           Cześć {authUser.email}
         </li>
         <li className="nav-link sign-up" style={{color: '#3C3C3C'}}>
-          Oddaj rzeczy
+          <GiveStuffLink />
         </li>
         <li className="sign-out" style={{border: 'none'}}>
           <SignOutButton />

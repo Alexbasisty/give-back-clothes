@@ -24,6 +24,16 @@
 
   }
 }
+a {
+  &:link {
+    text-decoration: none;
+    color: $color-font-base;
+  }
+  &:visited {
+    text-decoration: none;
+    color: $color-font-base;
+  }
+}
 
 ul.navbar {
   display: flex;
