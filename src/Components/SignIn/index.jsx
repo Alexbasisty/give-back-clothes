@@ -96,6 +96,4 @@ const SignInLink = () => (
 
 export default SignInPage;
 
-export  { SignInLink };
-
-export { SignInForm };
+export  { SignInLink, SignInForm };

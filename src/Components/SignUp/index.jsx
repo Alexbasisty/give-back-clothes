@@ -6,7 +6,7 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
-    <div className="sign-in-form">
+    <div className="sign-in-form" style={{marginTop: '50px'}}>
       <h1>Załóż konto</h1>
       <img src={require('../../assets/Decoration.svg')} alt="decoration"/>
       <SignUpForm />
@@ -14,6 +14,7 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
+  username: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -62,6 +63,7 @@ class SignUpFormBase extends Component {
 
   render() {
     const {
+      username,
       email,
       passwordOne,
       passwordTwo,
@@ -77,6 +79,14 @@ class SignUpFormBase extends Component {
         <div>
           <form onSubmit={this.onSubmit}>
             <div className="label-wrapper">
+              <label>Imię
+                <input
+                    name="username"
+                    value={username}
+                    onChange={this.onChange}
+                    type="text"
+                />
+              </label>
               <label>Email
               <input
                   name="email"

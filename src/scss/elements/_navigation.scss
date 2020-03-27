@@ -59,6 +59,18 @@ ul.navbar {
   font-size: 1.4rem;
   color: $color-small-text;
   cursor: pointer;
+
+  a {
+    &:link {
+      text-decoration: none;
+      color: $color-small-text;
+    }
+
+    &:visited {
+      text-decoration: none;
+      color: $color-small-text;
+    }
+  }
 }
 
 
