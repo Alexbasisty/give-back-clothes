@@ -28,18 +28,22 @@ const Contact = () => {
                     }
                     return errors;
                   }}
-                  onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
+                  onSubmit={(values, { setSubmitting, resetForm }) => {
                       fetch(`https://fer-api.coderslab.pl/v1/portfolio/contact`, {
                         method: 'POST',
                         headers: {
                           'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(values, null, 2)
-                      });
-                      alert('Wiadomość została wysłana');
-                      setSubmitting(false);
-                    }, 400);
+                      })
+                          .then(resp => resp.json())
+                          .then(data => {if(data.status === "success") {
+                            alert('Wiadomość została wysłana');
+                            setSubmitting(false);
+                            resetForm({});
+                          } })
+                          .catch(error => {
+                            console.log(error);})
                   }}
               >
                 {({ isSubmitting,
