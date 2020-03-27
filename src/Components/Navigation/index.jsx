@@ -4,7 +4,7 @@ import { AuthUserContext } from '../Session';
 import { Link as ScrollLink} from 'react-scroll';
 
 import SignOutButton from "../SignOut";
-import GiveStuffLink from "../GiveStuff";
+import { GiveStuffLink } from "../GiveStuff";
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
