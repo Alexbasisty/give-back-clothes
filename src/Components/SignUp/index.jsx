@@ -7,13 +7,13 @@ import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
     <div className="sign-in-form">
-      <h1>SignUp</h1>
+      <h1>Załóż konto</h1>
+      <img src={require('../../assets/Decoration.svg')} alt="decoration"/>
       <SignUpForm />
     </div>
 );
 
 const INITIAL_STATE = {
-  username: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -26,7 +26,7 @@ class SignUpFormBase extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { username, email, passwordOne, isAdmin } = this.state;
+    const { email, passwordOne, isAdmin } = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -39,7 +39,6 @@ class SignUpFormBase extends Component {
           return this.props.firebase
               .user(authUser.user.uid)
               .set({
-                username,
                 email,
                 roles,
               });
@@ -63,7 +62,6 @@ class SignUpFormBase extends Component {
 
   render() {
     const {
-      username,
       email,
       passwordOne,
       passwordTwo,
@@ -73,46 +71,57 @@ class SignUpFormBase extends Component {
     const isInvalid =
         passwordOne !== passwordTwo ||
         passwordOne === '' ||
-        email === '' ||
-        username === '';
+        email === '';
+
     return (
-        <form onSubmit={this.onSubmit}>
-          <input
-              name="username"
-              value={username}
-              onChange={this.onChange}
-              type="text"
-          />
-          <input
-              name="email"
-              value={email}
-              onChange={this.onChange}
-              type="text"
-          />
-          <input
-              name="passwordOne"
-              value={passwordOne}
-              onChange={this.onChange}
-              type="password"
-          />
-          <input
-              name="passwordTwo"
-              value={passwordTwo}
-              onChange={this.onChange}
-              type="password"
-          />
-          <label>
-            Admin:
-            <input
-                name="isAdmin"
-                type="checkbox"
-                checked={isAdmin}
-                onChange={this.onChangeCheckbox}
-            />
-          </label>
-          <button disabled={isInvalid} type="submit">Sign Up</button>
-          {error && <p>{error.message}</p>}
-        </form>
+        <div>
+          <form onSubmit={this.onSubmit}>
+            <div className="label-wrapper">
+              <label>Email
+              <input
+                  name="email"
+                  value={email}
+                  onChange={this.onChange}
+                  type="text"
+              />
+              </label>
+              <label>Hasło
+              <input
+                  name="passwordOne"
+                  value={passwordOne}
+                  onChange={this.onChange}
+                  type="password"
+              />
+              </label>
+              <label>Powtórz hasło
+              <input
+                  name="passwordTwo"
+                  value={passwordTwo}
+                  onChange={this.onChange}
+                  type="password"
+              />
+              </label>
+              <label>
+                Admin:
+                <input
+                    name="isAdmin"
+                    type="checkbox"
+                    checked={isAdmin}
+                    onChange={this.onChangeCheckbox}
+                />
+              </label>
+            </div>
+            {error && <p>{error.message}</p>}
+            <div className="sing-in-buttons">
+              <div className="up-link">
+                <SignInLink />
+              </div>
+              <button disabled={isInvalid} type="submit">
+                Załóż konto
+              </button>
+            </div>
+          </form>
+        </div>
     );
   }
 }
