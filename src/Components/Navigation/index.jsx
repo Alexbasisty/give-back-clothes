@@ -25,7 +25,7 @@ const NavigationAuth = ({ authUser }) => (
         <li className="user-name">
           Cześć {authUser.email}
         </li>
-        <li className="nav-link sign-up" style={{color: '3C3C3C'}}>
+        <li className="nav-link sign-up" style={{color: '#3C3C3C'}}>
           Oddaj rzeczy
         </li>
         <li className="sign-out" style={{border: 'none'}}>
