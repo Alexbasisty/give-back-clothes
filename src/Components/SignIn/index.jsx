@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { SignUpLink } from "../SignUp";
@@ -90,6 +90,10 @@ const SignInForm = compose(
     withFirebase,
 )(SignInFromBase);
 
+const SignInLink = () => (
+    <Link to={ROUTES.SIGN_IN}>Zaloguj się</Link>
+);
+
 export default SignInPage;
 
-export { SignInForm };
+export  { SignInLink, SignInForm };

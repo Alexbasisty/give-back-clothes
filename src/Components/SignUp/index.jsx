@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+import { SignInLink } from "../SignIn";
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
-    <div>
-      <h1>SignUp</h1>
+    <div className="sign-in-form" style={{marginTop: '50px'}}>
+      <h1>Załóż konto</h1>
+      <img src={require('../../assets/Decoration.svg')} alt="decoration"/>
       <SignUpForm />
     </div>
 );
@@ -26,7 +27,7 @@ class SignUpFormBase extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { username, email, passwordOne, isAdmin } = this.state;
+    const { email, passwordOne, isAdmin } = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -39,7 +40,6 @@ class SignUpFormBase extends Component {
           return this.props.firebase
               .user(authUser.user.uid)
               .set({
-                username,
                 email,
                 roles,
               });
@@ -73,50 +73,65 @@ class SignUpFormBase extends Component {
     const isInvalid =
         passwordOne !== passwordTwo ||
         passwordOne === '' ||
-        email === '' ||
-        username === '';
+        email === '';
+
     return (
-        <form onSubmit={this.onSubmit}>
-          <input
-              name="username"
-              value={username}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Full Name"
-          />
-          <input
-              name="email"
-              value={email}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Email Address"
-          />
-          <input
-              name="passwordOne"
-              value={passwordOne}
-              onChange={this.onChange}
-              type="password"
-              placeholder="Password"
-          />
-          <input
-              name="passwordTwo"
-              value={passwordTwo}
-              onChange={this.onChange}
-              type="password"
-              placeholder="Confirm Password"
-          />
-          <label>
-            Admin:
-            <input
-                name="isAdmin"
-                type="checkbox"
-                checked={isAdmin}
-                onChange={this.onChangeCheckbox}
-            />
-          </label>
-          <button disabled={isInvalid} type="submit">Sign Up</button>
-          {error && <p>{error.message}</p>}
-        </form>
+        <div>
+          <form onSubmit={this.onSubmit}>
+            <div className="label-wrapper">
+              <label>Imię
+                <input
+                    name="username"
+                    value={username}
+                    onChange={this.onChange}
+                    type="text"
+                />
+              </label>
+              <label>Email
+              <input
+                  name="email"
+                  value={email}
+                  onChange={this.onChange}
+                  type="text"
+              />
+              </label>
+              <label>Hasło
+              <input
+                  name="passwordOne"
+                  value={passwordOne}
+                  onChange={this.onChange}
+                  type="password"
+              />
+              </label>
+              <label>Powtórz hasło
+              <input
+                  name="passwordTwo"
+                  value={passwordTwo}
+                  onChange={this.onChange}
+                  type="password"
+              />
+              </label>
+              <label>
+                Admin:
+                <input
+                    name="isAdmin"
+                    type="checkbox"
+                    checked={isAdmin}
+                    onChange={this.onChangeCheckbox}
+                />
+              </label>
+            </div>
+            {error && <p>{error.message}</p>}
+            <div className="sing-in-buttons">
+              <div className="up-link">
+                <SignInLink />
+              </div>
+              <button disabled={isInvalid} type="submit">
+                Załóż konto
+              </button>
+            </div>
+          </form>
+        </div>
     );
   }
 }
