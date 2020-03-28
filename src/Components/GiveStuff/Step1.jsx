@@ -5,13 +5,28 @@ import ImportantField from "./ImportantField";
 
 class Step1 extends Component {
   state = {
-    wantToGive: 'ubrania, które nadają się do ponownego użycia',
+    wantToGive: ['ubrania, które nadają się do ponownego użycia'],
   };
 
-  handleSubmit = (event) => {
-    this.setState({
-      wantToGive: event.target.value
-    });
+  handleStuffSelect = (event) => {
+    const giveList = this.state.wantToGive;
+    const check = event.target.checked;
+    const checkedStuff = event.target.value;
+
+    if(check) {
+      this.setState({
+        wantToGive: [...this.state.wantToGive, checkedStuff]
+      })
+    } else {
+      const index = giveList.indexOf(checkedStuff);
+      if(index > -1) {
+        giveList.splice(index, 1);
+        this.setState({
+          wantToGive: giveList
+        })
+      }
+    }
+
     console.log(this.state.wantToGive);
   };
 
@@ -28,6 +43,7 @@ class Step1 extends Component {
               <label>
                 <input
                     defaultChecked
+                    onChange={this.handleStuffSelect}
                     type="checkbox"
                     value="ubrania, które nadają się do ponownego użycia"/>
                 <span className="checkmark"/>
@@ -35,7 +51,7 @@ class Step1 extends Component {
               </label>
               <label>
                 <input type="checkbox"
-                       onChange={this.handleCheck}
+                       onChange={this.handleStuffSelect}
                        value="ubrania, do wyrzucenia"
                 />
                 <span className="checkmark"/>
@@ -44,7 +60,7 @@ class Step1 extends Component {
               <label>
                 <input type="checkbox"
                        value="zabawki"
-                       onChange={this.handleCheck}
+                       onChange={this.handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 zabawki
@@ -52,7 +68,7 @@ class Step1 extends Component {
               <label>
                 <input type="checkbox"
                        value="książki"
-                       onChange={this.handleCheck}
+                       onChange={this.handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 książki
@@ -60,7 +76,7 @@ class Step1 extends Component {
               <label>
                 <input type="checkbox"
                        value="inne"
-                       onChange={this.handleCheck}
+                       onChange={this.handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 Inne
@@ -68,7 +84,7 @@ class Step1 extends Component {
             </form>
 
             <div className="links-section">
-              <button>
+              <button onClick={this.handleStuffSelect}>
                 <Link to={ROUTES.STEP_2}>Dalej</Link>
               </button>
             </div>
