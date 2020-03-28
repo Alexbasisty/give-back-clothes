@@ -4,13 +4,24 @@ import {Link} from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as ROUTES from "../../constants/routes";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 class Step1 extends Component {
   state = {
+    startDate: new Date(),
     address: {},
     time: {},
   };
 
+  handleDateChoose = date => {
+    this.setState({
+      startDate: date
+    });
+  };
+
   render() {
+    const { startDate } = this.state;
     return (
         <>
           <ImportantField>
@@ -90,7 +101,10 @@ class Step1 extends Component {
                 <h5>Termin odbioru:</h5>
                 <form>
                   <label>Data
-                    <input type="text" />
+                    <DatePicker
+                      selected={startDate}
+                      onChange={this.handleDateChoose}
+                    />
                   </label>
                   <label>Godzina
                     <input type="number" />
