@@ -10,6 +10,7 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 import SummaryStep from "./SummaryStep";
+import ThanksFull from "./ThanksFull";
 
 
 const GiveStuff = () => (
@@ -20,6 +21,7 @@ const GiveStuff = () => (
       <Step3 />
       <Step4 />
       <SummaryStep />
+      <ThanksFull />
       <Contact />
     </>
 );
