@@ -10,9 +10,18 @@ class Step1 extends Component {
   };
 
   handleSelect = e => {
-    this.setState({
-      bagsNumber: e.target.id
-    })
+    if(e.target.id.length > 0) {
+      this.setState({
+        bagsNumber: e.target.id
+      });
+    } else {
+      this.setState({
+        bagsNumber: '- wybierz -'
+      });
+    }
+
+
+    this.handleArrow()
   };
 
   handleArrow = () => {

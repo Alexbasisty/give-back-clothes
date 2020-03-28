@@ -26,16 +26,6 @@
   }
 
   .select {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 300;
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-    border: 0.75px solid $color-font-base;
-    width: 85px;
-    margin-top: 15px;
-    float: right;
 
     &.city {
       align-items: flex-start;
@@ -45,6 +35,10 @@
 
     span {
       cursor: pointer;
+      width: 100%;
+      text-align: center;
+
+
     }
   }
 }
