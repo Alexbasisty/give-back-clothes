@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import * as ROUTES from '../../constants/routes';
 import ImportantField from "./ImportantField";
 
 class Step1 extends Component {
@@ -19,7 +21,7 @@ class Step1 extends Component {
           <ImportantField>
             Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.
           </ImportantField>
-          <div className="steps-form-field">
+          <div className="step1-form">
             <h3>Krok 1/4</h3>
             <h1>Zaznacz co chcesz oddać:</h1>
             <form>
@@ -52,9 +54,12 @@ class Step1 extends Component {
                 Inne
               </label>
             </form>
-            <button>
-              Dalej
-            </button>
+
+            <div className="links-section">
+              <button>
+                <Link to={ROUTES.STEP_2}>Dalej</Link>
+              </button>
+            </div>
           </div>
         </>
     );

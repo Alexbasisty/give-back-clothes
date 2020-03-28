@@ -1,7 +1,8 @@
-.steps-form-field {
+.step1-form {
   background: transparent url('../../assets/Background-Form.jpg') 0 0 no-repeat padding-box;
   height: calc(100vh - 179px);
   padding-left: 142px;
+  position: relative;
 
   h3 {
     font-size: 2.4rem;
@@ -75,13 +76,23 @@
     }
   }
 
-  button {
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-    font-weight: 300;
-    padding: 23px 63px;
-    background-color: transparent;
-    border: 0.75px solid black;
-    cursor: pointer;
+  .links-section {
+    position: absolute;
+    bottom: 50px;
+
+    button {
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      font-weight: 300;
+      padding: 23px;
+      background-color: transparent;
+      border: 0.75px solid black;
+      cursor: pointer;
+      margin-right: 50px;
+      width: 180px;
+    }
+
   }
+
+
 }
