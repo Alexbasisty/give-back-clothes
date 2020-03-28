@@ -3,7 +3,7 @@ import React from 'react';
 const ImportantField = (props) => (
   <div className='important-field'>
     <h1>
-      Ważne
+      Ważne!
     </h1>
     <p>{props.children}</p>
   </div>

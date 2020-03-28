@@ -4,13 +4,11 @@ import * as ROUTES from "../../constants/routes";
 
 import Contact from "../Home/Contact";
 import GiveHeader from "./GiveHeader";
-import ImportantField from "./ImportantField";
 import Step1 from "./Step1";
 
 const GiveStuff = () => (
     <>
       <GiveHeader />
-      <ImportantField />
       <Step1 />
       <Contact />
     </>
