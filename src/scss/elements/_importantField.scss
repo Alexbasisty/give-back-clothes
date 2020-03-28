@@ -1,6 +1,8 @@
 .important-field {
   background-color: $alt-background-color;
-  padding: 50px 683px 50px 141px;
+  padding: 50px 141px 50px 141px;
+  height: 179px;
+  box-sizing: border-box;
 
   h1 {
     font-weight: 600;
