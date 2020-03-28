@@ -6,19 +6,12 @@ import * as ROUTES from "../../constants/routes";
 class Step1 extends Component {
   state = {
     isDown: true,
-    isChecked: true
   };
 
   handleArrow = () => {
     this.setState({
       isDown: !this.state.isDown
     })
-  };
-
-  toggleChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    });
   };
 
   render() {
@@ -62,8 +55,7 @@ class Step1 extends Component {
               <form className="form-buttons">
                 <label>
                   <input
-                      checked={this.state.isChecked}
-                      onChange={this.toggleChange}
+                      defaultChecked
                       type="checkbox" />
                   <span>dzieciom</span>
                 </label>

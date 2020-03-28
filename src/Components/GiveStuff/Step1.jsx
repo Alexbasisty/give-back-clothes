@@ -5,15 +5,15 @@ import ImportantField from "./ImportantField";
 
 class Step1 extends Component {
   state = {
-    isChecked: true
+    wantToGive: 'ubrania, które nadają się do ponownego użycia',
   };
 
-  toggleChange = () => {
+  handleSubmit = (event) => {
     this.setState({
-      isChecked: !this.state.isChecked,
+      wantToGive: event.target.value
     });
+    console.log(this.state.wantToGive);
   };
-
 
   render() {
     return (
@@ -27,29 +27,41 @@ class Step1 extends Component {
             <form>
               <label>
                 <input
-                    checked={this.state.isChecked}
-                    onChange={this.toggleChange}
-                    type="checkbox" />
+                    defaultChecked
+                    type="checkbox"
+                    value="ubrania, które nadają się do ponownego użycia"/>
                 <span className="checkmark"/>
                 ubrania, które nadają się do ponownego użycia
               </label>
               <label>
-                <input type="checkbox"/>
+                <input type="checkbox"
+                       onChange={this.handleCheck}
+                       value="ubrania, do wyrzucenia"
+                />
                 <span className="checkmark"/>
                 ubrania, do wyrzucenia
               </label>
               <label>
-                <input type="checkbox"/>
+                <input type="checkbox"
+                       value="zabawki"
+                       onChange={this.handleCheck}
+                />
                 <span className="checkmark"/>
                 zabawki
               </label>
               <label>
-                <input type="checkbox"/>
+                <input type="checkbox"
+                       value="książki"
+                       onChange={this.handleCheck}
+                />
                 <span className="checkmark"/>
                 książki
               </label>
               <label>
-                <input type="checkbox"/>
+                <input type="checkbox"
+                       value="inne"
+                       onChange={this.handleCheck}
+                />
                 <span className="checkmark"/>
                 Inne
               </label>
