@@ -5,7 +5,14 @@ import * as ROUTES from "../../constants/routes";
 
 class Step1 extends Component {
   state = {
-    isDown: true
+    isDown: true,
+    bagsNumber: '- wybierz -',
+  };
+
+  handleSelect = e => {
+    this.setState({
+      bagsNumber: e.target.id
+    })
   };
 
   handleArrow = () => {
@@ -15,7 +22,7 @@ class Step1 extends Component {
   };
 
   render() {
-    const { isDown } = this.state;
+    const { isDown, bagsNumber } = this.state;
     return (
         <>
           <ImportantField>
@@ -30,7 +37,7 @@ class Step1 extends Component {
                 <p
                   onClick={this.handleArrow}
                 >
-                  - wybierz -
+                  {bagsNumber}
                   {isDown ? <img src={require('../../assets/Icon-Arrow-Down.svg')} alt="down"/> : <img src={require('../../assets/Icon-Arrow-Up.svg')} alt="down"/>}
                 </p>
               </div>
@@ -38,7 +45,7 @@ class Step1 extends Component {
                   ?
                   ''
                   :
-                  <div className="select">
+                  <div className="select" onClick={this.handleSelect}>
                     <span id="1">1</span>
                     <span id="2">2</span>
                     <span id="3">3</span>
