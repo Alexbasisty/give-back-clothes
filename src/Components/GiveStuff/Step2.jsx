@@ -26,7 +26,7 @@ class Step1 extends Component {
             <h1>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h1>
             <div className="select-quo">
               <div className="select-title">
-                <h3>Liczba 60l worków:</h3>
+                <h4>Liczba 60l worków:</h4>
                 <p
                   onClick={this.handleArrow}
                 >
