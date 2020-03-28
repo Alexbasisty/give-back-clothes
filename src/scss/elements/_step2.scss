@@ -1,5 +1,6 @@
 .select-quo {
-  width: 548px;
+  width: 528px;
+  z-index: 1;
 
   .select-title {
     display: flex;
@@ -20,7 +21,6 @@
       display: flex;
       justify-content: space-between;
       padding-left: 18px;
-      margin-left: 26px;
       cursor: pointer;
     }
   }
@@ -36,6 +36,12 @@
     width: 85px;
     margin-top: 15px;
     float: right;
+
+    &.city {
+      align-items: flex-start;
+      padding-left: 18px;
+      background: #E8E9E4;
+    }
 
     span {
       cursor: pointer;

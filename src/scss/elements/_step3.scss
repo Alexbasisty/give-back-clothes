@@ -1,0 +1,23 @@
+.help-groups {
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  border: 0.75px solid $color-font-base;
+  width: 85px;
+  margin-top: 15px;
+  float: right;
+  z-index: 100;
+
+  &.city {
+    align-items: flex-start;
+    position: absolute;
+    padding-left: 18px;
+    background: #E8E9E4;
+  }
+}
