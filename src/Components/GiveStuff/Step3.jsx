@@ -59,29 +59,29 @@ class Step1 extends Component {
                 </div>}
             <section className="help-groups">
               <h5>Komu chcesz pomóc?</h5>
-              <form>
+              <form className="form-buttons">
                 <label>
                   <input
                       checked={this.state.isChecked}
                       onChange={this.toggleChange}
                       type="checkbox" />
-                  <span className="checkmark">dzieciom</span>
+                  <span>dzieciom</span>
                 </label>
                 <label>
                   <input type="checkbox"/>
-                  <span className="checkmark">samotnym matkom</span>
+                  <span>samotnym matkom</span>
                 </label>
                 <label>
                   <input type="checkbox"/>
-                  <span className="checkmark">bezdomnym</span>
+                  <span>bezdomnym</span>
                 </label>
                 <label>
                   <input type="checkbox"/>
-                  <span className="checkmark">niepełnosprawnym</span>
+                  <span>niepełnosprawnym</span>
                 </label>
                 <label>
                   <input type="checkbox"/>
-                  <span className="checkmark">osobom starszym</span>
+                  <span>osobom starszym</span>
                 </label>
               </form>
             </section>
