@@ -14,6 +14,24 @@
         padding: 0.9rem 1rem;
       }
     }
+    .user-name {
+      color: $color-font-base;
+      text-align: center;
+      padding: 9px 10px;
+      font-size: 1.4rem;
+      border: 1px solid transparent;
+    }
+
+  }
+}
+a {
+  &:link {
+    text-decoration: none;
+    color: $color-font-base;
+  }
+  &:visited {
+    text-decoration: none;
+    color: $color-font-base;
   }
 }
 

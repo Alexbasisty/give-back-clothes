@@ -4,6 +4,7 @@ import { AuthUserContext } from '../Session';
 import { Link as ScrollLink} from 'react-scroll';
 
 import SignOutButton from "../SignOut";
+import { GiveStuffLink } from "../GiveStuff";
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
@@ -22,7 +23,13 @@ const Navigation = () => (
 const NavigationAuth = ({ authUser }) => (
     <div className="container">
       <ul className="login-buttons">
-        <li className="sign-out">
+        <li className="user-name">
+          Cześć {authUser.email}
+        </li>
+        <li className="nav-link sign-up" style={{color: '#3C3C3C'}}>
+          <GiveStuffLink />
+        </li>
+        <li className="sign-out" style={{border: 'none'}}>
           <SignOutButton />
         </li>
       </ul>
@@ -31,16 +38,16 @@ const NavigationAuth = ({ authUser }) => (
           <Link className="nav-link start" to={ROUTES.HOME}>Start</Link>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME} style={{paddingLeft: '-2rem'}}>O co chodzi?</Link>
+          <ScrollLink className="nav-link" to='what-matter' style={{paddingLeft: '-2rem'}}>O co chodzi?</ScrollLink>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME}>O nas</Link>
+          <ScrollLink className="nav-link" to='aboutUs'>O nas</ScrollLink>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME}>Fundacja i organizacje</Link>
+          <ScrollLink className="nav-link" to='foundations'>Fundacja i organizacje</ScrollLink>
         </li>
         <li>
-          <Link className="nav-link" to={ROUTES.HOME}>Kontakt</Link>
+          <ScrollLink className="nav-link" to='contact'>Kontakt</ScrollLink>
         </li>
         {/*<li>*/}
         {/*  <Link to={ROUTES.ACCOUNT}>Profil</Link>*/}

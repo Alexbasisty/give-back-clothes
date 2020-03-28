@@ -1,0 +1,46 @@
+#pick-up-datas {
+  display: flex;
+  justify-content: space-between;
+  width: 980px;
+
+  div {
+    width: 65%;
+
+    h5 {
+      font-size: 2.4rem;
+      line-height: 4.5rem;
+      font-weight: 600;
+    }
+  }
+
+  label {
+    padding: 0;
+    display: flex;
+    font-size: 2.4rem;
+    line-height: 2.2rem;
+    margin-top: 2rem;
+    font-weight: 300;
+    width: -moz-min-content;
+    width: min-content;
+
+    input {
+      width: 256px;
+      height: 32px;
+      font-size: 2.2rem;
+      border: 0.75px solid $color-font-base;
+      background-color: transparent;
+      opacity: 1;
+      margin-left: 132px;
+    }
+
+    textarea {
+      background-color: transparent;
+      resize: none;
+      border: 0.75px solid $color-font-base;
+      width: 252px;
+      height: 120px;
+      position: absolute;
+      margin-left: 132px;
+    }
+  }
+}

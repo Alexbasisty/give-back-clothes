@@ -1,0 +1,77 @@
+.help-groups {
+  margin-top: 50px;
+
+  h5 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .form-buttons {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 634px;
+
+    label{
+      padding-left: 0;
+      padding-bottom: 30px;
+
+      input {
+
+        &:checked ~ span {
+          background-color: $alt-background-color;
+        }
+      }
+
+      span {
+        white-space: nowrap;
+        border: 0.75px solid $color-font-base;
+        padding: 11px 26px;
+        margin-right: 24px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  border: 0.75px solid $color-font-base;
+  width: 85px;
+  margin-top: 15px;
+  float: right;
+  z-index: 100;
+
+  &.city {
+    align-items: flex-start;
+    position: absolute;
+    padding-left: 18px;
+    background: #E8E9E4;
+  }
+}
+
+.localization {
+
+  h5 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  input {
+    background-color: transparent;
+    width: 570px;
+    height: 40px;
+    border: 0.75px solid $color-font-base;
+    font-size: 2.2rem;
+  }
+}

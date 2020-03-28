@@ -1,0 +1,42 @@
+.step1-form {
+  h2 {
+    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 4.5rem;
+    padding-bottom: 29px;
+  }
+
+  img {
+    width: 50px;
+  }
+
+  .summary {
+    font-size: 2.4rem;
+    line-height: 4.5rem;
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+
+  .address, .date-data {
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      line-height: 3.2rem;
+      font-size: 2.4rem;
+      font-weight: 300;
+
+      p {
+        text-align: left;
+        width: -moz-min-content;
+        width: min-content;
+      }
+
+      span {
+        color: $color-font-base;
+
+      }
+    }
+  }
+}
