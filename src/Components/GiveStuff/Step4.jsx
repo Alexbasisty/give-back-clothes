@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as ROUTES from "../../constants/routes";
 
 import DatePicker from "react-datepicker";
@@ -10,18 +9,92 @@ import "react-datepicker/dist/react-datepicker.css";
 class Step1 extends Component {
   state = {
     startDate: new Date(),
-    address: {},
-    time: {},
+    street: '',
+    streetError: '',
+    city: '',
+    cityError: '',
+    postCode: '',
+    postCodeError: '',
+    phoneNumber: '',
+    phoneNumberError: '',
+    hour: '',
+    hourError: '',
+    message: ''
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+    this.validate();
+  };
+
+  validate = () => {
+    let isValid = true;
+    if (this.state.street.length < 1) {
+      isValid = false;
+      this.setState({
+        streetError: 'Ulica:  napisz conajmniej 2 znaki'
+      })
+    } else {
+      this.setState({
+        streetError: ''
+      })
+    }
+    if (this.state.city.length < 1) {
+      isValid = false;
+      this.setState({
+        cityError: 'Miasto:  napisz conajmniej 2 znaki'
+      })
+    } else {
+      this.setState({
+        cityError: ''
+      });
+    }
+
+    if (!/\d{2}-\d{3}/i.test(this.state.postCode)) {
+      isValid = false;
+      this.setState({
+        postCodeError: 'Kod pocztowy:  format: **-***'
+      })
+    } else {
+      this.setState({
+        postCodeError: ''
+      })
+    }
+    if (this.state.phoneNumber.length !== 9) {
+      isValid = false;
+      this.setState({
+        phoneNumberError: 'Telefon:  musi mieć 9 znaków'
+      })
+    } else {
+      this.setState({
+        phoneNumberError: ''
+      })
+    }
+    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(this.state.hour)) {
+      isValid = false;
+      this.setState({
+        hourError: 'Godzina:  format --:--'
+      })
+    } else {
+      this.setState({
+        hourError: ''
+      })
+    }
+    return isValid;
   };
 
   handleDateChoose = date => {
     this.setState({
       startDate: date
     });
+
+    this.validate();
   };
 
   render() {
-    const { startDate } = this.state;
+    const { startDate, street, streetError, city, cityError, postCode, postCodeError, phoneNumber, phoneNumberError, hour, hourError, message } = this.state;
     return (
         <>
           <ImportantField>
@@ -34,68 +107,42 @@ class Step1 extends Component {
             <section id="pick-up-datas">
               <div className="address">
                 <h5>Adres odbioru:</h5>
-                <Formik initialValues={{ street: '', city: '', postCode: '', phoneNumber: '' }}
-                        validate={values => {
-                          const errors = {};
-                          if (values.street.length < 2) {
-                            errors.street = 'Ulica: napisz conajmniej 2 znaki ';
-                          } else if (values.city.length < 2) {
-                            errors.city = 'Miasto: napisz conajmniej 2 znaki';
-                          } else if (!/\d{2}-\d{3}/i.test(values.postCode)) {
-                            errors.postCode = 'Kod pocztowy: format **-***'
-                          } else if (values.phoneNumber.length !== 9) {
-                            errors.phoneNumber = 'Telefon: musi mieć tylko 9 cyfr'
-                          }
-                          return errors;
-                        }}
-                        onSubmit={(values, { setSubmitting }) => {
-                            this.setState({
-                              address: values,
-                            })
-                        }}
-                >{({  values,
-                     handleBlur,
-                     handleSubmit,
-                   }) => (
-                  <Form onSubmit={handleSubmit}>
+                  <form>
                     <label>Ulica
-                      <Field
-                          onBlur={handleBlur}
-                          value={values.street}
+                      <input
+                          onChange={this.handleChange}
+                          value={street}
                           name="street"
                           type="text" />
                     </label>
                     <label>Miasto
-                      <Field
-                          onBlur={handleBlur}
-                          value={values.city}
+                      <input
+                          onChange={this.handleChange}
+                          value={city}
                           name="city"
                           type="text" />
                     </label>
                     <label>Kod pocztowy
-                      <Field
-                          onBlur={handleBlur}
-                          value={values.postCode}
+                      <input
+                          onChange={this.handleChange}
+                          value={postCode}
                           name="postCode"
                           type="text" />
                     </label>
                     <label>Numer telefonu
-                      <Field
-                          onBlur={handleBlur}
-                          value={values.phoneNumber}
+                      <input
+                          onChange={this.handleChange}
+                          value={phoneNumber}
                           name="phoneNumber"
                           type="text" />
                     </label>
-
-                    <div style={{paddingTop: '20px'}}>
-                      <ErrorMessage name='street' component='i'/>
-                      <ErrorMessage name='city' component='span'/>
-                      <ErrorMessage name='postCode' component='span'/>
-                      <ErrorMessage name='phoneNumber' component='span'/>
-                    </div>
-                  </Form>
-                )}
-                </Formik>
+                  </form>
+                <div className="errors" style={{display: 'flex', flexDirection: 'column'}}>
+                  <span>{streetError}</span>
+                  <span>{cityError}</span>
+                  <span>{postCodeError}</span>
+                  <span>{phoneNumberError}</span>
+                </div>
               </div>
               <div className="date">
                 <h5>Termin odbioru:</h5>
@@ -107,17 +154,29 @@ class Step1 extends Component {
                     />
                   </label>
                   <label>Godzina
-                    <input type="number" />
+                    <input
+                        onChange={this.handleChange}
+                        value={hour}
+                        type="text"
+                        name="hour"/>
                   </label>
                   <label>Uwagi dla kurriera
-                    <textarea />
+                    <input
+                        onChange={this.handleChange}
+                        value={message}
+                        name="message"/>
                   </label>
                 </form>
+                <div className="errors" style={{paddingTop: '20px'}}>
+                  <span style={{fontSize: '2.2rem'}}>{hourError}</span>
+                </div>
               </div>
             </section>
             <div className="links-section">
-              <button>
-                <Link to={ROUTES.STEP_2}>Wstecz</Link>
+              <button onClick={() => {
+                console.log(this.state);
+              }}>
+                Wstecz
               </button>
               <button>
                 <Link to={ROUTES.STEP_2}>Dalej</Link>
