@@ -57,3 +57,21 @@
     background: #E8E9E4;
   }
 }
+
+.localization {
+
+  h5 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  input {
+    background-color: transparent;
+    width: 570px;
+    height: 40px;
+    border: 0.75px solid $color-font-base;
+    font-size: 2.2rem;
+  }
+}

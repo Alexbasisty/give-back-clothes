@@ -85,6 +85,11 @@ class Step1 extends Component {
                 </label>
               </form>
             </section>
+            <section className='localization'>
+              <h5>Wpisz nazwę konkretnej organizacji (opcjonalnie)</h5>
+              <input type="text"/>
+            </section>
+
             <div className="links-section">
               <button>
                 <Link to={ROUTES.STEP_2}>Wstecz</Link>
