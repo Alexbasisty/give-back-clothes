@@ -11,6 +11,20 @@ class Step3 extends Component {
     foundation: ''
   };
 
+  saveState = () => {
+    localStorage.setItem('lokalization', JSON.stringify(this.state.lokalization))
+  };
+
+  componentDidMount() {
+    if ((localStorage.getItem('lokalization') !== null)) {
+      const lokalization = JSON.parse(localStorage.getItem('lokalization'));
+
+      this.setState({
+        lokalization
+      })
+    }
+  }
+
   handleWhoHelp = (event) => {
     const helpList = this.state.whomHelp;
     const check = event.target.checked;
@@ -32,11 +46,17 @@ class Step3 extends Component {
   };
 
   handleSelect = e => {
-    if(e.target.id.length > 0)
-    this.setState({
-      lokalization: e.target.id
-    });
-
+    if (e.target.id.length > 0) {
+      this.setState({
+        lokalization: e.target.id
+      });
+      this.saveState();
+    } else {
+      this.setState({
+        lokalization: '- wybierz -'
+      });
+      this.saveState();
+    }
     this.handleArrow()
   };
 
@@ -145,10 +165,10 @@ class Step3 extends Component {
             </section>
 
             <div className="links-section">
-              <button>
+              <button onClick={this.saveState}>
                 <Link to={ROUTES.STEP_2}>Wstecz</Link>
               </button>
-              <button>
+              <button onClick={this.saveState}>
                 <Link to={ROUTES.STEP_4}>Dalej</Link>
               </button>
             </div>

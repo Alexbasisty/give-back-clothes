@@ -8,19 +8,6 @@ class Step1 extends Component {
     wantToGive: ['ubrania, które nadają się do ponownego użycia'],
   };
 
-  // componentDidMount() {
-  //   if ((localStorage.getItem('user_staff') !== null)) {
-  //     // const dataFromLS = JSON.parse(localStorage.getItem('user_staff'));
-  //     // this.setState({ wantToGive: '' });
-  //     this.setState({
-  //       wantToGive : dataFromLS
-  //     });
-  //     localStorage.setItem('user_staff', JSON.stringify(''))
-  //   }
-  //
-  // }
-
-
   saveState = () => {
     localStorage.setItem('user_staff', JSON.stringify(this.state.wantToGive));
     console.log(this.state.wantToGive);
@@ -49,7 +36,7 @@ class Step1 extends Component {
   };
 
   render() {
-    const data = JSON.parse(localStorage.getItem('user_staff'));
+    // const data = JSON.parse(localStorage.getItem('user_staff'));
     return (
         <>
           <ImportantField>
