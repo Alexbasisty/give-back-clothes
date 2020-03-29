@@ -7,7 +7,7 @@ class Step3 extends Component {
   state = {
     isDown: true,
     lokalization: '- wybierz -',
-    whomHelp: ['dzieciom'],
+    whomHelp: ['dzieciom '],
     foundation: ''
   };
 
@@ -88,7 +88,7 @@ class Step3 extends Component {
   };
 
   render() {
-    const { isDown, lokalization, whomHelp, foundation } = this.state;
+    const { isDown, lokalization, foundation } = this.state;
 
     return  (
         <>
@@ -132,35 +132,35 @@ class Step3 extends Component {
                       defaultChecked
                       onChange={this.handleWhoHelp}
                       type="checkbox"
-                      value="dzieciom"/>
+                      value="dzieciom "/>
                   <span>dzieciom</span>
                 </label>
                 <label>
                   <input
                       onChange={this.handleWhoHelp}
                       type="checkbox"
-                      value="samotnym matkom"/>
+                      value="samotnym matkom "/>
                   <span>samotnym matkom</span>
                 </label>
                 <label>
                   <input
                       onChange={this.handleWhoHelp}
                       type="checkbox"
-                      value="bezdomnym"/>
+                      value="bezdomnym "/>
                   <span>bezdomnym</span>
                 </label>
                 <label>
                   <input
                       onChange={this.handleWhoHelp}
                       type="checkbox"
-                      value="niepełnosprawnym"/>
+                      value="niepełnosprawnym "/>
                   <span>niepełnosprawnym</span>
                 </label>
                 <label>
                   <input
                       onChange={this.handleWhoHelp}
                       type="checkbox"
-                      value="osobom starszym"/>
+                      value="osobom starszym "/>
                   <span>osobom starszym</span>
                 </label>
               </form>

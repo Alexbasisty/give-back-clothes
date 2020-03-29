@@ -5,7 +5,7 @@ import ImportantField from "./ImportantField";
 
 class Step1 extends Component {
   state = {
-    wantToGive: ['ubrania, które nadają się do ponownego użycia'],
+    wantToGive: ['ubrania, które nadają się do ponownego użycia '],
   };
 
   saveState = () => {
@@ -50,7 +50,7 @@ class Step1 extends Component {
                     defaultChecked
                     onChange={this.handleStuffSelect}
                     type="checkbox"
-                    value="ubrania, które nadają się do ponownego użycia"/>
+                    value="ubrania, które nadają się do ponownego użycia "/>
                 <span className="checkmark"/>
                 ubrania, które nadają się do ponownego użycia
               </label>
@@ -58,14 +58,14 @@ class Step1 extends Component {
                 <input type="checkbox"
                        // checked={data.includes("ubrania, do wyrzucenia")}
                        onChange={this.handleStuffSelect}
-                       value="ubrania, do wyrzucenia"
+                       value="ubrania, do wyrzucenia "
                 />
                 <span className="checkmark"/>
                 ubrania, do wyrzucenia
               </label>
               <label>
                 <input type="checkbox"
-                       value="zabawki"
+                       value="zabawki "
                        onChange={this.handleStuffSelect}
                 />
                 <span className="checkmark"/>
@@ -73,7 +73,7 @@ class Step1 extends Component {
               </label>
               <label>
                 <input type="checkbox"
-                       value="książki"
+                       value="książki "
                        onChange={this.handleStuffSelect}
                 />
                 <span className="checkmark"/>
@@ -81,7 +81,7 @@ class Step1 extends Component {
               </label>
               <label>
                 <input type="checkbox"
-                       value="inne"
+                       value="inne "
                        onChange={this.handleStuffSelect}
                 />
                 <span className="checkmark"/>

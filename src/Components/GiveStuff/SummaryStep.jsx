@@ -104,10 +104,12 @@ class SummaryStep extends Component {
   }
 
   handleSubmitSummary = () => {
-    const userUid = this.props.user.uid;
-    const userRef = app.database().ref(`users/${userUid}`);
-    userRef.push(this.state);
-    localStorage.clear();
+    if(this.props.user.uid !== null) {
+      const userUid = this.props.user.uid;
+      const userRef = app.database().ref(`users/${userUid}`);
+      userRef.push(this.state);
+      localStorage.clear();
+    }
   };
 
   render() {
@@ -123,7 +125,7 @@ class SummaryStep extends Component {
       phoneNumber,
       hour,
       message} = this.state;
-    console.log(this.props.user);
+
     return (
         <>
           <div className="step1-form">
@@ -131,7 +133,7 @@ class SummaryStep extends Component {
             <h2>Oddajesz:</h2>
             <div className="summary">
               <img src={require('../../assets/Icon-1.svg')} alt="t-shirt" />
-              <small>worków: {bagsNumber}, {staff}, {whomHelp} {foundation}</small>
+              <small style={{width: '900px'}}>worków: {bagsNumber}, {[...staff]}, {[...whomHelp]} {foundation}</small>
             </div>
             <div className="summary">
               <img src={require('../../assets/Icon-4.svg')} alt="circle-arrows" />
