@@ -8,16 +8,22 @@ class Step1 extends Component {
     wantToGive: ['ubrania, które nadają się do ponownego użycia'],
   };
 
-  componentDidMount() {
-    const dataFromLS = JSON.parse(localStorage.getItem('user_staff'));
-    console.log(dataFromLS);
-    this.setState({
-      wantToGive : dataFromLS
-    })
-  }
+  // componentDidMount() {
+  //   if ((localStorage.getItem('user_staff') !== null)) {
+  //     // const dataFromLS = JSON.parse(localStorage.getItem('user_staff'));
+  //     // this.setState({ wantToGive: '' });
+  //     this.setState({
+  //       wantToGive : dataFromLS
+  //     });
+  //     localStorage.setItem('user_staff', JSON.stringify(''))
+  //   }
+  //
+  // }
+
 
   saveState = () => {
-    localStorage.setItem('user_staff', JSON.stringify(this.state.wantToGive))
+    localStorage.setItem('user_staff', JSON.stringify(this.state.wantToGive));
+    console.log(this.state.wantToGive);
   };
 
   handleStuffSelect = (event) => {
@@ -43,6 +49,7 @@ class Step1 extends Component {
   };
 
   render() {
+    const data = JSON.parse(localStorage.getItem('user_staff'));
     return (
         <>
           <ImportantField>
@@ -63,6 +70,7 @@ class Step1 extends Component {
               </label>
               <label>
                 <input type="checkbox"
+                       // checked={data.includes("ubrania, do wyrzucenia")}
                        onChange={this.handleStuffSelect}
                        value="ubrania, do wyrzucenia"
                 />
@@ -96,7 +104,7 @@ class Step1 extends Component {
             </form>
 
             <div className="links-section">
-              <button onClick={this.handleStuffSelect}>
+              <button onClick={this.saveState}>
                 <Link to={ROUTES.STEP_2}>Dalej</Link>
               </button>
             </div>
