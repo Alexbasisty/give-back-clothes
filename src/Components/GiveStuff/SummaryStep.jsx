@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
+import { AuthUserContext } from '../Session';
+import app from "firebase";
+
+const SummaryStepContext = () => (
+  <AuthUserContext.Consumer>
+    {authUser =>
+      <SummaryStep user={authUser}/>
+    }
+  </AuthUserContext.Consumer>
+);
 
 class SummaryStep extends Component {
   state = {
-    stuff: '',
+    staff: '',
     bagsNumber: '',
     lokalization: '',
     foundation: '',
@@ -19,10 +29,10 @@ class SummaryStep extends Component {
   };
 
   componentDidMount() {
-    if ((localStorage.getItem('user_stuff') !== null)) {
-      const stuff = JSON.parse(localStorage.getItem('user_stuff'));
+    if ((localStorage.getItem('user_staff') !== null)) {
+      const staff = JSON.parse(localStorage.getItem('user_staff'));
       this.setState({
-        stuff
+        staff
       })
     }
     if ((localStorage.getItem('bag_numb') !== null)) {
@@ -93,9 +103,15 @@ class SummaryStep extends Component {
     }
   }
 
+  handleSubmitSummary = () => {
+    const userUid = this.props.user.uid;
+    const userRef = app.database().ref(`users/${userUid}`);
+    userRef.push(this.state);
+    localStorage.clear();
+  };
 
   render() {
-    const { stuff,
+    const { staff,
       bagsNumber,
       lokalization,
       foundation,
@@ -107,7 +123,7 @@ class SummaryStep extends Component {
       phoneNumber,
       hour,
       message} = this.state;
-
+    console.log(this.props.user);
     return (
         <>
           <div className="step1-form">
@@ -115,7 +131,7 @@ class SummaryStep extends Component {
             <h2>Oddajesz:</h2>
             <div className="summary">
               <img src={require('../../assets/Icon-1.svg')} alt="t-shirt" />
-              <small>worków: {bagsNumber}, {stuff}, {whomHelp} {foundation}</small>
+              <small>worków: {bagsNumber}, {staff}, {whomHelp} {foundation}</small>
             </div>
             <div className="summary">
               <img src={require('../../assets/Icon-4.svg')} alt="circle-arrows" />
@@ -161,7 +177,7 @@ class SummaryStep extends Component {
               <button>
                 <Link to={ROUTES.STEP_4}>Wstecz</Link>
               </button>
-              <button>
+              <button onClick={this.handleSubmitSummary}>
                 <Link to={ROUTES.THANKS}>Potwierdzam</Link>
               </button>
             </div>
@@ -171,4 +187,4 @@ class SummaryStep extends Component {
   }
 }
 
-export default SummaryStep;
+export default SummaryStepContext;

@@ -9,7 +9,7 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
-import SummaryStep from "./SummaryStep";
+import SummaryStepContext from "./SummaryStep";
 import ThanksFull from "./ThanksFull";
 
 
@@ -23,7 +23,7 @@ const GiveStuff = () => {
           <Route path={ROUTES.STEP_2} component={Step2} />
           <Route path={ROUTES.STEP_3} component={Step3} />
           <Route path={ROUTES.STEP_4} component={Step4} />
-          <Route path={ROUTES.SUMMARY} component={SummaryStep} />
+          <Route path={ROUTES.SUMMARY} component={SummaryStepContext} />
           <Route path={ROUTES.THANKS} component={ThanksFull} />
         </Switch>
         <Contact />
