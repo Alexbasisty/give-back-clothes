@@ -13,20 +13,23 @@ import SummaryStep from "./SummaryStep";
 import ThanksFull from "./ThanksFull";
 
 
-const GiveStuff = () => (
-    <Router>
-      <GiveHeader />
-          <Switch>
-                <Route exact path={ROUTES.STEP_1} component={Step1} />
-                <Route path={ROUTES.STEP_2} component={Step2} />
-                <Route path={ROUTES.STEP_3} component={Step3} />
-                <Route path={ROUTES.STEP_4} component={Step4} />
-                <Route path={ROUTES.SUMMARY} component={SummaryStep} />
-                <Route path={ROUTES.THANKS} component={ThanksFull} />
-          </Switch>
-      <Contact />
-    </Router>
-);
+const GiveStuff = () => {
+
+  return (
+      <Router>
+        <GiveHeader />
+        <Switch>
+          <Route exact path={ROUTES.STEP_1} component={Step1} />
+          <Route path={ROUTES.STEP_2} component={Step2} />
+          <Route path={ROUTES.STEP_3} component={Step3} />
+          <Route path={ROUTES.STEP_4} component={Step4} />
+          <Route path={ROUTES.SUMMARY} component={SummaryStep} />
+          <Route path={ROUTES.THANKS} component={ThanksFull} />
+        </Switch>
+        <Contact />
+      </Router>
+  );
+};
 
 const GiveStuffLink = () => (
     <Link to={ROUTES.GIVE_STUFF}>Oddaj rzeczy</Link>

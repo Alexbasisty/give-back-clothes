@@ -9,6 +9,20 @@ class Step2 extends Component {
     bagsNumber: '- wybierz -',
   };
 
+  saveState = () => {
+    localStorage.setItem('bag_numb', this.state.bagsNumber)
+  };
+
+  componentDidMount() {
+    if ((localStorage.getItem('bag_numb') !== null)) {
+      const bagsNumber = JSON.parse(localStorage.getItem('bag_numb'));
+
+      this.setState({
+        bagsNumber
+      })
+    }
+  }
+
   handleSelect = e => {
     if(e.target.id.length > 0) {
       this.setState({
@@ -18,6 +32,8 @@ class Step2 extends Component {
       this.setState({
         bagsNumber: '- wybierz -'
       });
+
+      this.saveState();
     }
 
 
@@ -63,10 +79,10 @@ class Step2 extends Component {
                   </div>}
             </div>
             <div className="links-section">
-              <button>
+              <button onClick={this.saveState}>
                 <Link to={ROUTES.STEP_1}>Wstecz</Link>
               </button>
-              <button>
+              <button onClick={this.saveState}>
                 <Link to={ROUTES.STEP_3}>Dalej</Link>
               </button>
             </div>

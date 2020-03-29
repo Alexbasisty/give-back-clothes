@@ -8,6 +8,18 @@ class Step1 extends Component {
     wantToGive: ['ubrania, które nadają się do ponownego użycia'],
   };
 
+  componentDidMount() {
+    const dataFromLS = JSON.parse(localStorage.getItem('user_staff'));
+    console.log(dataFromLS);
+    this.setState({
+      wantToGive : dataFromLS
+    })
+  }
+
+  saveState = () => {
+    localStorage.setItem('user_staff', JSON.stringify(this.state.wantToGive))
+  };
+
   handleStuffSelect = (event) => {
     const giveList = this.state.wantToGive;
     const check = event.target.checked;
@@ -26,6 +38,8 @@ class Step1 extends Component {
         })
       }
     }
+
+    this.saveState();
   };
 
   render() {
