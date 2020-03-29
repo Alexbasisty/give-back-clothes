@@ -10,7 +10,6 @@ class Step1 extends Component {
 
   saveState = () => {
     localStorage.setItem('user_staff', JSON.stringify(this.state.wantToGive));
-    console.log(this.state.wantToGive);
   };
 
   handleStuffSelect = (event) => {

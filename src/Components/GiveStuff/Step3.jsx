@@ -12,7 +12,9 @@ class Step3 extends Component {
   };
 
   saveState = () => {
-    localStorage.setItem('lokalization', JSON.stringify(this.state.lokalization))
+    localStorage.setItem('lokalization', JSON.stringify(this.state.lokalization));
+    localStorage.setItem('whomHelp', JSON.stringify(this.state.whomHelp));
+    localStorage.setItem('foundation', JSON.stringify(this.state.foundation));
   };
 
   componentDidMount() {
@@ -21,6 +23,12 @@ class Step3 extends Component {
 
       this.setState({
         lokalization
+      })
+    }
+    if((localStorage.getItem('foundation') !== null)) {
+      const foundation = JSON.parse(localStorage.getItem('foundation'));
+      this.setState({
+        foundation
       })
     }
   }
@@ -43,6 +51,7 @@ class Step3 extends Component {
         })
       }
     }
+    this.saveState();
   };
 
   handleSelect = e => {
@@ -65,7 +74,7 @@ class Step3 extends Component {
       foundation: e.target.value,
     });
 
-    if(this.state.foundation.length > 0) {
+    if(this.state.foundation.length > 1) {
       this.setState({
         whomHelp: []
       })
