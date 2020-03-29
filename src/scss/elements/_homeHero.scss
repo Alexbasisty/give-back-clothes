@@ -10,6 +10,10 @@
   width: 45vw;
   flex-grow: 1;
   overflow: hidden;
+
+  @include mobile {
+    display: none;
+  }
   .home-image {
     position: absolute;
     display: flex;
@@ -17,6 +21,7 @@
     top: -140px;
     left: -483px;
     z-index: 0;
+
   }
 }
 
@@ -32,11 +37,23 @@
   line-height: 5.5rem;
   z-index: 2;
 
+  @include mobile {
+    width: 100vw;
+    margin: 0 auto;
+  }
+
   .text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+
+    @include mobile {
+      width: 90vw;
+      text-align: center;
+      margin: 0 auto;
+    }
   }
   .decoration {
     background: transparent url('../../assets/Decoration.svg') no-repeat center;

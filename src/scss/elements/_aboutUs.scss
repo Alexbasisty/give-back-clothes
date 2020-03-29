@@ -12,6 +12,12 @@
     align-items: center;
     position: relative;
 
+
+    @include mobile {
+      padding: 70px;
+      width: 100%;
+    }
+
     h2 {
       font-size: 3.8rem;
       line-height: 5.5rem;
@@ -36,6 +42,11 @@
     background-size: cover;
     width: 80%;
     max-width: 942px;
+
+
+    @include mobile {
+      display: none;
+    }
   }
 }
 
