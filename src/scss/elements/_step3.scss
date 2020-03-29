@@ -15,6 +15,9 @@
     flex-wrap: wrap;
     width: 634px;
 
+    @include mobile {
+      width: 100vw;
+    }
     label{
       padding-left: 0;
       padding-bottom: 30px;
@@ -50,6 +53,10 @@
   float: right;
   z-index: 100;
 
+  @include mobile {
+    float: none;
+  }
+
   &.city {
     align-items: flex-start;
     position: absolute;
@@ -77,5 +84,9 @@
     height: 40px;
     border: 0.75px solid $color-font-base;
     font-size: 2.2rem;
+
+    @include mobile {
+      width: 90vw;
+    }
   }
 }

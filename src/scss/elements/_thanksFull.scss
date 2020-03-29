@@ -3,11 +3,27 @@
   text-align: center;
   width: 600px;
 
+  @include mobile {
+    width: 90vw;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   h1 {
     text-align: center;
+
+    @include mobile {
+      font-size: 3rem;
+    }
   }
 
   img {
     width: 250px;
+
+    @include mobile {
+      align-self: center;
+    }
   }
 }

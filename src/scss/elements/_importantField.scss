@@ -4,6 +4,10 @@
   height: 179px;
   box-sizing: border-box;
 
+  @include mobile {
+    padding: 10px;
+  }
+
   h1 {
     font-weight: 600;
     font-size: 3.6rem;

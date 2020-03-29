@@ -4,11 +4,20 @@
   padding-left: 142px;
   position: relative;
 
+  @include mobile {
+    padding: 30px;
+    height: 105vh;
+  }
+
   h3 {
     font-size: 2.4rem;
     line-height: 2.7rem;
     font-weight: 300;
     padding-top: 36px;
+
+    @include mobile {
+      padding-top: 0;
+    }
   }
 
   h1 {
@@ -17,6 +26,10 @@
     font-weight: 600;
     padding-top: 70px;
     padding-bottom: 40px;
+
+    @include mobile {
+      padding: 0;
+    }
   }
 
   form {
@@ -33,6 +46,10 @@
       padding-bottom: 49px;
       padding-left: 70px;
       user-select: none;
+
+      @include mobile {
+        padding-bottom: 20px;
+      }
 
       input {
         width: 0;
@@ -80,6 +97,10 @@
     position: absolute;
     bottom: 50px;
 
+    @include mobile {
+      bottom: 10px;
+    }
+
     button {
       font-size: 2.4rem;
       line-height: 3.2rem;
@@ -90,6 +111,13 @@
       cursor: pointer;
       margin-right: 50px;
       width: 180px;
+
+      @include mobile {
+        padding: 3px;
+        &:first-of-type {
+          margin-bottom: 10px;
+        }
+      }
     }
 
   }

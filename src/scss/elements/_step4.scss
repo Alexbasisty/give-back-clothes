@@ -3,6 +3,12 @@
   justify-content: space-between;
   width: 780px;
 
+
+  @include mobile {
+    flex-direction: column;
+    width: 100vw;
+  }
+
   div {
 
     h5 {
@@ -25,7 +31,12 @@
     .react-datepicker__input-container {
       position: absolute;
       margin-left: -45px;
+
+      @include mobile {
+        margin-left: -36px;
+      }
     }
+
     input {
       width: 256px;
       height: 32px;
@@ -34,6 +45,10 @@
       background-color: transparent;
       opacity: 1;
       margin-left: 132px;
+
+      @include mobile {
+        width: 170px;
+      }
     }
 
     textarea {
