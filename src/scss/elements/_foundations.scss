@@ -6,6 +6,9 @@
   margin: 70px auto 80px;
   width: 1344px;
 
+  @include mobile {
+    width: 100vw;
+  }
   h2 {
     font-size: 3.8rem;
     line-height: 5.2rem;
@@ -15,6 +18,11 @@
   .links {
     display: flex;
     margin-bottom: 80px;
+
+    @include mobile {
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
 
     p {
       font-size: 2.4rem;
@@ -45,6 +53,13 @@
       width: 640px;
       text-align: center;
       margin-bottom: 66px;
+      @include mobile {
+        width: 90vw;
+      }
+    }
+
+    @include mobile {
+      width: 90vw;
     }
 
     .fund-description {
@@ -54,8 +69,15 @@
       font-family: $font-alt;
       font-weight: lighter;
       text-align: left;
-      border-bottom: 1px solid #707070;
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid #707070;
+      }
       margin-bottom: 34px;
+
+      @include mobile {
+        flex-direction: column;
+      }
 
       h4 {
         font-size: 2.6rem;
@@ -72,6 +94,11 @@
         line-height: 2.2rem;
         text-align: right;
         padding-right: 37px;
+
+        @include mobile {
+          text-align: left;
+          margin-bottom: 10px;
+        }
       }
 
     }
