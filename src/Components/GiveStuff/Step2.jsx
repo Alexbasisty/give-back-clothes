@@ -3,9 +3,41 @@ import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
-class Step1 extends Component {
+class Step2 extends Component {
   state = {
-    isDown: true
+    isDown: true,
+    bagsNumber: '- wybierz -',
+  };
+
+  saveState = () => {
+    localStorage.setItem('bag_numb', this.state.bagsNumber)
+  };
+
+  componentDidMount() {
+    if ((localStorage.getItem('bag_numb') !== null)) {
+      const bagsNumber = JSON.parse(localStorage.getItem('bag_numb'));
+
+      this.setState({
+        bagsNumber
+      })
+    }
+  }
+
+  handleSelect = e => {
+    if(e.target.id.length > 0) {
+      this.setState({
+        bagsNumber: e.target.id
+      });
+    } else {
+      this.setState({
+        bagsNumber: '- wybierz -'
+      });
+
+      this.saveState();
+    }
+
+
+    this.handleArrow()
   };
 
   handleArrow = () => {
@@ -15,7 +47,7 @@ class Step1 extends Component {
   };
 
   render() {
-    const { isDown } = this.state;
+    const { isDown, bagsNumber } = this.state;
     return (
         <>
           <ImportantField>
@@ -30,7 +62,7 @@ class Step1 extends Component {
                 <p
                   onClick={this.handleArrow}
                 >
-                  - wybierz -
+                  {bagsNumber}
                   {isDown ? <img src={require('../../assets/Icon-Arrow-Down.svg')} alt="down"/> : <img src={require('../../assets/Icon-Arrow-Up.svg')} alt="down"/>}
                 </p>
               </div>
@@ -38,7 +70,7 @@ class Step1 extends Component {
                   ?
                   ''
                   :
-                  <div className="select">
+                  <div className="select" onClick={this.handleSelect}>
                     <span id="1">1</span>
                     <span id="2">2</span>
                     <span id="3">3</span>
@@ -47,11 +79,11 @@ class Step1 extends Component {
                   </div>}
             </div>
             <div className="links-section">
-              <button>
-                <Link to={ROUTES.STEP_2}>Wstecz</Link>
+              <button onClick={this.saveState}>
+                <Link to={ROUTES.STEP_1}>Wstecz</Link>
               </button>
-              <button>
-                <Link to={ROUTES.STEP_2}>Dalej</Link>
+              <button onClick={this.saveState}>
+                <Link to={ROUTES.STEP_3}>Dalej</Link>
               </button>
             </div>
           </div>
@@ -60,4 +92,4 @@ class Step1 extends Component {
   }
 }
 
-export default Step1;
+export default Step2;

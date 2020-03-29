@@ -1,10 +1,9 @@
 #pick-up-datas {
   display: flex;
   justify-content: space-between;
-  width: 980px;
+  width: 780px;
 
   div {
-    width: 65%;
 
     h5 {
       font-size: 2.4rem;
@@ -23,6 +22,10 @@
     width: -moz-min-content;
     width: min-content;
 
+    .react-datepicker__input-container {
+      position: absolute;
+      margin-left: -45px;
+    }
     input {
       width: 256px;
       height: 32px;

@@ -3,10 +3,82 @@ import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
-class Step1 extends Component {
+class Step3 extends Component {
   state = {
     isDown: true,
-    isChecked: true
+    lokalization: '- wybierz -',
+    whomHelp: ['dzieciom '],
+    foundation: ''
+  };
+
+  saveState = () => {
+    localStorage.setItem('lokalization', JSON.stringify(this.state.lokalization));
+    localStorage.setItem('whomHelp', JSON.stringify(this.state.whomHelp));
+    localStorage.setItem('foundation', JSON.stringify(this.state.foundation));
+  };
+
+  componentDidMount() {
+    if ((localStorage.getItem('lokalization') !== null)) {
+      const lokalization = JSON.parse(localStorage.getItem('lokalization'));
+
+      this.setState({
+        lokalization
+      })
+    }
+    if((localStorage.getItem('foundation') !== null)) {
+      const foundation = JSON.parse(localStorage.getItem('foundation'));
+      this.setState({
+        foundation
+      })
+    }
+  }
+
+  handleWhoHelp = (event) => {
+    const helpList = this.state.whomHelp;
+    const check = event.target.checked;
+    const checkedStuff = event.target.value;
+
+    if (check) {
+      this.setState({
+        whomHelp: [...this.state.whomHelp, checkedStuff]
+      })
+    } else {
+      const index = helpList.indexOf(checkedStuff);
+      if (index > -1) {
+        helpList.splice(index, 1);
+        this.setState({
+          whomHelp: helpList
+        })
+      }
+    }
+    this.saveState();
+  };
+
+  handleSelect = e => {
+    if (e.target.id.length > 0) {
+      this.setState({
+        lokalization: e.target.id
+      });
+      this.saveState();
+    } else {
+      this.setState({
+        lokalization: '- wybierz -'
+      });
+      this.saveState();
+    }
+    this.handleArrow()
+  };
+
+  handleInputFoundation = e => {
+    this.setState({
+      foundation: e.target.value,
+    });
+
+    if(this.state.foundation.length > 1) {
+      this.setState({
+        whomHelp: []
+      })
+    }
   };
 
   handleArrow = () => {
@@ -15,14 +87,8 @@ class Step1 extends Component {
     })
   };
 
-  toggleChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    });
-  };
-
   render() {
-    const { isDown } = this.state;
+    const { isDown, lokalization, foundation } = this.state;
 
     return  (
         <>
@@ -40,7 +106,7 @@ class Step1 extends Component {
                 <p
                     onClick={this.handleArrow}
                 >
-                  - wybierz -
+                  {lokalization}
                   {isDown ? <img src={require('../../assets/Icon-Arrow-Down.svg')} alt="down"/> : <img src={require('../../assets/Icon-Arrow-Up.svg')} alt="down"/>}
                 </p>
               </div>
@@ -50,52 +116,69 @@ class Step1 extends Component {
                 ?
                 ''
                 :
-                <div className="select city" style={{width: '300px', float: 'none'}}>
-                  <span id="1">Poznań</span>
-                  <span id="2">Warszawa</span>
-                  <span id="3">Kraków</span>
-                  <span id="4">Wrocłąw</span>
-                  <span id="5">Katowice</span>
+                <div className="select city" style={{width: '300px', float: 'none'}}
+                onClick={this.handleSelect}>
+                  <span id="Poznań">Poznań</span>
+                  <span id="Warszawa">Warszawa</span>
+                  <span id="Kraków">Kraków</span>
+                  <span id="Wrocłąw">Wrocław</span>
+                  <span id="Katowice">Katowice</span>
                 </div>}
             <section className="help-groups">
               <h5>Komu chcesz pomóc?</h5>
               <form className="form-buttons">
                 <label>
                   <input
-                      checked={this.state.isChecked}
-                      onChange={this.toggleChange}
-                      type="checkbox" />
+                      defaultChecked
+                      onChange={this.handleWhoHelp}
+                      type="checkbox"
+                      value="dzieciom "/>
                   <span>dzieciom</span>
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input
+                      onChange={this.handleWhoHelp}
+                      type="checkbox"
+                      value="samotnym matkom "/>
                   <span>samotnym matkom</span>
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input
+                      onChange={this.handleWhoHelp}
+                      type="checkbox"
+                      value="bezdomnym "/>
                   <span>bezdomnym</span>
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input
+                      onChange={this.handleWhoHelp}
+                      type="checkbox"
+                      value="niepełnosprawnym "/>
                   <span>niepełnosprawnym</span>
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input
+                      onChange={this.handleWhoHelp}
+                      type="checkbox"
+                      value="osobom starszym "/>
                   <span>osobom starszym</span>
                 </label>
               </form>
             </section>
             <section className='localization'>
               <h5>Wpisz nazwę konkretnej organizacji (opcjonalnie)</h5>
-              <input type="text"/>
+              <input
+                  onChange={this.handleInputFoundation}
+                  type="text"
+                  value={foundation}/>
             </section>
 
             <div className="links-section">
-              <button>
+              <button onClick={this.saveState}>
                 <Link to={ROUTES.STEP_2}>Wstecz</Link>
               </button>
-              <button>
-                <Link to={ROUTES.STEP_2}>Dalej</Link>
+              <button onClick={this.saveState}>
+                <Link to={ROUTES.STEP_4}>Dalej</Link>
               </button>
             </div>
           </div>
@@ -104,4 +187,4 @@ class Step1 extends Component {
   }
 }
 
-export default Step1;
+export default Step3;
