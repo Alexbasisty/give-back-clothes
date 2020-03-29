@@ -37,7 +37,7 @@ class AdminPage extends Component {
     const { users, loading } = this.state;
 
     return (
-        <div>
+        <div id="admin-page">
           <h1>Admin</h1>
           <p>
             The Admin Page is accessible by every signed in admin user.
@@ -49,23 +49,26 @@ class AdminPage extends Component {
   }
 }
 
-const UserList = ({ users }) => (
-    <ul>
-      {users.map(user => (
-          <li key={user.uid}>
+const UserList = ({ users }) => {
+  console.log(users.key);
+  return  (
+      <ul style={{fontSize: '2rem', display: 'block'}}>
+        {users.map(user => (
+            <li key={user.uid}>
         <span>
           <strong>ID:</strong> {user.uid}
         </span>
-            <span>
+              <span>
           <strong>E-Mail:</strong> {user.email}
         </span>
-            <span>
-          <strong>Username:</strong> {user.username}
+              <span>
+          <strong>User donation:</strong> {user.bagsNumber}
         </span>
-          </li>
-      ))}
-    </ul>
-);
+            </li>
+        ))}
+      </ul>
+  );
+};
 
 const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 

@@ -107,7 +107,8 @@ class SummaryStep extends Component {
     if(this.props.user.uid !== null) {
       const userUid = this.props.user.uid;
       const userRef = app.database().ref(`users/${userUid}`);
-      userRef.push(this.state);
+      const newDonate = this.state;
+      userRef.push(newDonate);
       localStorage.clear();
     }
   };

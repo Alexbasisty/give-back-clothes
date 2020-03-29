@@ -6,7 +6,7 @@ import { AuthUserContext, withAuthorization } from '../Session';
 const AccountPage = () => (
     <AuthUserContext.Consumer>
       {authUser => (
-          <div>
+          <div className="sign-in-form">
             <h1>Account: {authUser.email}</h1>
             <PasswordForgetForm />
             <PasswordChangeForm />

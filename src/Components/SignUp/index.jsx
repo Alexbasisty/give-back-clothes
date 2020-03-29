@@ -111,15 +111,15 @@ class SignUpFormBase extends Component {
                   type="password"
               />
               </label>
-              <label>
-                Admin:
-                <input
-                    name="isAdmin"
-                    type="checkbox"
-                    checked={isAdmin}
-                    onChange={this.onChangeCheckbox}
-                />
-              </label>
+              {/*<label>*/}
+              {/*  Admin:*/}
+              {/*  <input*/}
+              {/*      name="isAdmin"*/}
+              {/*      type="checkbox"*/}
+              {/*      checked={isAdmin}*/}
+              {/*      onChange={this.onChangeCheckbox}*/}
+              {/*  />*/}
+              {/*</label>*/}
             </div>
             {error && <p>{error.message}</p>}
             <div className="sing-in-buttons">
