@@ -22,12 +22,69 @@ class Step4 extends Component {
     message: ''
   };
 
+  saveState = () => {
+    localStorage.setItem('street', JSON.stringify(this.state.street));
+    localStorage.setItem('city', JSON.stringify(this.state.city));
+    localStorage.setItem('postCode', JSON.stringify(this.state.postCode));
+    localStorage.setItem('phoneNumber', JSON.stringify(this.state.phoneNumber));
+    localStorage.setItem('date', JSON.stringify(this.state.startDate));
+    localStorage.setItem('hour', JSON.stringify(this.state.hour));
+    localStorage.setItem('message', JSON.stringify(this.state.message));
+  };
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
     this.validate();
+    this.saveState();
   };
+
+  componentDidMount() {
+
+    if ((localStorage.getItem('street') !== null)) {
+      const street = JSON.parse(localStorage.getItem('street'));
+      this.setState({
+        street
+      })
+    }
+    else if((localStorage.getItem('date') !== null)) {
+      const date = JSON.parse(localStorage.getItem('date'));
+      this.setState({
+        startDate: date
+      })
+    }
+    if((localStorage.getItem('city') !== null)) {
+      const city = JSON.parse(localStorage.getItem('city'));
+      this.setState({
+        city
+      })
+    }
+    if((localStorage.getItem('postCode') !== null)) {
+      const postCode = JSON.parse(localStorage.getItem('postCode'));
+      this.setState({
+        postCode
+      })
+    }
+    if((localStorage.getItem('phoneNumber') !== null)) {
+      const phoneNumber = JSON.parse(localStorage.getItem('phoneNumber'));
+      this.setState({
+        phoneNumber
+      })
+    }
+    if((localStorage.getItem('hour') !== null)) {
+      const hour = JSON.parse(localStorage.getItem('hour'));
+      this.setState({
+        hour
+      })
+    }
+    if((localStorage.getItem('message') !== null)) {
+      const message = JSON.parse(localStorage.getItem('message'));
+      this.setState({
+        message
+      })
+    }
+  }
 
   validate = () => {
     let isValid = true;
@@ -173,12 +230,10 @@ class Step4 extends Component {
               </div>
             </section>
             <div className="links-section">
-              <button onClick={() => {
-                console.log(this.state);
-              }}>
+              <button onClick={this.saveState}>
                 <Link to={ROUTES.STEP_3}>Wstecz</Link>
               </button>
-              <button>
+              <button disabled={!this.validate} onClick={this.saveState}>
                 <Link to={ROUTES.SUMMARY}>Dalej</Link>
               </button>
             </div>
