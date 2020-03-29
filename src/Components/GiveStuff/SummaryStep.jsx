@@ -56,10 +56,10 @@ class SummaryStep extends Component {
             </section>
             <div className="links-section">
               <button>
-                <Link to={ROUTES.STEP_2}>Wstecz</Link>
+                <Link to={ROUTES.STEP_4}>Wstecz</Link>
               </button>
               <button>
-                <Link to={ROUTES.STEP_2}>Potwierdzam</Link>
+                <Link to={ROUTES.THANKS}>Potwierdzam</Link>
               </button>
             </div>
           </div>

@@ -26,8 +26,6 @@ class Step1 extends Component {
         })
       }
     }
-
-    console.log(this.state.wantToGive);
   };
 
   render() {

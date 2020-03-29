@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
 
@@ -14,16 +14,18 @@ import ThanksFull from "./ThanksFull";
 
 
 const GiveStuff = () => (
-    <>
+    <Router>
       <GiveHeader />
-      <Step1 />
-      <Step2 />
-      <Step3 />
-      <Step4 />
-      <SummaryStep />
-      <ThanksFull />
+          <Switch>
+                <Route exact path={ROUTES.STEP_1} component={Step1} />
+                <Route path={ROUTES.STEP_2} component={Step2} />
+                <Route path={ROUTES.STEP_3} component={Step3} />
+                <Route path={ROUTES.STEP_4} component={Step4} />
+                <Route path={ROUTES.SUMMARY} component={SummaryStep} />
+                <Route path={ROUTES.THANKS} component={ThanksFull} />
+          </Switch>
       <Contact />
-    </>
+    </Router>
 );
 
 const GiveStuffLink = () => (

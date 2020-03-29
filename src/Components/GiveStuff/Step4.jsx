@@ -6,7 +6,7 @@ import * as ROUTES from "../../constants/routes";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-class Step1 extends Component {
+class Step4 extends Component {
   state = {
     startDate: new Date(),
     street: '',
@@ -176,10 +176,10 @@ class Step1 extends Component {
               <button onClick={() => {
                 console.log(this.state);
               }}>
-                Wstecz
+                <Link to={ROUTES.STEP_3}>Wstecz</Link>
               </button>
               <button>
-                <Link to={ROUTES.STEP_2}>Dalej</Link>
+                <Link to={ROUTES.SUMMARY}>Dalej</Link>
               </button>
             </div>
           </div>
@@ -188,4 +188,4 @@ class Step1 extends Component {
   }
 }
 
-export default Step1;
+export default Step4;

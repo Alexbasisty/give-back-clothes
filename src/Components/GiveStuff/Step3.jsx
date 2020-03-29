@@ -3,7 +3,7 @@ import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
-class Step1 extends Component {
+class Step3 extends Component {
   state = {
     isDown: true,
     lokalization: '- wybierz -',
@@ -149,7 +149,7 @@ class Step1 extends Component {
                 <Link to={ROUTES.STEP_2}>Wstecz</Link>
               </button>
               <button>
-                Dalej
+                <Link to={ROUTES.STEP_4}>Dalej</Link>
               </button>
             </div>
           </div>
@@ -158,4 +158,4 @@ class Step1 extends Component {
   }
 }
 
-export default Step1;
+export default Step3;

@@ -3,7 +3,7 @@ import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
-class Step1 extends Component {
+class Step2 extends Component {
   state = {
     isDown: true,
     bagsNumber: '- wybierz -',
@@ -64,10 +64,10 @@ class Step1 extends Component {
             </div>
             <div className="links-section">
               <button>
-                <Link to={ROUTES.STEP_2}>Wstecz</Link>
+                <Link to={ROUTES.STEP_1}>Wstecz</Link>
               </button>
               <button>
-                <Link to={ROUTES.STEP_2}>Dalej</Link>
+                <Link to={ROUTES.STEP_3}>Dalej</Link>
               </button>
             </div>
           </div>
@@ -76,4 +76,4 @@ class Step1 extends Component {
   }
 }
 
-export default Step1;
+export default Step2;
