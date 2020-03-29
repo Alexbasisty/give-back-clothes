@@ -10,7 +10,7 @@ class SummaryStep extends Component {
     foundation: '',
     whomHelp: '',
     street: '',
-    date: 0,
+    date: '',
     city: '',
     postCode: '',
     phoneNumber: '',
@@ -55,10 +55,10 @@ class SummaryStep extends Component {
         street
       })
     }
-    else if((localStorage.getItem('date') !== null)) {
-      const date = JSON.parse(localStorage.getItem('date'));
+    if((localStorage.getItem('date') !== null)) {
+      const date = JSON.parse(localStorage.getItem('date')).substring(0,10);
       this.setState({
-        startDate: date
+        date: date
       })
     }
     if((localStorage.getItem('city') !== null)) {

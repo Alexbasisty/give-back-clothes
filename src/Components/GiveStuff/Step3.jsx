@@ -121,7 +121,7 @@ class Step3 extends Component {
                   <span id="Poznań">Poznań</span>
                   <span id="Warszawa">Warszawa</span>
                   <span id="Kraków">Kraków</span>
-                  <span id="Wrocłąw">Wrocłąw</span>
+                  <span id="Wrocłąw">Wrocław</span>
                   <span id="Katowice">Katowice</span>
                 </div>}
             <section className="help-groups">
