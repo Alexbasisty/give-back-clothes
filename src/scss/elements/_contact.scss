@@ -7,12 +7,22 @@
   display: flex;
   flex-direction: column;
 
+  @include mobile {
+    padding-right: 0;
+    align-items: center;
+  }
+
   .contact-form {
     padding-top: 200px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     z-index: 2;
+
+    @include mobile {
+      align-items: center;
+      padding-top: 50px;
+    }
 
     .title {
       font-size: 3.8rem;
@@ -24,6 +34,10 @@
       img {
         padding-top: 25px;
         padding-bottom: 70px;
+
+        @include mobile {
+          padding-bottom: 30px;
+        }
       }
     }
   }
@@ -40,12 +54,15 @@
   .contact-data {
     display: flex;
     padding-bottom: 40px;
+
+    @include mobile {
+      flex-direction: column;
+    }
   }
 
   label {
     font-size: 1.6rem;
     font-weight: 600;
-    //padding-bottom: 10px;
 
     &.message {
       display: flex;

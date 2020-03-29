@@ -39,6 +39,15 @@ ul.navbar {
   display: flex;
   justify-content: flex-end;
   padding-top: 1.7rem;
+
+  @include mobile {
+    justify-content: flex-start;
+
+    li:not(:first-of-type) {
+      display: none;
+    }
+  }
+
   li {
     display: flex;
     align-items: center;

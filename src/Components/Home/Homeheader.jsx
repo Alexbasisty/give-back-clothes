@@ -9,7 +9,7 @@ const Homeheader = () => (
       <div className="home-title">
         <div className="text">
           <p style={{margin: 0}}>Zacznij pomagać!</p>
-          <p style={{margin: 0, whiteSpace: "nowrap"}}>Oddaj niechciane rzeczy w zaufane ręce</p>
+          <p style={{margin: 0}}>Oddaj niechciane rzeczy w zaufane ręce</p>
         </div>
         <div className="decoration" />
         <Homelinks />

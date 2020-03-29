@@ -4,18 +4,30 @@
     font-size: 2.4rem;
     line-height: 4.5rem;
     padding-bottom: 29px;
+
+    @include mobile {
+      padding-bottom: 10px;
+    }
   }
 
   img {
     width: 50px;
   }
-
+  small {
+    @include mobile {
+      line-height: 2.4rem;
+    }
+  }
   .summary {
     font-size: 2.4rem;
     line-height: 4.5rem;
     display: flex;
     align-items: center;
     padding-bottom: 30px;
+
+    @include mobile {
+      padding-bottom: 10px;
+    }
   }
 
   .address, .date-data {
@@ -27,10 +39,18 @@
       font-size: 2.4rem;
       font-weight: 300;
 
+      @include mobile {
+        justify-content: flex-start;
+      }
+
       p {
         text-align: left;
         width: -moz-min-content;
         width: min-content;
+
+        @include mobile {
+          padding-right: 30px;
+        }
       }
 
       span {

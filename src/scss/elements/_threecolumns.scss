@@ -1,7 +1,12 @@
 .column-wrapper {
   display: flex;
   justify-content: space-around;
-  background: transparent url('../../assets/3 Columns Background.png') 0 0 no-repeat padding-box;
+  background: transparent url('../../assets/3 Columns Background.png') 0 0 repeat padding-box;
+
+
+  @include mobile {
+    flex-direction: column;
+  }
 
   article {
     padding-top: 47px;
@@ -26,6 +31,12 @@
       line-height: 1.8rem;
       width: 334px;
       padding-top: 28px;
+
+
+      @include mobile {
+        text-align: center;
+        margin: 0 auto;
+      }
     }
   }
 }

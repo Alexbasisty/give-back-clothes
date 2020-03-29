@@ -10,12 +10,19 @@ class Step2 extends Component {
   };
 
   saveState = () => {
-    localStorage.setItem('bag_numb', this.state.bagsNumber)
+    localStorage.setItem('bag_numb', JSON.stringify(this.state.bagsNumber))
   };
 
   componentDidMount() {
     if ((localStorage.getItem('bag_numb') !== null)) {
-      const bagsNumber = JSON.parse(localStorage.getItem('bag_numb'));
+      const x = localStorage.getItem('bag_numb').replace(/\\n/g, "\\n")
+          .replace(/\\'/g, "\\'")
+          .replace(/\\"/g, '\\"')
+          .replace(/\\&/g, "\\&")
+          .replace(/\\r/g, "\\r")
+          .replace(/\\t/g, "\\t")
+          .replace(/\\b/g, "\\b");
+      const bagsNumber = JSON.parse(x);
 
       this.setState({
         bagsNumber

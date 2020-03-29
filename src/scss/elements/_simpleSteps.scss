@@ -21,6 +21,11 @@
   padding-bottom: 76px;
   padding-top: 71px;
   background-color: $color-borders;
+
+
+  @include mobile {
+    flex-wrap: wrap;
+  }
 }
 
 .single-step {
@@ -30,6 +35,12 @@
   justify-content: center;
   width: 130px;
   text-align: center;
+
+
+  @include mobile {
+    width: 250px;
+    padding-top: 50px;
+  }
 
   p {
     font-size: 1.8rem;

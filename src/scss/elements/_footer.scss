@@ -6,14 +6,27 @@ footer.footer {
   position: absolute;
   width: 100%;
 
+  @include mobile {
+    right: 0;
+    left: 10px;
+  }
+
   .a {
     width: 54%;
+
+    @include mobile {
+      width: 0;
+    }
   }
 
   .b {
     width: 50%;
     display: flex;
     justify-content: space-between;
+
+    @include mobile {
+      width: 90vw;
+    }
   }
 
   small {
