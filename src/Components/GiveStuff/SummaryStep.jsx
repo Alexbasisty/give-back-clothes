@@ -4,10 +4,12 @@ import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from '../Session';
 import app from "firebase";
 
+import { StuffContext } from "./StuffContext";
+
 const SummaryStepContext = () => (
   <AuthUserContext.Consumer>
     {authUser =>
-      <SummaryStep user={authUser}/>
+        <SummaryStep user={authUser} />
     }
   </AuthUserContext.Consumer>
 );
