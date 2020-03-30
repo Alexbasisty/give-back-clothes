@@ -12,10 +12,13 @@ import Step4 from "./Step4";
 import SummaryStepContext from "./SummaryStep";
 import ThanksFull from "./ThanksFull";
 
+export const Stuff = React.createContext({});
+
 
 const GiveStuff = () => {
 
   return (
+      <Stuff.Provider>
       <Router>
         <GiveHeader />
         <Switch>
@@ -28,6 +31,7 @@ const GiveStuff = () => {
         </Switch>
         <Contact />
       </Router>
+      </Stuff.Provider>
   );
 };
 

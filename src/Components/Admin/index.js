@@ -50,7 +50,8 @@ class AdminPage extends Component {
 }
 
 const UserList = ({ users }) => {
-  console.log(users.key);
+
+  console.log({...users});
   return  (
       <ul style={{fontSize: '2rem', display: 'block'}}>
         {users.map(user => (
@@ -62,7 +63,7 @@ const UserList = ({ users }) => {
           <strong>E-Mail:</strong> {user.email}
         </span>
               <span>
-          <strong>User donation:</strong> {user.bagsNumber}
+          <strong>User donation:</strong> {user.uid.key}
         </span>
             </li>
         ))}
