@@ -8,9 +8,11 @@ p {
 }
 
 .give-stuff-header {
-  background: transparent url('../../assets/Form-Hero-Image.jpg') no-repeat padding-box;
+  background: transparent url('../../assets/Form-Hero-Image.jpg') no-repeat padding-box left / auto 100%;
   text-align: center;
-
+  position: relative;
+  top: -200px;
+  padding-top: 200px;
   h2 {
     padding-top: 19px;
     font-size: 4rem;

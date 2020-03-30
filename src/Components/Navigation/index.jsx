@@ -49,14 +49,14 @@ const NavigationAuth = ({ authUser }) => (
         <li>
           <ScrollLink className="nav-link" to='contact'>Kontakt</ScrollLink>
         </li>
-        {/*<li>*/}
-        {/*  <Link to={ROUTES.ACCOUNT}>Profil</Link>*/}
-        {/*</li>*/}
-        {/*{!!authUser.roles[ROLES.ADMIN] && (*/}
-        {/*    <li>*/}
-        {/*      <Link to={ROUTES.ADMIN}>Admin</Link>*/}
-        {/*    </li>*/}
-        {/*)}*/}
+        <li className="nav-link">
+          <Link to={ROUTES.ACCOUNT}>Profil</Link>
+        </li>
+        {!!authUser.roles[ROLES.ADMIN] && (
+            <li className="nav-link">
+              <Link to={ROUTES.ADMIN}>Admin</Link>
+            </li>
+        )}
       </ul>
     </div>
 );

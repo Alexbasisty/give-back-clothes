@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
 import ImportantField from "./ImportantField";
+import { StuffContext } from "./StuffContext";
 
 class Step1 extends Component {
   state = {
@@ -35,9 +36,8 @@ class Step1 extends Component {
   };
 
   render() {
-    // const data = JSON.parse(localStorage.getItem('user_staff'));
     return (
-        <>
+        <StuffContext.Provider value={this.state.wantToGive}>
           <ImportantField>
             Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.
           </ImportantField>
@@ -95,9 +95,11 @@ class Step1 extends Component {
               </button>
             </div>
           </div>
-        </>
+        </StuffContext.Provider>
     );
   }
 }
+
+
 
 export default Step1;

@@ -4,6 +4,7 @@
   ul.login-buttons {
     margin-top: 4.6rem;
     .nav-link {
+
       font-size: 1.4rem;
       line-height: 1.8rem;
       padding-right: 3rem;
@@ -39,6 +40,8 @@ ul.navbar {
   display: flex;
   justify-content: flex-end;
   padding-top: 1.7rem;
+  position: relative;
+  z-index: 999;
 
   @include mobile {
     justify-content: flex-start;

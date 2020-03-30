@@ -12,10 +12,12 @@ import Step4 from "./Step4";
 import SummaryStepContext from "./SummaryStep";
 import ThanksFull from "./ThanksFull";
 
+import { StuffContext } from "./StuffContext";
 
 const GiveStuff = () => {
 
   return (
+      <>
       <Router>
         <GiveHeader />
         <Switch>
@@ -28,6 +30,7 @@ const GiveStuff = () => {
         </Switch>
         <Contact />
       </Router>
+      </>
   );
 };
 
