@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
@@ -15,9 +15,18 @@ import ThanksFull from "./ThanksFull";
 import { StuffContext } from "./StuffContext";
 
 const GiveStuff = () => {
+  const [state, setState] = useState({});
+
+  const value = {
+    state: state,
+    setState: (value) => setState(prevState => ({
+      ...prevState,
+      ...value
+    }))
+  }
 
   return (
-      <>
+      <StuffContext.Provider value={value}>
       <Router>
         <GiveHeader />
         <Switch>
@@ -30,7 +39,7 @@ const GiveStuff = () => {
         </Switch>
         <Contact />
       </Router>
-      </>
+      </StuffContext.Provider>
   );
 };
 

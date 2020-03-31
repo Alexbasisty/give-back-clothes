@@ -130,64 +130,68 @@ class SummaryStep extends Component {
       message} = this.state;
 
     return (
-        <>
-          <div className="step1-form">
-            <h1>Podsumowanie Twojej darowizny</h1>
-            <h2>Oddajesz:</h2>
-            <div className="summary">
-              <img src={require('../../assets/Icon-1.svg')} alt="t-shirt" />
-              <small style={{width: '900px'}}>worków: {bagsNumber}; {[...staff]}, {[...whomHelp]} {foundation}</small>
-            </div>
-            <div className="summary">
-              <img src={require('../../assets/Icon-4.svg')} alt="circle-arrows" />
-              <small>dla lokalizacji: {lokalization}</small>
-            </div>
-            <section id="pick-up-datas">
-              <div className="address">
-                <h5>Adres odbioru:</h5>
-                <div className="street">
-                  <p>Ulica</p>
-                  <span>{street}</span>
+        <StuffContext.Consumer>
+          {context => (
+              <div className="step1-form">
+                <h1>Podsumowanie Twojej darowizny</h1>
+                {console.log(context.state, context)}
+                <h2>Oddajesz:</h2>
+                <div className="summary">
+                  <img src={require('../../assets/Icon-1.svg')} alt="t-shirt" />
+                  <small style={{width: '900px'}}>worków: {bagsNumber}; {[...staff]}, {[...whomHelp]} {foundation}</small>
                 </div>
-                <div className="town">
-                  <p>Miasto</p>
-                  <span>{city}</span>
+                <div className="summary">
+                  <img src={require('../../assets/Icon-4.svg')} alt="circle-arrows" />
+                  <small>dla lokalizacji: {lokalization}</small>
                 </div>
-                <div className="post-code">
-                  <p>Kod pocztowy</p>
-                  <span>{postCode}</span>
-                </div>
-                <div className="street">
-                  <p>Numer telefonu</p>
-                  <span>{phoneNumber}</span>
+                <section id="pick-up-datas">
+                  <div className="address">
+                    <h5>Adres odbioru:</h5>
+                    <div className="street">
+                      <p>Ulica</p>
+                      <span>{street}</span>
+                    </div>
+                    <div className="town">
+                      <p>Miasto</p>
+                      <span>{city}</span>
+                    </div>
+                    <div className="post-code">
+                      <p>Kod pocztowy</p>
+                      <span>{postCode}</span>
+                    </div>
+                    <div className="street">
+                      <p>Numer telefonu</p>
+                      <span>{phoneNumber}</span>
+                    </div>
+                  </div>
+                  <div className="date-data">
+                    <h5>Termin odbioru:</h5>
+                    <div className="date">
+                      <p>Data</p>
+                      <span>{date}</span>
+                    </div>
+                    <div className="hour">
+                      <p>Godzina</p>
+                      <span>{hour}</span>
+                    </div>
+                    <div className="notes-for-courier">
+                      <p>Uwagi dla kuriera</p>
+                      <span>{message}</span>
+                    </div>
+                  </div>
+                </section>
+                <button onClick={() => context.setState({ dupa: 'Paweł' })}>Kliknij mnie</button>
+                <div className="links-section">
+                  <button>
+                    <Link to={ROUTES.STEP_4}>Wstecz</Link>
+                  </button>
+                  <button onClick={this.handleSubmitSummary}>
+                    <Link to={ROUTES.THANKS}>Potwierdzam</Link>
+                  </button>
                 </div>
               </div>
-              <div className="date-data">
-                <h5>Termin odbioru:</h5>
-                <div className="date">
-                  <p>Data</p>
-                  <span>{date}</span>
-                </div>
-                <div className="hour">
-                  <p>Godzina</p>
-                  <span>{hour}</span>
-                </div>
-                <div className="notes-for-courier">
-                  <p>Uwagi dla kuriera</p>
-                  <span>{message}</span>
-                </div>
-              </div>
-            </section>
-            <div className="links-section">
-              <button>
-                <Link to={ROUTES.STEP_4}>Wstecz</Link>
-              </button>
-              <button onClick={this.handleSubmitSummary}>
-                <Link to={ROUTES.THANKS}>Potwierdzam</Link>
-              </button>
-            </div>
-          </div>
-        </>
+          )}
+        </StuffContext.Consumer>
     );
   }
 }

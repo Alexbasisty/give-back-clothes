@@ -1,43 +1,47 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
 import ImportantField from "./ImportantField";
 import { StuffContext } from "./StuffContext";
 
-class Step1 extends Component {
-  state = {
+const Step1 = () => {
+  const context = useContext(StuffContext);
+  console.log(context);
+  const [state, setState] = useState({
     wantToGive: ['ubrania, które nadają się do ponownego użycia '],
+  })
+
+
+  const saveState = () => {
+    localStorage.setItem('user_staff', JSON.stringify(state.wantToGive));
   };
 
-  saveState = () => {
-    localStorage.setItem('user_staff', JSON.stringify(this.state.wantToGive));
-  };
-
-  handleStuffSelect = (event) => {
-    const giveList = this.state.wantToGive;
+  const handleStuffSelect = (event) => {
+    const giveList = [...state.wantToGive];
     const check = event.target.checked;
     const checkedStuff = event.target.value;
 
     if(check) {
-      this.setState({
-        wantToGive: [...this.state.wantToGive, checkedStuff]
-      })
+      setState(prevState => ({
+        ...prevState,
+        wantToGive: [...state.wantToGive, checkedStuff]
+      }))
     } else {
       const index = giveList.indexOf(checkedStuff);
       if(index > -1) {
         giveList.splice(index, 1);
-        this.setState({
+        setState(prevState => ({
+          ...prevState,
           wantToGive: giveList
-        })
+        }))
       }
     }
 
-    this.saveState();
+    context.setState(state);
   };
 
-  render() {
     return (
-        <StuffContext.Provider value={this.state.wantToGive}>
+        <>
           <ImportantField>
             Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.
           </ImportantField>
@@ -48,7 +52,7 @@ class Step1 extends Component {
               <label>
                 <input
                     defaultChecked
-                    onChange={this.handleStuffSelect}
+                    onChange={handleStuffSelect}
                     type="checkbox"
                     value="ubrania, które nadają się do ponownego użycia "/>
                 <span className="checkmark"/>
@@ -57,7 +61,7 @@ class Step1 extends Component {
               <label>
                 <input type="checkbox"
                        // checked={data.includes("ubrania, do wyrzucenia")}
-                       onChange={this.handleStuffSelect}
+                       onChange={handleStuffSelect}
                        value="ubrania, do wyrzucenia "
                 />
                 <span className="checkmark"/>
@@ -66,7 +70,7 @@ class Step1 extends Component {
               <label>
                 <input type="checkbox"
                        value="zabawki "
-                       onChange={this.handleStuffSelect}
+                       onChange={handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 zabawki
@@ -74,7 +78,7 @@ class Step1 extends Component {
               <label>
                 <input type="checkbox"
                        value="książki "
-                       onChange={this.handleStuffSelect}
+                       onChange={handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 książki
@@ -82,7 +86,7 @@ class Step1 extends Component {
               <label>
                 <input type="checkbox"
                        value="inne "
-                       onChange={this.handleStuffSelect}
+                       onChange={handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 Inne
@@ -90,14 +94,13 @@ class Step1 extends Component {
             </form>
 
             <div className="links-section">
-              <button onClick={this.saveState}>
-                <Link to={ROUTES.STEP_2}>Dalej</Link>
+              <button onClick={saveState}>
+                <Link to={ROUTES.SUMMARY}>Dalej</Link>
               </button>
             </div>
           </div>
-        </StuffContext.Provider>
+        </>
     );
-  }
 }
 
 
