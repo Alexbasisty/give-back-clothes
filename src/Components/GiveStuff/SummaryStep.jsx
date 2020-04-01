@@ -116,7 +116,7 @@ class SummaryStep extends Component {
   };
 
   render() {
-    const { staff,
+    const {
       bagsNumber,
       lokalization,
       foundation,
@@ -134,11 +134,11 @@ class SummaryStep extends Component {
           {context => (
               <div className="step1-form">
                 <h1>Podsumowanie Twojej darowizny</h1>
-                {console.log(context.state, context)}
+                {console.log(context)}
                 <h2>Oddajesz:</h2>
                 <div className="summary">
                   <img src={require('../../assets/Icon-1.svg')} alt="t-shirt" />
-                  <small style={{width: '900px'}}>worków: {bagsNumber}; {[...staff]}, {[...whomHelp]} {foundation}</small>
+                  <small style={{width: '900px'}}>worków: {bagsNumber}; {context.state.wantToGive}, {[...whomHelp]} {foundation}</small>
                 </div>
                 <div className="summary">
                   <img src={require('../../assets/Icon-4.svg')} alt="circle-arrows" />
@@ -180,7 +180,6 @@ class SummaryStep extends Component {
                     </div>
                   </div>
                 </section>
-                <button onClick={() => context.setState({ dupa: 'Paweł' })}>Kliknij mnie</button>
                 <div className="links-section">
                   <button>
                     <Link to={ROUTES.STEP_4}>Wstecz</Link>

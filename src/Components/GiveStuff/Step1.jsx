@@ -6,15 +6,15 @@ import { StuffContext } from "./StuffContext";
 
 const Step1 = () => {
   const context = useContext(StuffContext);
-  console.log(context);
+
   const [state, setState] = useState({
     wantToGive: ['ubrania, które nadają się do ponownego użycia '],
-  })
+  });
 
 
-  const saveState = () => {
-    localStorage.setItem('user_staff', JSON.stringify(state.wantToGive));
-  };
+  // const saveState = () => {
+  //   localStorage.setItem('user_staff', JSON.stringify(state.wantToGive));
+  // };
 
   const handleStuffSelect = (event) => {
     const giveList = [...state.wantToGive];
@@ -94,8 +94,8 @@ const Step1 = () => {
             </form>
 
             <div className="links-section">
-              <button onClick={saveState}>
-                <Link to={ROUTES.SUMMARY}>Dalej</Link>
+              <button>
+                <Link to={ROUTES.STEP_2}>Dalej</Link>
               </button>
             </div>
           </div>
