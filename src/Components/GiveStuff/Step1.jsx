@@ -94,7 +94,7 @@ const Step1 = () => {
             </form>
 
             <div className="links-section">
-              <button>
+              <button onClick={() => {context.setState(state)}}>
                 <Link to={ROUTES.STEP_2}>Dalej</Link>
               </button>
             </div>
