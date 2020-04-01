@@ -138,7 +138,7 @@ class SummaryStep extends Component {
                 <h2>Oddajesz:</h2>
                 <div className="summary">
                   <img src={require('../../assets/Icon-1.svg')} alt="t-shirt" />
-                  <small style={{width: '900px'}}>worków: {bagsNumber}; {context.state.wantToGive}, {[...whomHelp]} {foundation}</small>
+                  <small style={{width: '900px'}}>worków: {context.state.bagsNumber}; {context.state.wantToGive}, {[...whomHelp]} {foundation}</small>
                 </div>
                 <div className="summary">
                   <img src={require('../../assets/Icon-4.svg')} alt="circle-arrows" />
