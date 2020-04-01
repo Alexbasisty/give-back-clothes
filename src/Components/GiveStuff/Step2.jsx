@@ -49,11 +49,9 @@ const Step2 = () => {
     }
 
     handleArrow();
-
   };
 
   useEffect(() => {
-    console.log(bagsNumber);
     context.setState(bagsNumber)
   }, [bagsNumber]);
 
