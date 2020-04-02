@@ -39,63 +39,67 @@ const Step3 = () => {
     whomHelp: ['dzieciom '],
   });
   const [localization, setLocalization] = useState({
-    localization: '- wybierz -',
+    city: '- wybierz -',
   });
   const [fund, setFund] = useState({
-    fundation: ''
+    foundation: ''
   });
 
   const handleArrow = () => {
     setDown(prevState => !prevState)
   };
+
   const handleWhoHelp = (event) => {
-    const helpList = state.whomHelp;
+    const helpList = [...help.whomHelp];
     const check = event.target.checked;
     const checkedStuff = event.target.value;
 
     if (check) {
-      this.setState({
-        whomHelp: [...this.state.whomHelp, checkedStuff]
-      })
+      setHelp(prevState => ({
+        ...prevState,
+        whomHelp: [...help.whomHelp, checkedStuff]
+      }))
     } else {
       const index = helpList.indexOf(checkedStuff);
       if (index > -1) {
         helpList.splice(index, 1);
-        this.setState({
+        setHelp(prevState => ({
+          ...prevState,
           whomHelp: helpList
-        })
+        }))
       }
     }
-    this.saveState();
   };
 
   const handleSelect = e => {
     if (e.target.id.length > 0) {
-      this.setState({
-        lokalization: e.target.id
-      });
-      this.saveState();
+      setLocalization({ city: e.target.id });
     } else {
-      this.setState({
-        lokalization: '- wybierz -'
+      setLocalization({
+        city: '- wybierz -'
       });
     }
   handleArrow()
   };
 
   const handleInputFoundation = e => {
-    this.setState({
+    setFund({
       foundation: e.target.value,
     });
 
-    if(this.state.foundation.length > 1) {
-      this.setState({
+    if(fund.foundation.length > 1) {
+      setHelp({
         whomHelp: []
       })
     }
   };
 
-    const { lokalization, foundation } = this.state;
+  useEffect(() => {
+    context.setState(localization);
+    context.setState(help);
+    context.setState(fund);
+    console.log(context);
+  }, [help, localization, fund]);
 
     return  (
         <>
@@ -113,7 +117,7 @@ const Step3 = () => {
                 <p
                     onClick={handleArrow}
                 >
-                  {lokalization}
+                  {localization.city}
                   {isDown ? <img src={require('../../assets/Icon-Arrow-Down.svg')} alt="down"/> : <img src={require('../../assets/Icon-Arrow-Up.svg')} alt="down"/>}
                 </p>
               </div>
@@ -177,7 +181,7 @@ const Step3 = () => {
               <input
                   onChange={handleInputFoundation}
                   type="text"
-                  value={foundation}/>
+                  value={fund.foundation}/>
             </section>
 
             <div className="links-section">
