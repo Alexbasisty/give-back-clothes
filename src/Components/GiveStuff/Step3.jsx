@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
+import {StuffContext} from "./StuffContext";
 
 const Step3 = () => {
   // state = {
@@ -32,9 +33,23 @@ const Step3 = () => {
   //     })
   //   }
   // }
+  const context = useContext(StuffContext);
+  const [isDown, setDown] = useState(true);
+  const [help, setHelp] = useState({
+    whomHelp: ['dzieciom '],
+  });
+  const [localization, setLocalization] = useState({
+    localization: '- wybierz -',
+  });
+  const [fund, setFund] = useState({
+    fundation: ''
+  });
 
+  const handleArrow = () => {
+    setDown(prevState => !prevState)
+  };
   const handleWhoHelp = (event) => {
-    const helpList = this.state.whomHelp;
+    const helpList = state.whomHelp;
     const check = event.target.checked;
     const checkedStuff = event.target.value;
 
@@ -64,9 +79,8 @@ const Step3 = () => {
       this.setState({
         lokalization: '- wybierz -'
       });
-      this.saveState();
     }
-    this.handleArrow()
+  handleArrow()
   };
 
   const handleInputFoundation = e => {
@@ -81,13 +95,7 @@ const Step3 = () => {
     }
   };
 
-  const handleArrow = () => {
-    this.setState({
-      isDown: !this.state.isDown
-    })
-  };
-
-    const { isDown, lokalization, foundation } = this.state;
+    const { lokalization, foundation } = this.state;
 
     return  (
         <>
