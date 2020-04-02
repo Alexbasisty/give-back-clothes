@@ -1,60 +1,64 @@
-import React, { Component } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
+import {StuffContext} from "./StuffContext";
 
-class Step2 extends Component {
-  state = {
-    isDown: true,
+const Step2 = () => {
+  const context = useContext(StuffContext);
+  const [isDown, setDown] = useState(true);
+  const [bagsNumber, setBagsNumber] = useState({
     bagsNumber: '- wybierz -',
-  };
+  });
+// state = {
+  //   isDown: true,
+  //   bagsNumber: '- wybierz -',
+  // };
+  //
+  // saveState = () => {
+  //   localStorage.setItem('bag_numb', JSON.stringify(this.state.bagsNumber))
+  // };
 
-  saveState = () => {
-    localStorage.setItem('bag_numb', JSON.stringify(this.state.bagsNumber))
-  };
+  // componentDidMount() {
+  //   if ((localStorage.getItem('bag_numb') !== null)) {
+  //     const x = localStorage.getItem('bag_numb').replace(/\\n/g, "\\n")
+  //         .replace(/\\'/g, "\\'")
+  //         .replace(/\\"/g, '\\"')
+  //         .replace(/\\&/g, "\\&")
+  //         .replace(/\\r/g, "\\r")
+  //         .replace(/\\t/g, "\\t")
+  //         .replace(/\\b/g, "\\b");
+  //     const bagsNumber = JSON.parse(x);
+  //
+  //     this.setState({
+  //       bagsNumber
+  //     })
+  //   }
+  // }  setState(prevState => ({
+  //         ...prevState,
+  //         wantToGive: [...state.wantToGive, checkedStuff]
+  //       }))
 
-  componentDidMount() {
-    if ((localStorage.getItem('bag_numb') !== null)) {
-      const x = localStorage.getItem('bag_numb').replace(/\\n/g, "\\n")
-          .replace(/\\'/g, "\\'")
-          .replace(/\\"/g, '\\"')
-          .replace(/\\&/g, "\\&")
-          .replace(/\\r/g, "\\r")
-          .replace(/\\t/g, "\\t")
-          .replace(/\\b/g, "\\b");
-      const bagsNumber = JSON.parse(x);
-
-      this.setState({
-        bagsNumber
+  const handleSelect = e => {
+    if(e.target.id.length > 0) {
+      setBagsNumber({bagsNumber: e.target.id})
+    } else {
+      setBagsNumber({
+        bagsNumber: '- wybierz -',
       })
     }
-  }
 
-  handleSelect = e => {
-    if(e.target.id.length > 0) {
-      this.setState({
-        bagsNumber: e.target.id
-      });
-    } else {
-      this.setState({
-        bagsNumber: '- wybierz -'
-      });
-
-      this.saveState();
-    }
-
-
-    this.handleArrow()
+    handleArrow();
   };
 
-  handleArrow = () => {
-    this.setState({
-      isDown: !this.state.isDown
-    })
+  useEffect(() => {
+    context.setState(bagsNumber)
+  }, [bagsNumber]);
+
+  const handleArrow = () => {
+    setDown(prevState => !prevState)
   };
 
-  render() {
-    const { isDown, bagsNumber } = this.state;
     return (
         <>
           <ImportantField>
@@ -67,9 +71,9 @@ class Step2 extends Component {
               <div className="select-title">
                 <h4>Liczba 60l worków:</h4>
                 <p
-                  onClick={this.handleArrow}
+                  onClick={handleArrow}
                 >
-                  {bagsNumber}
+                  {bagsNumber.bagsNumber}
                   {isDown ? <img src={require('../../assets/Icon-Arrow-Down.svg')} alt="down"/> : <img src={require('../../assets/Icon-Arrow-Up.svg')} alt="down"/>}
                 </p>
               </div>
@@ -77,7 +81,7 @@ class Step2 extends Component {
                   ?
                   ''
                   :
-                  <div className="select" onClick={this.handleSelect}>
+                  <div className="select" onClick={handleSelect}>
                     <span id="1">1</span>
                     <span id="2">2</span>
                     <span id="3">3</span>
@@ -86,17 +90,16 @@ class Step2 extends Component {
                   </div>}
             </div>
             <div className="links-section">
-              <button onClick={this.saveState}>
+              <button>
                 <Link to={ROUTES.STEP_1}>Wstecz</Link>
               </button>
-              <button onClick={this.saveState}>
+              <button>
                 <Link to={ROUTES.STEP_3}>Dalej</Link>
               </button>
             </div>
           </div>
         </>
-    );
-  }
-}
+    )
+};
 
 export default Step2;

@@ -23,7 +23,7 @@ const GiveStuff = () => {
       ...prevState,
       ...value
     }))
-  }
+  };
 
   return (
       <StuffContext.Provider value={value}>

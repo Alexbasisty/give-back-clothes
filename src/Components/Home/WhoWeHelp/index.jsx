@@ -55,7 +55,7 @@ class WhoWeHelp extends Component {
     }
 
     const renderPageNumbers = pageNumbers.map(number => (
-        <li className={classnames({choose: currentPage == number})} key={number} id={number} onClick={this.handlePagination}>{number}</li>
+        <li className={classnames({choose: currentPage === number})} key={number} id={number} onClick={this.handlePagination}>{number}</li>
     ));
 
     return (
@@ -63,9 +63,9 @@ class WhoWeHelp extends Component {
           <h2>Komu pomagamy?</h2>
           <img src={require('../../../assets/Decoration.svg')} className="decor" alt='decoration' />
           <section className='links'>
-            <p id='0' className={classnames({choose: fundation == 0})} onClick={this.handleGetData}>Fundacjom</p>
-            <p id='1' className={classnames('middle-button', {choose: fundation == 1})} onClick={this.handleGetData}>Organizacjom pozarządowym</p>
-            <p id='2' className={classnames({choose: fundation == 2})} onClick={this.handleGetData}>Lokalnym zbiórkom</p>
+            <p id='0' className={classnames({choose: fundation === 0})} onClick={this.handleGetData}>Fundacjom</p>
+            <p id='1' className={classnames('middle-button', {choose: fundation === 1})} onClick={this.handleGetData}>Organizacjom pozarządowym</p>
+            <p id='2' className={classnames({choose: fundation === 2})} onClick={this.handleGetData}>Lokalnym zbiórkom</p>
           </section>
         <section className="items">
           <p>{description}</p>

@@ -1,94 +1,105 @@
-import React, { Component } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
+import {StuffContext} from "./StuffContext";
 
-class Step3 extends Component {
-  state = {
-    isDown: true,
-    lokalization: '- wybierz -',
+const Step3 = () => {
+  // state = {
+  //   isDown: true,
+  //   lokalization: '- wybierz -',
+  //   whomHelp: ['dzieciom '],
+  //   foundation: ''
+  // };
+
+  // saveState = () => {
+  //   localStorage.setItem('lokalization', JSON.stringify(this.state.lokalization));
+  //   localStorage.setItem('whomHelp', JSON.stringify(this.state.whomHelp));
+  //   localStorage.setItem('foundation', JSON.stringify(this.state.foundation));
+  // };
+
+  // componentDidMount() {
+  //   if ((localStorage.getItem('lokalization') !== null)) {
+  //     const lokalization = JSON.parse(localStorage.getItem('lokalization'));
+  //
+  //     this.setState({
+  //       lokalization
+  //     })
+  //   }
+  //   if((localStorage.getItem('foundation') !== null)) {
+  //     const foundation = JSON.parse(localStorage.getItem('foundation'));
+  //     this.setState({
+  //       foundation
+  //     })
+  //   }
+  // }
+  const context = useContext(StuffContext);
+  const [isDown, setDown] = useState(true);
+  const [help, setHelp] = useState({
     whomHelp: ['dzieciom '],
+  });
+  const [localization, setLocalization] = useState({
+    city: '- wybierz -',
+  });
+  const [fund, setFund] = useState({
     foundation: ''
+  });
+
+  const handleArrow = () => {
+    setDown(prevState => !prevState)
   };
 
-  saveState = () => {
-    localStorage.setItem('lokalization', JSON.stringify(this.state.lokalization));
-    localStorage.setItem('whomHelp', JSON.stringify(this.state.whomHelp));
-    localStorage.setItem('foundation', JSON.stringify(this.state.foundation));
-  };
-
-  componentDidMount() {
-    if ((localStorage.getItem('lokalization') !== null)) {
-      const lokalization = JSON.parse(localStorage.getItem('lokalization'));
-
-      this.setState({
-        lokalization
-      })
-    }
-    if((localStorage.getItem('foundation') !== null)) {
-      const foundation = JSON.parse(localStorage.getItem('foundation'));
-      this.setState({
-        foundation
-      })
-    }
-  }
-
-  handleWhoHelp = (event) => {
-    const helpList = this.state.whomHelp;
+  const handleWhoHelp = (event) => {
+    const helpList = [...help.whomHelp];
     const check = event.target.checked;
     const checkedStuff = event.target.value;
 
     if (check) {
-      this.setState({
-        whomHelp: [...this.state.whomHelp, checkedStuff]
-      })
+      setHelp(prevState => ({
+        ...prevState,
+        whomHelp: [...help.whomHelp, checkedStuff]
+      }))
     } else {
       const index = helpList.indexOf(checkedStuff);
       if (index > -1) {
         helpList.splice(index, 1);
-        this.setState({
+        setHelp(prevState => ({
+          ...prevState,
           whomHelp: helpList
-        })
+        }))
       }
     }
-    this.saveState();
   };
 
-  handleSelect = e => {
+  const handleSelect = e => {
     if (e.target.id.length > 0) {
-      this.setState({
-        lokalization: e.target.id
-      });
-      this.saveState();
+      setLocalization({ city: e.target.id });
     } else {
-      this.setState({
-        lokalization: '- wybierz -'
+      setLocalization({
+        city: '- wybierz -'
       });
-      this.saveState();
     }
-    this.handleArrow()
+  handleArrow()
   };
 
-  handleInputFoundation = e => {
-    this.setState({
+  const handleInputFoundation = e => {
+    setFund({
       foundation: e.target.value,
     });
 
-    if(this.state.foundation.length > 1) {
-      this.setState({
+    if(fund.foundation.length > 1) {
+      setHelp({
         whomHelp: []
       })
     }
   };
 
-  handleArrow = () => {
-    this.setState({
-      isDown: !this.state.isDown
-    })
-  };
-
-  render() {
-    const { isDown, lokalization, foundation } = this.state;
+  useEffect(() => {
+    context.setState(localization);
+    context.setState(help);
+    context.setState(fund);
+    console.log(context);
+  }, [help, localization, fund]);
 
     return  (
         <>
@@ -104,9 +115,9 @@ class Step3 extends Component {
             <div className="select-quo">
               <div className="select-title">
                 <p
-                    onClick={this.handleArrow}
+                    onClick={handleArrow}
                 >
-                  {lokalization}
+                  {localization.city}
                   {isDown ? <img src={require('../../assets/Icon-Arrow-Down.svg')} alt="down"/> : <img src={require('../../assets/Icon-Arrow-Up.svg')} alt="down"/>}
                 </p>
               </div>
@@ -117,7 +128,7 @@ class Step3 extends Component {
                 ''
                 :
                 <div className="select city" style={{width: '300px', float: 'none'}}
-                onClick={this.handleSelect}>
+                onClick={handleSelect}>
                   <span id="Poznań">Poznań</span>
                   <span id="Warszawa">Warszawa</span>
                   <span id="Kraków">Kraków</span>
@@ -130,35 +141,35 @@ class Step3 extends Component {
                 <label>
                   <input
                       defaultChecked
-                      onChange={this.handleWhoHelp}
+                      onChange={handleWhoHelp}
                       type="checkbox"
                       value="dzieciom "/>
                   <span>dzieciom</span>
                 </label>
                 <label>
                   <input
-                      onChange={this.handleWhoHelp}
+                      onChange={handleWhoHelp}
                       type="checkbox"
                       value="samotnym matkom "/>
                   <span>samotnym matkom</span>
                 </label>
                 <label>
                   <input
-                      onChange={this.handleWhoHelp}
+                      onChange={handleWhoHelp}
                       type="checkbox"
                       value="bezdomnym "/>
                   <span>bezdomnym</span>
                 </label>
                 <label>
                   <input
-                      onChange={this.handleWhoHelp}
+                      onChange={handleWhoHelp}
                       type="checkbox"
                       value="niepełnosprawnym "/>
                   <span>niepełnosprawnym</span>
                 </label>
                 <label>
                   <input
-                      onChange={this.handleWhoHelp}
+                      onChange={handleWhoHelp}
                       type="checkbox"
                       value="osobom starszym "/>
                   <span>osobom starszym</span>
@@ -168,23 +179,22 @@ class Step3 extends Component {
             <section className='localization'>
               <h5>Wpisz nazwę konkretnej organizacji (opcjonalnie)</h5>
               <input
-                  onChange={this.handleInputFoundation}
+                  onChange={handleInputFoundation}
                   type="text"
-                  value={foundation}/>
+                  value={fund.foundation}/>
             </section>
 
             <div className="links-section">
-              <button onClick={this.saveState}>
+              <button>
                 <Link to={ROUTES.STEP_2}>Wstecz</Link>
               </button>
-              <button onClick={this.saveState}>
+              <button>
                 <Link to={ROUTES.STEP_4}>Dalej</Link>
               </button>
             </div>
           </div>
         </>
     );
-  }
-}
+};
 
 export default Step3;
