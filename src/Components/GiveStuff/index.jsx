@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
 

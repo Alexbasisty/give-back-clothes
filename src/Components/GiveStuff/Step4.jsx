@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
@@ -6,38 +6,36 @@ import * as ROUTES from "../../constants/routes";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-class Step4 extends Component {
-  state = {
-    startDate: new Date(),
-    street: '',
-    streetError: '',
-    city: '',
-    cityError: '',
-    postCode: '',
-    postCodeError: '',
-    phoneNumber: '',
-    phoneNumberError: '',
-    hour: '',
-    hourError: '',
-    message: ''
-  };
+const Step4 = () => {
+  const [startDate, setDate] = useState(new Date());
+  const [street, setStreet] = useState('');
+  const [streetError, setStreetError] = useState('');
+  const [city, setCity] = useState('');
+  const [cityError, setCityError] = useState('');
+  const [postCode, setPostCode] = useState('');
+  const [postCodeError, setPostCodeError] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [hour, setHour] = useState('');
+  const [hourError, setHourError] = useState('');
+  const [message, setMessage] = useState('');
 
-  saveState = () => {
-    localStorage.setItem('street', JSON.stringify(this.state.street));
-    localStorage.setItem('city', JSON.stringify(this.state.city));
-    localStorage.setItem('postCode', JSON.stringify(this.state.postCode));
-    localStorage.setItem('phoneNumber', JSON.stringify(this.state.phoneNumber));
-    localStorage.setItem('date', JSON.stringify(this.state.startDate));
-    localStorage.setItem('hour', JSON.stringify(this.state.hour));
-    localStorage.setItem('message', JSON.stringify(this.state.message));
-  };
+  // saveState = () => {
+  //   localStorage.setItem('street', JSON.stringify(this.state.street));
+  //   localStorage.setItem('city', JSON.stringify(this.state.city));
+  //   localStorage.setItem('postCode', JSON.stringify(this.state.postCode));
+  //   localStorage.setItem('phoneNumber', JSON.stringify(this.state.phoneNumber));
+  //   localStorage.setItem('date', JSON.stringify(this.state.startDate));
+  //   localStorage.setItem('hour', JSON.stringify(this.state.hour));
+  //   localStorage.setItem('message', JSON.stringify(this.state.message));
+  // };
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
-    this.validate();
-    this.saveState();
+    validate();
+    // this.saveState();
   };
 
   componentDidMount() {
@@ -142,7 +140,7 @@ class Step4 extends Component {
     return isValid;
   };
 
-  handleDateChoose = date => {
+  const handleDateChoose = date => {
     this.setState({
       startDate: date
     });
@@ -150,8 +148,6 @@ class Step4 extends Component {
     this.validate();
   };
 
-  render() {
-    const { startDate, street, streetError, city, cityError, postCode, postCodeError, phoneNumber, phoneNumberError, hour, hourError, message } = this.state;
     return (
         <>
           <ImportantField>
@@ -240,7 +236,6 @@ class Step4 extends Component {
           </div>
         </>
     );
-  }
-}
+};
 
 export default Step4;
