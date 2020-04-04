@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const Step4 = () => {
   const context = useContext(StuffContext);
 
-  const [state, setState] = useState({
+  const [contact, setState] = useState({
     startDate: new Date(),
     street: '',
     streetError: '',
@@ -27,21 +27,25 @@ const Step4 = () => {
 
   useEffect(() => {
     console.log(context);
+    context.state.startDate &&  context.state.street &&
+    context.state.city && context.state.postCode &&
+    context.state.phoneNumber &&
+    context.state.hour &&
     setState(prevState => ({
       ...prevState,
       startDate: context.state.startDate,
       street: context.state.street,
       city: context.state.city,
       postCode: context.state.postCode,
-      phoneNumber: context.state?.phoneNumber,
-      hour: context.state?.hour,
-      message: context.state?.message
+      phoneNumber: context.state.phoneNumber,
+      hour: context.state.hour,
+      message: context.state.message
     }));
   }, []);
 
   const handleChange = (event) => {
     setState({
-      ...state,
+      ...contact,
       [event.target.name]: event.target.value
     });
     validate();
@@ -49,7 +53,7 @@ const Step4 = () => {
 
   const validate = () => {
     let isValid = true;
-    if (state.street?.length < 1) {
+    if (contact.street?.length < 1) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -61,7 +65,7 @@ const Step4 = () => {
         streetError: ''
       }));
     }
-    if (state.city?.length < 1) {
+    if (contact.city?.length < 1) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -73,7 +77,7 @@ const Step4 = () => {
         cityError: ''
       }));
     }
-    if (!/\d{2}-\d{3}/i.test(state?.postCode)) {
+    if (!/\d{2}-\d{3}/i.test(contact?.postCode)) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -85,7 +89,7 @@ const Step4 = () => {
         postCodeError: ''
       }));
     }
-    if (state.phoneNumber?.length !== 9) {
+    if (contact.phoneNumber?.length !== 9) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -97,7 +101,7 @@ const Step4 = () => {
         phoneNumberError: ''
       }));
     }
-    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(state?.hour)) {
+    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(contact?.hour)) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -114,17 +118,17 @@ const Step4 = () => {
 
   const handleDateChoose = date => {
     setState({
-      ...state,
+      ...contact,
       startDate: date
     });
   };
 
   useEffect(() => {
-    context.setState(state);
-  }, [state]);
+    context.setState(contact);
+  }, [contact]);
 
   const handleSubmit = () => {
-    context.setState(state)
+    context.setState(contact)
   };
 
     return (
@@ -143,37 +147,37 @@ const Step4 = () => {
                     <label>Ulica
                       <input
                           onChange={handleChange}
-                          value={state.street}
+                          value={contact.street}
                           name="street"
                           type="text" />
                     </label>
                     <label>Miasto
                       <input
                           onChange={handleChange}
-                          value={state.city}
+                          value={contact.city}
                           name="city"
                           type="text" />
                     </label>
                     <label>Kod pocztowy
                       <input
                           onChange={handleChange}
-                          value={state.postCode}
+                          value={contact.postCode}
                           name="postCode"
                           type="text" />
                     </label>
                     <label>Numer telefonu
                       <input
                           onChange={handleChange}
-                          value={state.phoneNumber}
+                          value={contact.phoneNumber}
                           name="phoneNumber"
                           type="text" />
                     </label>
                   </form>
                 <div className="errors" style={{display: 'flex', flexDirection: 'column'}}>
-                  <span>{state.streetError}</span>
-                  <span>{state.cityError}</span>
-                  <span>{state.postCodeError}</span>
-                  <span>{state.phoneNumberError}</span>
+                  <span>{contact.streetError}</span>
+                  <span>{contact.cityError}</span>
+                  <span>{contact.postCodeError}</span>
+                  <span>{contact.phoneNumberError}</span>
                 </div>
               </div>
               <div className="date">
@@ -183,26 +187,26 @@ const Step4 = () => {
                     <DatePicker
                       dateFormat="yyyy/MM/dd"
                       showTimeSelectnpm
-                      selected={state.startDate}
+                      selected={contact.startDate}
                       onChange={handleDateChoose}
                     />
                   </label>
                   <label>Godzina
                     <input
                         onChange={handleChange}
-                        value={state.hour}
+                        value={contact.hour}
                         type="text"
                         name="hour"/>
                   </label>
                   <label>Uwagi dla kurriera
                     <input
                         onChange={handleChange}
-                        value={state.message}
+                        value={contact.message}
                         name="message"/>
                   </label>
                 </form>
                 <div className="errors" style={{paddingTop: '20px'}}>
-                  <span style={{fontSize: '2.2rem'}}>{state.hourError}</span>
+                  <span style={{fontSize: '2.2rem'}}>{contact.hourError}</span>
                 </div>
               </div>
             </section>
