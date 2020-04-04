@@ -126,7 +126,7 @@ class SummaryStep extends Component {
                 <h2>Oddajesz:</h2>
                 <div className="summary">
                   <img src={require('../../assets/Icon-1.svg')} alt="t-shirt" />
-                  <small style={{width: '900px'}}>worków: {context.state.bagsNumber}; {context.state.wantToGive}, {[...context.state.whomHelp]} {context.state.foundation}</small>
+                  <small style={{width: '900px'}}>worków: {context.state.bagsNumber}; {context.state.wantToGive}, {context.state.whomHelp} {context.state.foundation}</small>
                 </div>
                 <div className="summary">
                   <img src={require('../../assets/Icon-4.svg')} alt="circle-arrows" />
@@ -156,7 +156,7 @@ class SummaryStep extends Component {
                     <h5>Termin odbioru:</h5>
                     <div className="date">
                       <p>Data</p>
-                      <span>{context.state.startDate}</span>
+                      <span>{JSON.stringify(context.state.startDate).substring(1, 11)}</span>
                     </div>
                     <div className="hour">
                       <p>Godzina</p>

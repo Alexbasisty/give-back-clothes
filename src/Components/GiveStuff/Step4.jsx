@@ -163,7 +163,7 @@ const Step4 = () => {
 
   useEffect(() => {
     context.setState(state);
-    console.log(context);
+    console.log(typeof context.state.startDate);
   }, [state]);
 
   const handleSubmit = () => {
@@ -224,6 +224,8 @@ const Step4 = () => {
                 <form>
                   <label>Data
                     <DatePicker
+                      dateFormat="yyyy/MM/dd"
+                      showTimeSelectnpm
                       selected={state.startDate}
                       onChange={handleDateChoose}
                     />
