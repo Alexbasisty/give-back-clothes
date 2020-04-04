@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Step4 = () => {
   const context = useContext(StuffContext);
+
   const [state, setState] = useState({
     startDate: new Date(),
     street: '',
@@ -24,15 +25,19 @@ const Step4 = () => {
     message: ''
   });
 
-  // saveState = () => {
-  //   localStorage.setItem('street', JSON.stringify(this.state.street));
-  //   localStorage.setItem('city', JSON.stringify(this.state.city));
-  //   localStorage.setItem('postCode', JSON.stringify(this.state.postCode));
-  //   localStorage.setItem('phoneNumber', JSON.stringify(this.state.phoneNumber));
-  //   localStorage.setItem('date', JSON.stringify(this.state.startDate));
-  //   localStorage.setItem('hour', JSON.stringify(this.state.hour));
-  //   localStorage.setItem('message', JSON.stringify(this.state.message));
-  // };
+  useEffect(() => {
+    console.log(context);
+    setState(prevState => ({
+      ...prevState,
+      startDate: context.state.startDate,
+      street: context.state.street,
+      city: context.state.city,
+      postCode: context.state.postCode,
+      phoneNumber: context.state?.phoneNumber,
+      hour: context.state?.hour,
+      message: context.state?.message
+    }));
+  }, []);
 
   const handleChange = (event) => {
     setState({
@@ -40,58 +45,11 @@ const Step4 = () => {
       [event.target.name]: event.target.value
     });
     validate();
-    // this.saveState();
   };
-
-  // componentDidMount() {
-  //
-  //   if ((localStorage.getItem('street') !== null)) {
-  //     const street = JSON.parse(localStorage.getItem('street'));
-  //     this.setState({
-  //       street
-  //     })
-  //   }
-  //   else if((localStorage.getItem('date') !== null)) {
-  //     const date = JSON.parse(localStorage.getItem('date'));
-  //     this.setState({
-  //       startDate: date
-  //     })
-  //   }
-  //   if((localStorage.getItem('city') !== null)) {
-  //     const city = JSON.parse(localStorage.getItem('city'));
-  //     this.setState({
-  //       city
-  //     })
-  //   }
-  //   if((localStorage.getItem('postCode') !== null)) {
-  //     const postCode = JSON.parse(localStorage.getItem('postCode'));
-  //     this.setState({
-  //       postCode
-  //     })
-  //   }
-  //   if((localStorage.getItem('phoneNumber') !== null)) {
-  //     const phoneNumber = JSON.parse(localStorage.getItem('phoneNumber'));
-  //     this.setState({
-  //       phoneNumber
-  //     })
-  //   }
-  //   if((localStorage.getItem('hour') !== null)) {
-  //     const hour = JSON.parse(localStorage.getItem('hour'));
-  //     this.setState({
-  //       hour
-  //     })
-  //   }
-  //   if((localStorage.getItem('message') !== null)) {
-  //     const message = JSON.parse(localStorage.getItem('message'));
-  //     this.setState({
-  //       message
-  //     })
-  //   }
-  // }
 
   const validate = () => {
     let isValid = true;
-    if (state.street.length < 1) {
+    if (state.street?.length < 1) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -103,7 +61,7 @@ const Step4 = () => {
         streetError: ''
       }));
     }
-    if (state.city.length < 1) {
+    if (state.city?.length < 1) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -115,7 +73,7 @@ const Step4 = () => {
         cityError: ''
       }));
     }
-    if (!/\d{2}-\d{3}/i.test(state.postCode)) {
+    if (!/\d{2}-\d{3}/i.test(state?.postCode)) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -127,7 +85,7 @@ const Step4 = () => {
         postCodeError: ''
       }));
     }
-    if (state.phoneNumber.length !== 9) {
+    if (state.phoneNumber?.length !== 9) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -139,7 +97,7 @@ const Step4 = () => {
         phoneNumberError: ''
       }));
     }
-    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(state.hour)) {
+    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(state?.hour)) {
       isValid = false;
       setState(prevState => ({
         ...prevState,
@@ -163,7 +121,6 @@ const Step4 = () => {
 
   useEffect(() => {
     context.setState(state);
-    console.log(typeof context.state.startDate);
   }, [state]);
 
   const handleSubmit = () => {
@@ -253,7 +210,7 @@ const Step4 = () => {
               <button onClick={handleSubmit}>
                 <Link to={ROUTES.STEP_3}>Wstecz</Link>
               </button>
-              <button disabled={!validate} onClick={handleSubmit}>
+              <button onClick={handleSubmit}>
                 <Link to={ROUTES.SUMMARY}>Dalej</Link>
               </button>
             </div>
