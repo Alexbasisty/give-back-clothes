@@ -116,18 +116,6 @@ class SummaryStep extends Component {
   };
 
   render() {
-    const {
-      bagsNumber,
-      lokalization,
-      foundation,
-      whomHelp,
-      street,
-      date,
-      city,
-      postCode,
-      phoneNumber,
-      hour,
-      message} = this.state;
 
     return (
         <StuffContext.Consumer>
@@ -149,34 +137,34 @@ class SummaryStep extends Component {
                     <h5>Adres odbioru:</h5>
                     <div className="street">
                       <p>Ulica</p>
-                      <span>{street}</span>
+                      <span>{context.state.street}</span>
                     </div>
                     <div className="town">
                       <p>Miasto</p>
-                      <span>{city}</span>
+                      <span>{context.state.city}</span>
                     </div>
                     <div className="post-code">
                       <p>Kod pocztowy</p>
-                      <span>{postCode}</span>
+                      <span>{context.state.postCode}</span>
                     </div>
                     <div className="street">
                       <p>Numer telefonu</p>
-                      <span>{phoneNumber}</span>
+                      <span>{context.state.phoneNumber}</span>
                     </div>
                   </div>
                   <div className="date-data">
                     <h5>Termin odbioru:</h5>
                     <div className="date">
                       <p>Data</p>
-                      <span>{date}</span>
+                      <span>{context.state.startDate}</span>
                     </div>
                     <div className="hour">
                       <p>Godzina</p>
-                      <span>{hour}</span>
+                      <span>{context.state.hour}</span>
                     </div>
                     <div className="notes-for-courier">
                       <p>Uwagi dla kuriera</p>
-                      <span>{message}</span>
+                      <span>{context.state.message}</span>
                     </div>
                   </div>
                 </section>

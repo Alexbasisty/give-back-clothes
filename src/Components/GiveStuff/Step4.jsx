@@ -2,23 +2,27 @@ import React, { useState, useContext, useEffect } from 'react';
 import ImportantField from "./ImportantField";
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
+import { StuffContext } from "./StuffContext";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Step4 = () => {
-  const [startDate, setDate] = useState(new Date());
-  const [street, setStreet] = useState('');
-  const [streetError, setStreetError] = useState('');
-  const [city, setCity] = useState('');
-  const [cityError, setCityError] = useState('');
-  const [postCode, setPostCode] = useState('');
-  const [postCodeError, setPostCodeError] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [phoneNumberError, setPhoneNumberError] = useState('');
-  const [hour, setHour] = useState('');
-  const [hourError, setHourError] = useState('');
-  const [message, setMessage] = useState('');
+  const context = useContext(StuffContext);
+  const [state, setState] = useState({
+    startDate: new Date(),
+    street: '',
+    streetError: '',
+    city: '',
+    cityError: '',
+    postCode: '',
+    postCodeError: '',
+    phoneNumber: '',
+    phoneNumberError: '',
+    hour: '',
+    hourError: '',
+    message: ''
+  });
 
   // saveState = () => {
   //   localStorage.setItem('street', JSON.stringify(this.state.street));
@@ -30,122 +34,140 @@ const Step4 = () => {
   //   localStorage.setItem('message', JSON.stringify(this.state.message));
   // };
 
-  handleChange = (event) => {
-    this.setState({
+  const handleChange = (event) => {
+    setState({
+      ...state,
       [event.target.name]: event.target.value
     });
     validate();
     // this.saveState();
   };
 
-  componentDidMount() {
+  // componentDidMount() {
+  //
+  //   if ((localStorage.getItem('street') !== null)) {
+  //     const street = JSON.parse(localStorage.getItem('street'));
+  //     this.setState({
+  //       street
+  //     })
+  //   }
+  //   else if((localStorage.getItem('date') !== null)) {
+  //     const date = JSON.parse(localStorage.getItem('date'));
+  //     this.setState({
+  //       startDate: date
+  //     })
+  //   }
+  //   if((localStorage.getItem('city') !== null)) {
+  //     const city = JSON.parse(localStorage.getItem('city'));
+  //     this.setState({
+  //       city
+  //     })
+  //   }
+  //   if((localStorage.getItem('postCode') !== null)) {
+  //     const postCode = JSON.parse(localStorage.getItem('postCode'));
+  //     this.setState({
+  //       postCode
+  //     })
+  //   }
+  //   if((localStorage.getItem('phoneNumber') !== null)) {
+  //     const phoneNumber = JSON.parse(localStorage.getItem('phoneNumber'));
+  //     this.setState({
+  //       phoneNumber
+  //     })
+  //   }
+  //   if((localStorage.getItem('hour') !== null)) {
+  //     const hour = JSON.parse(localStorage.getItem('hour'));
+  //     this.setState({
+  //       hour
+  //     })
+  //   }
+  //   if((localStorage.getItem('message') !== null)) {
+  //     const message = JSON.parse(localStorage.getItem('message'));
+  //     this.setState({
+  //       message
+  //     })
+  //   }
+  // }
 
-    if ((localStorage.getItem('street') !== null)) {
-      const street = JSON.parse(localStorage.getItem('street'));
-      this.setState({
-        street
-      })
-    }
-    else if((localStorage.getItem('date') !== null)) {
-      const date = JSON.parse(localStorage.getItem('date'));
-      this.setState({
-        startDate: date
-      })
-    }
-    if((localStorage.getItem('city') !== null)) {
-      const city = JSON.parse(localStorage.getItem('city'));
-      this.setState({
-        city
-      })
-    }
-    if((localStorage.getItem('postCode') !== null)) {
-      const postCode = JSON.parse(localStorage.getItem('postCode'));
-      this.setState({
-        postCode
-      })
-    }
-    if((localStorage.getItem('phoneNumber') !== null)) {
-      const phoneNumber = JSON.parse(localStorage.getItem('phoneNumber'));
-      this.setState({
-        phoneNumber
-      })
-    }
-    if((localStorage.getItem('hour') !== null)) {
-      const hour = JSON.parse(localStorage.getItem('hour'));
-      this.setState({
-        hour
-      })
-    }
-    if((localStorage.getItem('message') !== null)) {
-      const message = JSON.parse(localStorage.getItem('message'));
-      this.setState({
-        message
-      })
-    }
-  }
-
-  validate = () => {
+  const validate = () => {
     let isValid = true;
-    if (this.state.street.length < 1) {
+    if (state.street.length < 1) {
       isValid = false;
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         streetError: 'Ulica:  napisz conajmniej 2 znaki'
-      })
+      }));
     } else {
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         streetError: ''
-      })
+      }));
     }
-    if (this.state.city.length < 1) {
+    if (state.city.length < 1) {
       isValid = false;
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         cityError: 'Miasto:  napisz conajmniej 2 znaki'
-      })
+      }))
     } else {
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         cityError: ''
-      });
+      }));
     }
-
-    if (!/\d{2}-\d{3}/i.test(this.state.postCode)) {
+    if (!/\d{2}-\d{3}/i.test(state.postCode)) {
       isValid = false;
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         postCodeError: 'Kod pocztowy:  format: **-***'
-      })
+      }))
     } else {
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         postCodeError: ''
-      })
+      }));
     }
-    if (this.state.phoneNumber.length !== 9) {
+    if (state.phoneNumber.length !== 9) {
       isValid = false;
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         phoneNumberError: 'Telefon:  musi mieć 9 znaków'
-      })
+      }))
     } else {
-      this.setState({
+      setState(prevState => ({
+        ...prevState,
         phoneNumberError: ''
-      })
+      }));
     }
-    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(this.state.hour)) {
+    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(state.hour)) {
       isValid = false;
-      this.setState({
-        hourError: 'Godzina:  format --:--'
-      })
+      setState(prevState => ({
+        ...prevState,
+        setHourError: 'Godzina:  format --:--'
+      }))
     } else {
-      this.setState({
-        hourError: ''
-      })
+      setState(prevState => ({
+        ...prevState,
+        setHourError: ''
+      }));
     }
     return isValid;
   };
 
   const handleDateChoose = date => {
-    this.setState({
+    setState({
+      ...state,
       startDate: date
     });
+  };
 
-    this.validate();
+  useEffect(() => {
+    context.setState(state);
+    console.log(context);
+  }, [state]);
+
+  const handleSubmit = () => {
+    context.setState(state)
   };
 
     return (
@@ -163,38 +185,38 @@ const Step4 = () => {
                   <form>
                     <label>Ulica
                       <input
-                          onChange={this.handleChange}
-                          value={street}
+                          onChange={handleChange}
+                          value={state.street}
                           name="street"
                           type="text" />
                     </label>
                     <label>Miasto
                       <input
-                          onChange={this.handleChange}
-                          value={city}
+                          onChange={handleChange}
+                          value={state.city}
                           name="city"
                           type="text" />
                     </label>
                     <label>Kod pocztowy
                       <input
-                          onChange={this.handleChange}
-                          value={postCode}
+                          onChange={handleChange}
+                          value={state.postCode}
                           name="postCode"
                           type="text" />
                     </label>
                     <label>Numer telefonu
                       <input
-                          onChange={this.handleChange}
-                          value={phoneNumber}
+                          onChange={handleChange}
+                          value={state.phoneNumber}
                           name="phoneNumber"
                           type="text" />
                     </label>
                   </form>
                 <div className="errors" style={{display: 'flex', flexDirection: 'column'}}>
-                  <span>{streetError}</span>
-                  <span>{cityError}</span>
-                  <span>{postCodeError}</span>
-                  <span>{phoneNumberError}</span>
+                  <span>{state.streetError}</span>
+                  <span>{state.cityError}</span>
+                  <span>{state.postCodeError}</span>
+                  <span>{state.phoneNumberError}</span>
                 </div>
               </div>
               <div className="date">
@@ -202,34 +224,34 @@ const Step4 = () => {
                 <form>
                   <label>Data
                     <DatePicker
-                      selected={startDate}
-                      onChange={this.handleDateChoose}
+                      selected={state.startDate}
+                      onChange={handleDateChoose}
                     />
                   </label>
                   <label>Godzina
                     <input
-                        onChange={this.handleChange}
-                        value={hour}
+                        onChange={handleChange}
+                        value={state.hour}
                         type="text"
                         name="hour"/>
                   </label>
                   <label>Uwagi dla kurriera
                     <input
-                        onChange={this.handleChange}
-                        value={message}
+                        onChange={handleChange}
+                        value={state.message}
                         name="message"/>
                   </label>
                 </form>
                 <div className="errors" style={{paddingTop: '20px'}}>
-                  <span style={{fontSize: '2.2rem'}}>{hourError}</span>
+                  <span style={{fontSize: '2.2rem'}}>{state.hourError}</span>
                 </div>
               </div>
             </section>
             <div className="links-section">
-              <button onClick={this.saveState}>
+              <button onClick={handleSubmit}>
                 <Link to={ROUTES.STEP_3}>Wstecz</Link>
               </button>
-              <button disabled={!this.validate} onClick={this.saveState}>
+              <button disabled={!validate} onClick={handleSubmit}>
                 <Link to={ROUTES.SUMMARY}>Dalej</Link>
               </button>
             </div>
