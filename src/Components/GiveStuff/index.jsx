@@ -27,7 +27,6 @@ const GiveStuff = () => {
 
   return (
       <StuffContext.Provider value={value}>
-      <Router>
         <GiveHeader />
         <Switch>
           <Route exact path={ROUTES.STEP_1} component={Step1} />
@@ -38,7 +37,6 @@ const GiveStuff = () => {
           <Route path={ROUTES.THANKS} component={ThanksFull} />
         </Switch>
         <Contact />
-      </Router>
       </StuffContext.Provider>
   );
 };

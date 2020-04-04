@@ -54,7 +54,7 @@ const Step1 = () => {
                     defaultChecked
                     onChange={handleStuffSelect}
                     type="checkbox"
-                    value="ubrania, które nadają się do ponownego użycia "/>
+                    value="ubrania, które nadają się do ponownego użycia " />
                 <span className="checkmark"/>
                 ubrania, które nadają się do ponownego użycia
               </label>
