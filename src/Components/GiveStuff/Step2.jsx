@@ -10,34 +10,6 @@ const Step2 = () => {
   const [bagsNumber, setBagsNumber] = useState({
     bagsNumber: '- wybierz -',
   });
-// state = {
-  //   isDown: true,
-  //   bagsNumber: '- wybierz -',
-  // };
-  //
-  // saveState = () => {
-  //   localStorage.setItem('bag_numb', JSON.stringify(this.state.bagsNumber))
-  // };
-
-  // componentDidMount() {
-  //   if ((localStorage.getItem('bag_numb') !== null)) {
-  //     const x = localStorage.getItem('bag_numb').replace(/\\n/g, "\\n")
-  //         .replace(/\\'/g, "\\'")
-  //         .replace(/\\"/g, '\\"')
-  //         .replace(/\\&/g, "\\&")
-  //         .replace(/\\r/g, "\\r")
-  //         .replace(/\\t/g, "\\t")
-  //         .replace(/\\b/g, "\\b");
-  //     const bagsNumber = JSON.parse(x);
-  //
-  //     this.setState({
-  //       bagsNumber
-  //     })
-  //   }
-  // }  setState(prevState => ({
-  //         ...prevState,
-  //         wantToGive: [...state.wantToGive, checkedStuff]
-  //       }))
 
   const handleSelect = e => {
     if(e.target.id.length > 0) {
@@ -54,6 +26,12 @@ const Step2 = () => {
   useEffect(() => {
     context.setState(bagsNumber)
   }, [bagsNumber]);
+
+  useEffect(() => {
+    context.state.bagsNumber && setBagsNumber({
+      bagsNumber: context.state.bagsNumber
+    })
+  }, []);
 
   const handleArrow = () => {
     setDown(prevState => !prevState)

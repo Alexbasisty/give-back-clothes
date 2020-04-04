@@ -21,7 +21,6 @@ const Step1 = () => {
     context.state.wantToGive && setState({
       wantToGive: context.state.wantToGive
     });
-    console.log(context.state.wantToGive);
   }, []);
 
     return (
