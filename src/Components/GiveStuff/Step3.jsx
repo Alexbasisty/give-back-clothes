@@ -5,42 +5,18 @@ import * as ROUTES from "../../constants/routes";
 import {StuffContext} from "./StuffContext";
 
 const Step3 = () => {
-  // state = {
-  //   isDown: true,
-  //   lokalization: '- wybierz -',
-  //   whomHelp: ['dzieciom '],
-  //   foundation: ''
-  // };
-
-  // saveState = () => {
-  //   localStorage.setItem('lokalization', JSON.stringify(this.state.lokalization));
-  //   localStorage.setItem('whomHelp', JSON.stringify(this.state.whomHelp));
-  //   localStorage.setItem('foundation', JSON.stringify(this.state.foundation));
-  // };
-
-  // componentDidMount() {
-  //   if ((localStorage.getItem('lokalization') !== null)) {
-  //     const lokalization = JSON.parse(localStorage.getItem('lokalization'));
-  //
-  //     this.setState({
-  //       lokalization
-  //     })
-  //   }
-  //   if((localStorage.getItem('foundation') !== null)) {
-  //     const foundation = JSON.parse(localStorage.getItem('foundation'));
-  //     this.setState({
-  //       foundation
-  //     })
-  //   }
-  // }
   const context = useContext(StuffContext);
+
   const [isDown, setDown] = useState(true);
+
   const [help, setHelp] = useState({
     whomHelp: ['dzieciom '],
   });
+
   const [localization, setLocalization] = useState({
-    city: '- wybierz -',
+    localization: '- wybierz -',
   });
+
   const [fund, setFund] = useState({
     foundation: ''
   });
@@ -48,6 +24,18 @@ const Step3 = () => {
   const handleArrow = () => {
     setDown(prevState => !prevState)
   };
+
+  useEffect(() => {
+    context.state.whomHelp && setHelp({
+      whomHelp: context.state.whomHelp
+    });
+    context.state.localization && setLocalization({
+      localization: context.state.localization
+    });
+    context.state.foundation && setFund({
+      foundation: context.state.foundation
+    });
+  }, []);
 
   const handleWhoHelp = (event) => {
     const helpList = [...help.whomHelp];
@@ -73,10 +61,10 @@ const Step3 = () => {
 
   const handleSelect = e => {
     if (e.target.id.length > 0) {
-      setLocalization({ city: e.target.id });
+      setLocalization({ localization: e.target.id });
     } else {
       setLocalization({
-        city: '- wybierz -'
+        localization: '- wybierz -'
       });
     }
   handleArrow()
@@ -117,7 +105,7 @@ const Step3 = () => {
                 <p
                     onClick={handleArrow}
                 >
-                  {localization.city}
+                  {localization.localization}
                   {isDown ? <img src={require('../../assets/Icon-Arrow-Down.svg')} alt="down"/> : <img src={require('../../assets/Icon-Arrow-Up.svg')} alt="down"/>}
                 </p>
               </div>
@@ -140,7 +128,8 @@ const Step3 = () => {
               <form className="form-buttons">
                 <label>
                   <input
-                      defaultChecked
+                      checked={help.whomHelp.includes('dzieciom ')}
+                      name="children"
                       onChange={handleWhoHelp}
                       type="checkbox"
                       value="dzieciom "/>
@@ -148,29 +137,37 @@ const Step3 = () => {
                 </label>
                 <label>
                   <input
+                      checked={help.whomHelp.includes('samotnym matkom ')}
                       onChange={handleWhoHelp}
+                      name="mothers"
                       type="checkbox"
                       value="samotnym matkom "/>
                   <span>samotnym matkom</span>
                 </label>
                 <label>
                   <input
+                      checked={help.whomHelp.includes('bezdomnym ')}
                       onChange={handleWhoHelp}
+                      name="homeless"
                       type="checkbox"
                       value="bezdomnym "/>
                   <span>bezdomnym</span>
                 </label>
                 <label>
                   <input
+                      checked={help.whomHelp.includes('niepełnosprawnym ')}
                       onChange={handleWhoHelp}
+                      name="disabled"
                       type="checkbox"
                       value="niepełnosprawnym "/>
                   <span>niepełnosprawnym</span>
                 </label>
                 <label>
                   <input
+                      checked={help.whomHelp.includes('osobom starszym ')}
                       onChange={handleWhoHelp}
                       type="checkbox"
+                      name="older"
                       value="osobom starszym "/>
                   <span>osobom starszym</span>
                 </label>

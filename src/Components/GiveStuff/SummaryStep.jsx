@@ -15,101 +15,12 @@ const SummaryStepContext = () => (
 );
 
 class SummaryStep extends Component {
-  state = {
-    staff: '',
-    bagsNumber: '',
-    lokalization: '',
-    foundation: '',
-    whomHelp: '',
-    street: '',
-    date: '',
-    city: '',
-    postCode: '',
-    phoneNumber: '',
-    hour: '',
-    message: ''
-  };
 
-  componentDidMount() {
-    if ((localStorage.getItem('user_staff') !== null)) {
-      const staff = JSON.parse(localStorage.getItem('user_staff'));
-      this.setState({
-        staff
-      })
-    }
-    if ((localStorage.getItem('bag_numb') !== null)) {
-      const bagsNumber = JSON.parse(localStorage.getItem('bag_numb'));
-      this.setState({
-        bagsNumber
-      })
-    }
-    if ((localStorage.getItem('lokalization') !== null)) {
-      const lokalization = JSON.parse(localStorage.getItem('lokalization'));
-      this.setState({
-        lokalization
-      })
-    }
-    if ((localStorage.getItem('foundation') !== null)) {
-      const foundation = JSON.parse(localStorage.getItem('foundation'));
-      this.setState({
-        foundation
-      })
-    }
-    if ((localStorage.getItem('whomHelp') !== null)) {
-      const whomHelp = JSON.parse(localStorage.getItem('whomHelp'));
-      this.setState({
-        whomHelp
-      })
-    }
-    if ((localStorage.getItem('street') !== null)) {
-      const street = JSON.parse(localStorage.getItem('street'));
-      this.setState({
-        street
-      })
-    }
-    if((localStorage.getItem('date') !== null)) {
-      const date = JSON.parse(localStorage.getItem('date')).substring(0,10);
-      this.setState({
-        date: date
-      })
-    }
-    if((localStorage.getItem('city') !== null)) {
-      const city = JSON.parse(localStorage.getItem('city'));
-      this.setState({
-        city
-      })
-    }
-    if((localStorage.getItem('postCode') !== null)) {
-      const postCode = JSON.parse(localStorage.getItem('postCode'));
-      this.setState({
-        postCode
-      })
-    }
-    if((localStorage.getItem('phoneNumber') !== null)) {
-      const phoneNumber = JSON.parse(localStorage.getItem('phoneNumber'));
-      this.setState({
-        phoneNumber
-      })
-    }
-    if((localStorage.getItem('hour') !== null)) {
-      const hour = JSON.parse(localStorage.getItem('hour'));
-      this.setState({
-        hour
-      })
-    }
-    if((localStorage.getItem('message') !== null)) {
-      const message = JSON.parse(localStorage.getItem('message'));
-      this.setState({
-        message
-      })
-    }
-  }
-
-  handleSubmitSummary = () => {
+  handleSubmitSummary = (context) => {
     if(this.props.user.uid !== null) {
       const userUid = this.props.user.uid;
       const userRef = app.database().ref(`users/${userUid}`);
-      const newDonate = this.state;
+      const newDonate = context.state;
       userRef.push(newDonate);
       localStorage.clear();
     }
@@ -172,7 +83,7 @@ class SummaryStep extends Component {
                   <button>
                     <Link to={ROUTES.STEP_4}>Wstecz</Link>
                   </button>
-                  <button onClick={this.handleSubmitSummary}>
+                  <button onClick={() => this.handleSubmitSummary(context)}>
                     <Link to={ROUTES.THANKS}>Potwierdzam</Link>
                   </button>
                 </div>
