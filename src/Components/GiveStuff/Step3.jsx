@@ -35,7 +35,7 @@ const Step3 = () => {
     context.state.foundation && setFund({
       foundation: context.state.foundation
     });
-  }, []);
+  }, [context.state.foundation, context.state.localization, context.state.whomHelp]);
 
   const handleWhoHelp = (event) => {
     const helpList = [...help.whomHelp];
@@ -86,7 +86,6 @@ const Step3 = () => {
     context.setState(localization);
     context.setState(help);
     context.setState(fund);
-    console.log(context);
   }, [help, localization, fund]);
 
     return  (

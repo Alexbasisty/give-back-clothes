@@ -31,7 +31,7 @@ const Step2 = () => {
     context.state.bagsNumber && setBagsNumber({
       bagsNumber: context.state.bagsNumber
     })
-  }, []);
+  }, [context.state.bagsNumber]);
 
   const handleArrow = () => {
     setDown(prevState => !prevState)
@@ -40,7 +40,7 @@ const Step2 = () => {
     return (
         <>
           <ImportantField>
-            Wszystkie rzeczy do oddania zapakuj w 60l worki. Dokładną instrukcję jak poprawnie spakować rzeczy znajdziesz <a>TUTAJ</a>.
+            Wszystkie rzeczy do oddania zapakuj w 60l worki. Dokładną instrukcję jak poprawnie spakować rzeczy znajdziesz <small>TUTAJ</small>.
           </ImportantField>
           <div className="step1-form">
             <h3>Krok 2/4</h3>
