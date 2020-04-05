@@ -25,6 +25,8 @@ const Step4 = () => {
     message: ''
   });
 
+  const [disabled, setAnable] = useState(false);
+
   useEffect(() => {
     context.state.startDate &&  context.state.street &&
     context.state.city && context.state.postCode &&
@@ -40,6 +42,9 @@ const Step4 = () => {
       hour: context.state.hour,
       message: context.state.message
     }));
+
+    validate();
+    // eslint-disable-next-line
   }, [context.state.city, context.state.hour, context.state.message, context.state.phoneNumber, context.state.postCode, context.state.startDate, context.state.street]);
 
   const handleChange = (event) => {
@@ -47,7 +52,6 @@ const Step4 = () => {
       ...contact,
       [event.target.name]: event.target.value
     });
-    validate();
   };
 
   const validate = () => {
@@ -112,6 +116,8 @@ const Step4 = () => {
         setHourError: ''
       }));
     }
+
+    isValid && setAnable(true);
     return isValid;
   };
 
@@ -215,7 +221,7 @@ const Step4 = () => {
                 <Link to={ROUTES.STEP_3}>Wstecz</Link>
               </button>
               <button onClick={handleSubmit}>
-                <Link to={ROUTES.SUMMARY}>Dalej</Link>
+                {disabled ? <Link to={ROUTES.SUMMARY}>Dalej</Link> : <p>Dalej</p>}
               </button>
             </div>
           </div>

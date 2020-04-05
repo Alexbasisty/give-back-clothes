@@ -8,6 +8,7 @@ const Step3 = () => {
   const context = useContext(StuffContext);
 
   const [isDown, setDown] = useState(true);
+  const [disabled, setAnable] = useState(false);
 
   const [help, setHelp] = useState({
     whomHelp: ['dzieciom '],
@@ -29,13 +30,17 @@ const Step3 = () => {
     context.state.whomHelp && setHelp({
       whomHelp: context.state.whomHelp
     });
-    context.state.localization && setLocalization({
+    if (context.state.localization) {
+      setLocalization({
       localization: context.state.localization
     });
+      setAnable(true)
+    }
     context.state.foundation && setFund({
       foundation: context.state.foundation
     });
-  }, [context.state.foundation, context.state.localization, context.state.whomHelp]);
+    // eslint-disable-next-line
+  }, []);
 
   const handleWhoHelp = (event) => {
     const helpList = [...help.whomHelp];
@@ -62,6 +67,7 @@ const Step3 = () => {
   const handleSelect = e => {
     if (e.target.id.length > 0) {
       setLocalization({ localization: e.target.id });
+      setAnable(true)
     } else {
       setLocalization({
         localization: '- wybierz -'
@@ -186,7 +192,7 @@ const Step3 = () => {
                 <Link to={ROUTES.STEP_2}>Wstecz</Link>
               </button>
               <button>
-                <Link to={ROUTES.STEP_4}>Dalej</Link>
+                {disabled ? <Link to={ROUTES.STEP_4}>Dalej</Link> : <p>Dalej</p>}
               </button>
             </div>
           </div>

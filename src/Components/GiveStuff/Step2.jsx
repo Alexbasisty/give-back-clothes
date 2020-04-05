@@ -7,13 +7,15 @@ import {StuffContext} from "./StuffContext";
 const Step2 = () => {
   const context = useContext(StuffContext);
   const [isDown, setDown] = useState(true);
+  const [disabled, setAnable] = useState(false);
   const [bagsNumber, setBagsNumber] = useState({
     bagsNumber: '- wybierz -',
   });
 
   const handleSelect = e => {
     if(e.target.id.length > 0) {
-      setBagsNumber({bagsNumber: e.target.id})
+      setBagsNumber({bagsNumber: e.target.id});
+      setAnable(true)
     } else {
       setBagsNumber({
         bagsNumber: '- wybierz -',
@@ -29,10 +31,14 @@ const Step2 = () => {
   }, [bagsNumber]);
 
   useEffect(() => {
-    context.state.bagsNumber && setBagsNumber({
+    if(context.state.bagsNumber) {
+      setBagsNumber({
       bagsNumber: context.state.bagsNumber
-    })
-  }, [context.state.bagsNumber]);
+    });
+      setAnable(true)
+    }
+    // eslint-disable-next-line
+  }, []);
 
   const handleArrow = () => {
     setDown(prevState => !prevState)
@@ -73,7 +79,7 @@ const Step2 = () => {
                 <Link to={ROUTES.STEP_1}>Wstecz</Link>
               </button>
               <button>
-                <Link to={ROUTES.STEP_3}>Dalej</Link>
+                {disabled ? <Link to={ROUTES.STEP_3}>Dalej</Link> : <p>Dalej</p>}
               </button>
             </div>
           </div>
