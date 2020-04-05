@@ -26,7 +26,6 @@ const Step4 = () => {
   });
 
   useEffect(() => {
-    console.log(context);
     context.state.startDate &&  context.state.street &&
     context.state.city && context.state.postCode &&
     context.state.phoneNumber &&
@@ -41,7 +40,7 @@ const Step4 = () => {
       hour: context.state.hour,
       message: context.state.message
     }));
-  }, []);
+  }, [context.state.city, context.state.hour, context.state.message, context.state.phoneNumber, context.state.postCode, context.state.startDate, context.state.street]);
 
   const handleChange = (event) => {
     setState({
