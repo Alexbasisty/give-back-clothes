@@ -3,7 +3,7 @@ import React from 'react';
 const GiveHeader = () => (
     <div className="home-header give-stuff-header">
       <div className="home-hero" />
-      <div className="home-title" style={{width: '760px'}}>
+      <div className="home-title" style={{width: '560px'}}>
         <div className="text">
           <p style={{margin: 0, width: '602px'}}>Oddaj rzeczy, których już nie chcesz <strong>potrzebującym</strong></p>
         </div>
