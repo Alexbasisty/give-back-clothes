@@ -14,6 +14,7 @@ Projekt jest **stroną internetową** z prostym formularzem, który ułatwi uży
 ### W Projekcie Wykorzystano
 
 React Hooks, React Context API, React Formik, React Date Picker etc..
+Jako baza danych oraz platforma do logowania skorzystano z Google Firebase 
 
 ## Available Scripts
 
