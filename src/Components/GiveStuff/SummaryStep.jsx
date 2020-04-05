@@ -35,14 +35,13 @@ class SummaryStep extends Component {
       const userRef = app.database().ref(`users/${userUid}`);
       const newDonate = context.state;
       userRef.push(newDonate);
-      console.log('success', context);
 
-    }
-    else {
-      alert('Wróć i uzupełnij wszystkie formularze');
       this.setState({
         disabled: false
       })
+    }
+    else {
+      alert('Wróć i uzupełnij wszystkie formularze');
     }
   };
 
