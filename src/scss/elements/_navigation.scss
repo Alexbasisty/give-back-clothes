@@ -3,6 +3,8 @@
 
   ul.login-buttons {
     margin-top: 4.6rem;
+    position: relative;
+    z-index: 100;
     .nav-link {
 
       font-size: 1.4rem;
