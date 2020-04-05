@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
 import ImportantField from "./ImportantField";
@@ -8,37 +8,20 @@ const Step1 = () => {
   const context = useContext(StuffContext);
 
   const [state, setState] = useState({
-    wantToGive: ['ubrania, które nadają się do ponownego użycia '],
+    wantToGive: "ubrania, które nadają się do ponownego użycia"
   });
 
-
-  // const saveState = () => {
-  //   localStorage.setItem('user_staff', JSON.stringify(state.wantToGive));
-  // };
-
-  const handleStuffSelect = (event) => {
-    const giveList = [...state.wantToGive];
-    const check = event.target.checked;
-    const checkedStuff = event.target.value;
-
-    if(check) {
-      setState(prevState => ({
-        ...prevState,
-        wantToGive: [...state.wantToGive, checkedStuff]
-      }))
-    } else {
-      const index = giveList.indexOf(checkedStuff);
-      if(index > -1) {
-        giveList.splice(index, 1);
-        setState(prevState => ({
-          ...prevState,
-          wantToGive: giveList
-        }))
-      }
-    }
-
-    context.setState(state);
+  const handleStuffSelect = event => {
+    setState({
+      wantToGive: event.target.value
+    });
   };
+
+  useEffect(() => {
+    context.state.wantToGive && setState({
+      wantToGive: context.state.wantToGive
+    });
+  }, []);
 
     return (
         <>
@@ -51,42 +34,54 @@ const Step1 = () => {
             <form>
               <label>
                 <input
-                    defaultChecked
+                    name="wantToGive"
                     onChange={handleStuffSelect}
-                    type="checkbox"
-                    value="ubrania, które nadają się do ponownego użycia "/>
+                    checked={state.wantToGive === "ubrania, które nadają się do ponownego użycia"}
+                    type="radio"
+                    value="ubrania, które nadają się do ponownego użycia" />
                 <span className="checkmark"/>
                 ubrania, które nadają się do ponownego użycia
               </label>
               <label>
-                <input type="checkbox"
-                       // checked={data.includes("ubrania, do wyrzucenia")}
-                       onChange={handleStuffSelect}
-                       value="ubrania, do wyrzucenia "
+                <input
+                    name="wantToGive"
+                    type="radio"
+                    checked={state.wantToGive === "ubrania, do wyrzucenia"}
+                    onChange={handleStuffSelect}
+                    value="ubrania, do wyrzucenia"
                 />
                 <span className="checkmark"/>
                 ubrania, do wyrzucenia
               </label>
               <label>
-                <input type="checkbox"
-                       value="zabawki "
-                       onChange={handleStuffSelect}
+                <input
+                    name="wantToGive"
+                    type="radio"
+                    checked={state.wantToGive === "zabawki"}
+                    value="zabawki"
+                    onChange={handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 zabawki
               </label>
               <label>
-                <input type="checkbox"
-                       value="książki "
-                       onChange={handleStuffSelect}
+                <input
+                    name="wantToGive"
+                    type="radio"
+                    checked={state.wantToGive === "książki"}
+                    value="książki"
+                    onChange={handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 książki
               </label>
               <label>
-                <input type="checkbox"
-                       value="inne "
-                       onChange={handleStuffSelect}
+                <input
+                    name="wantToGive"
+                    type="radio"
+                    checked={state.wantToGive === "inne"}
+                    value="inne"
+                    onChange={handleStuffSelect}
                 />
                 <span className="checkmark"/>
                 Inne
