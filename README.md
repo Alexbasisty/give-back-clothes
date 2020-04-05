@@ -1,7 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Informacja o Projekcie
-![screenshot](src/assets/Zrzut ekranu.png?raw=true "Project screenshot")
+![screenshot](/src/assets/Zrzut ekranu.png?raw=true "Project screenshot")
+
 Celem projektu jest stworzenie miejsca, w którym każdy będzie mógł oddać niepotrzebne rzeczy zaufanym instytucjom.
 
 Projekt jest **stroną internetową** z prostym formularzem, który ułatwi użytkownikom oddanie rzeczy. 
