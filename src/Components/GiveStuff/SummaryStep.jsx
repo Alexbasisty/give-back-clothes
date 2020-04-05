@@ -31,7 +31,7 @@ class SummaryStep extends Component {
     return (
         <StuffContext.Consumer>
           {context => (
-              <div className="step1-form">
+              <div className="step1-form" style={{marginTop: '-200px'}}>
                 <h1>Podsumowanie Twojej darowizny</h1>
                 {console.log(context)}
                 <h2>Oddajesz:</h2>

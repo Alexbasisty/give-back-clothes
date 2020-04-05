@@ -25,6 +25,7 @@ const Step2 = () => {
 
   useEffect(() => {
     context.setState(bagsNumber)
+    // eslint-disable-next-line
   }, [bagsNumber]);
 
   useEffect(() => {

@@ -21,6 +21,7 @@ const Step1 = () => {
     context.state.wantToGive && setState({
       wantToGive: context.state.wantToGive
     });
+    // eslint-disable-next-line
   }, []);
 
     return (

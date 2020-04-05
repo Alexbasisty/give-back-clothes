@@ -86,6 +86,7 @@ const Step3 = () => {
     context.setState(localization);
     context.setState(help);
     context.setState(fund);
+    // eslint-disable-next-line
   }, [help, localization, fund]);
 
     return  (

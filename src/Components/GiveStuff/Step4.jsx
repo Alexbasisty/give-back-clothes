@@ -124,6 +124,7 @@ const Step4 = () => {
 
   useEffect(() => {
     context.setState(contact);
+    // eslint-disable-next-line
   }, [contact]);
 
   const handleSubmit = () => {
