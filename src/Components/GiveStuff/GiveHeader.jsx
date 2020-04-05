@@ -5,7 +5,7 @@ const GiveHeader = () => (
       <div className="home-hero" />
       <div className="home-title" style={{width: '560px'}}>
         <div className="text">
-          <p style={{margin: 0, width: '602px'}}>Oddaj rzeczy, których już nie chcesz <strong>potrzebującym</strong></p>
+          <p style={{margin: 0}}>Oddaj rzeczy, których już nie chcesz <strong>potrzebującym</strong></p>
         </div>
         <div className="decoration" />
         <h2>Wystarczą 4 proste kroki:</h2>

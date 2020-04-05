@@ -15,11 +15,19 @@ p {
   top: -200px;
   padding-top: 200px;
 
+  @include mobile {
+    background: #cccccc;
+  }
+
   h2 {
     padding-top: 19px;
     font-size: 4rem;
     line-height: 5.5rem;
     font-weight: 300;
+
+    @include mobile {
+      background-color: #cccccc;
+    }
   }
 .header-steps {
   display: flex;
@@ -28,6 +36,7 @@ p {
   @include mobile {
     justify-content: center;
     width: 90vw;
+    flex-wrap: wrap;
   }
 
   div {

@@ -97,10 +97,6 @@
     position: absolute;
     bottom: 50px;
 
-    @include mobile {
-      bottom: 10px;
-    }
-
     button {
       font-size: 2.4rem;
       line-height: 3.2rem;
