@@ -205,7 +205,7 @@ const Step4 = () => {
                         name="hour"/>
                   </label>
                   <label>Uwagi dla kurriera
-                    <input
+                    <textarea
                         onChange={handleChange}
                         value={contact.message}
                         name="message"/>
